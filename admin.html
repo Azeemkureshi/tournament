@@ -142,15 +142,18 @@
             <div class="offcanvas-body">
                 <ul class="nav flex-column">
                     <li class="nav-item"> <a class="nav-link active" href="#" data-section="dashboard-section"><i class="bi bi-speedometer2"></i> Dashboard</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-section="games-section"><i class="bi bi-controller"></i> Games</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-section="promotions-section"><i class="bi bi-images"></i> Promotions</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-section="tournaments-section"><i class="bi bi-trophy"></i> Tournaments</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-section="users-section"><i class="bi bi-people"></i> Users</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-section="deposits-section"><i class="bi bi-wallet2"></i> Deposits <span class="badge bg-warning ms-1" id="pendingDepositCountBadge" style="display: none;">0</span></a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-section="withdrawals-section"><i class="bi bi-cash-coin"></i> Withdrawals <span class="badge bg-danger ms-1" id="pendingWithdrawalCountBadge" style="display: none;">0</span></a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-section="settings-section"><i class="bi bi-gear"></i> Settings</a> </li>
+                    <li class="nav-item permission-gate" data-permission="manageGames"> <a class="nav-link" href="#" data-section="games-section"><i class="bi bi-controller"></i> Games</a> </li>
+                    <li class="nav-item permission-gate" data-permission="managePromotions"> <a class="nav-link" href="#" data-section="promotions-section"><i class="bi bi-images"></i> Promotions</a> </li>
+                    <li class="nav-item permission-gate" data-permission="manageImageLibrary"> <a class="nav-link" href="#" data-section="imagelibrary-section"><i class="bi bi-image-fill"></i> Image Library</a> </li>
+                    <li class="nav-item permission-gate" data-permission="manageTournaments"> <a class="nav-link" href="#" data-section="tournaments-section"><i class="bi bi-trophy"></i> Tournaments</a> </li>
+                    <li class="nav-item permission-gate" data-permission="manageUsers"> <a class="nav-link" href="#" data-section="users-section"><i class="bi bi-people"></i> Users</a> </li>
+                    <li class="nav-item permission-gate" data-permission="manageDeposits"> <a class="nav-link" href="#" data-section="deposits-section"><i class="bi bi-wallet2"></i> Deposits <span class="badge bg-warning ms-1" id="pendingDepositCountBadge" style="display: none;">0</span></a> </li>
+                    <li class="nav-item permission-gate" data-permission="manageWithdrawals"> <a class="nav-link" href="#" data-section="withdrawals-section"><i class="bi bi-cash-coin"></i> Withdrawals <span class="badge bg-danger ms-1" id="pendingWithdrawalCountBadge" style="display: none;">0</span></a> </li>
+                    <li class="nav-item permission-gate" data-permission="manageNotifications"> <a class="nav-link" href="#" data-section="notifications-section"><i class="bi bi-bell"></i> Send Notification</a> </li>
+                    <li class="nav-item permission-gate" data-permission="manageSettings"> <a class="nav-link" href="#" data-section="settings-section"><i class="bi bi-gear"></i> Settings</a> </li>
+                    <li class="nav-item permission-gate" data-permission="manageStaff"> <a class="nav-link" href="#" data-section="staff-section"><i class="bi bi-person-badge"></i> Staff Management</a> </li>
                 </ul>
-                <div class="mt-auto p-3 border-top border-secondary">
+                <div class="mt-auto p-3 border-top border-secondary permission-gate" data-permission="manageSettings">
                      <button class="btn btn-warning btn-sm w-100 mb-2" id="addDemoDataBtn"><i class="bi bi-database-add"></i> Add Demo Data</button>
                      <small class="text-muted d-block text-center">Adds sample data if DB is empty.</small>
                 </div>
@@ -241,10 +244,10 @@
             </section>
 
             <!-- Games Section -->
-            <section id="games-section" class="section">
+            <section id="games-section" class="section permission-gate" data-permission="manageGames">
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                     <h2>Manage Games</h2>
-                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#gameModal" id="addNewGameBtn"><i class="bi bi-plus-circle"></i> Add Game</button>
+                    <button class="btn btn-success btn-sm permission-gate" data-permission="manageGames" data-bs-toggle="modal" data-bs-target="#gameModal" id="addNewGameBtn"><i class="bi bi-plus-circle"></i> Add Game</button>
                 </div>
                  <div id="gamesStatus" class="mb-3"></div>
                 <div class="table-responsive card">
@@ -258,10 +261,10 @@
             </section>
 
             <!-- Promotions Section -->
-            <section id="promotions-section" class="section">
+            <section id="promotions-section" class="section permission-gate" data-permission="managePromotions">
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                      <h2>Manage Promotions</h2>
-                     <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#promotionModal" id="addNewPromotionBtn"><i class="bi bi-plus-circle"></i> Add Promotion</button>
+                     <button class="btn btn-success btn-sm permission-gate" data-permission="managePromotions" data-bs-toggle="modal" data-bs-target="#promotionModal" id="addNewPromotionBtn"><i class="bi bi-plus-circle"></i> Add Promotion</button>
                 </div>
                 <div id="promotionsStatus" class="mb-3"></div>
                 <div class="table-responsive card">
@@ -274,11 +277,28 @@
                 </div>
              </section>
 
+            <!-- Image Library Section -->
+            <section id="imagelibrary-section" class="section permission-gate" data-permission="manageImageLibrary">
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                     <h2>Manage Image Library</h2>
+                     <button class="btn btn-success btn-sm permission-gate" data-permission="manageImageLibrary" data-bs-toggle="modal" data-bs-target="#imageLibraryModal" id="addNewImageToLibraryBtn"><i class="bi bi-plus-circle"></i> Add Image</button>
+                </div>
+                <div id="imageLibraryStatus" class="mb-3"></div>
+                <div class="table-responsive card">
+                    <table class="table table-dark table-hover mb-0">
+                         <thead> <tr><th>Preview</th><th>Name</th><th>URL</th><th>Actions</th></tr> </thead>
+                         <tbody id="imageLibraryTableBody">
+                            <tr class="loading-placeholder"><td colspan="4"><div class="py-3"></div></td></tr>
+                         </tbody>
+                    </table>
+                </div>
+            </section>
+
             <!-- Tournaments Section -->
-            <section id="tournaments-section" class="section">
+            <section id="tournaments-section" class="section permission-gate" data-permission="manageTournaments">
                  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                      <h2>Manage Tournaments</h2>
-                     <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addTournamentModal" id="addNewTournamentBtn"><i class="bi bi-plus-circle"></i> Add Tournament</button>
+                     <button class="btn btn-success btn-sm permission-gate" data-permission="manageTournaments" data-bs-toggle="modal" data-bs-target="#addTournamentModal" id="addNewTournamentBtn"><i class="bi bi-plus-circle"></i> Add Tournament</button>
                  </div>
                  <div id="tournamentsStatus" class="mb-3"></div>
                  <div class="table-responsive card">
@@ -292,12 +312,12 @@
             </section>
 
             <!-- Users Section -->
-            <section id="users-section" class="section">
+            <section id="users-section" class="section permission-gate" data-permission="manageUsers">
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
                     <h2>Manage Users</h2>
                     <div class="d-flex gap-2">
                         <input type="search" class="form-control form-control-sm" id="userSearchInput" placeholder="Search by name or email...">
-                        <button class="btn btn-success btn-sm flex-shrink-0" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                        <button class="btn btn-success btn-sm flex-shrink-0 permission-gate" data-permission="manageUsers" data-bs-toggle="modal" data-bs-target="#addUserModal">
                             <i class="bi bi-person-plus-fill"></i> Add User
                         </button>
                     </div>
@@ -316,7 +336,7 @@
             </section>
 
             <!-- Deposits Section -->
-            <section id="deposits-section" class="section">
+            <section id="deposits-section" class="section permission-gate" data-permission="manageDeposits">
                 <h2>Manage Deposit Requests</h2>
                 <div id="depositsStatus" class="mb-3"></div>
                 <div class="card">
@@ -363,7 +383,7 @@
             </section>
 
             <!-- Withdrawals Section -->
-            <section id="withdrawals-section" class="section">
+            <section id="withdrawals-section" class="section permission-gate" data-permission="manageWithdrawals">
                 <h2>Manage Withdrawals</h2>
                  <div id="withdrawalsStatus" class="mb-3"></div>
                 <div class="card">
@@ -403,8 +423,62 @@
                  </div>
             </section>
 
+            <!-- Notification Section -->
+            <section id="notifications-section" class="section card permission-gate" data-permission="manageNotifications">
+                <div class="card-body">
+                    <h2 class="card-title">Send Notification</h2>
+                    <form id="sendNotificationForm">
+                        <div class="mb-3">
+                            <label for="notificationTarget" class="form-label">Target</label>
+                            <select class="form-select" id="notificationTarget">
+                                <option value="all">All Users</option>
+                                <option value="specific">Specific User</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" id="specificUserContainer" style="display: none;">
+                            <label for="notificationUser" class="form-label">User Email or UID</label>
+                            <input type="text" class="form-control" id="notificationUser" placeholder="Enter user's email or UID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="notificationTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="notificationTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="notificationBody" class="form-label">Message</label>
+                            <textarea class="form-control" id="notificationBody" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-send"></i> Send Notification</button>
+                        <div id="notificationSendStatus" class="mt-3"></div>
+                    </form>
+                </div>
+            </section>
+
             <!-- Settings Section -->
-            <section id="settings-section" class="section card"> <div class="card-body"> <h2 class="card-title">App Settings</h2> <form id="appSettingsForm"> <div class="row"> <div class="col-md-6 mb-3"> <label for="settingLogoUrl" class="form-label">Logo URL</label> <input type="url" class="form-control" id="settingLogoUrl"> </div> <div class="col-md-6 mb-3"> <label for="settingAppName" class="form-label">App Name</label> <input type="text" class="form-control" id="settingAppName"> </div> <div class="col-md-6 mb-3"> <label for="settingMinWithdraw" class="form-label">Min Withdraw (₹)</label> <input type="number" class="form-control" id="settingMinWithdraw" min="0" step="any"> </div> <div class="col-md-6 mb-3"> <label for="settingReferralBonus" class="form-label">Referral Bonus (₹)</label> <input type="number" class="form-control" id="settingReferralBonus" min="0" step="any"> </div> <div class="col-12 mb-3"> <label for="settingSupportContact" class="form-label">Admin Support Contact</label> <input type="text" class="form-control" id="settingSupportContact"> </div> <div class="col-12 mb-3"> <label for="settingUpiDetails" class="form-label">UPI ID for Payment</label> <input type="text" class="form-control" id="settingUpiDetails" placeholder="yourname@upi"> </div> <div class="col-12 mb-3"> <label for="settingQrCodeUrl" class="form-label">Payment QR Code Image URL</label> <input type="url" class="form-control" id="settingQrCodeUrl" placeholder="https://i.ibb.co/..."> </div> <div class="col-12 mb-3"> <label for="settingPolicyPrivacy" class="form-label">Privacy Policy</label> <textarea class="form-control" id="settingPolicyPrivacy" rows="5"></textarea> </div> <div class="col-12 mb-3"> <label for="settingPolicyTerms" class="form-label">Terms & Conditions</label> <textarea class="form-control" id="settingPolicyTerms" rows="5"></textarea> </div> <div class="col-12 mb-3"> <label for="settingPolicyRefund" class="form-label">Refund Policy</label> <textarea class="form-control" id="settingPolicyRefund" rows="5"></textarea> </div> <div class="col-12 mb-3"> <label for="settingPolicyFairPlay" class="form-label">Fair Play Policy</label> <textarea class="form-control" id="settingPolicyFairPlay" rows="5"></textarea> </div> </div> <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Save Settings</button> <div id="settingsStatus" class="mt-3"></div> </form> </div> </section>
+            <section id="settings-section" class="section card permission-gate" data-permission="manageSettings"> <div class="card-body"> <h2 class="card-title">App Settings</h2> <form id="appSettingsForm"> <div class="row"> <div class="col-md-6 mb-3"> <label for="settingLogoUrl" class="form-label">Logo URL</label> <input type="url" class="form-control" id="settingLogoUrl"> </div> <div class="col-md-6 mb-3"> <label for="settingAppName" class="form-label">App Name</label> <input type="text" class="form-control" id="settingAppName"> </div> <div class="col-md-6 mb-3"> <label for="settingMinWithdraw" class="form-label">Min Withdraw (₹)</label> <input type="number" class="form-control" id="settingMinWithdraw" min="0" step="any"> </div> <div class="col-md-6 mb-3"> <label for="settingReferralBonus" class="form-label">Referral Bonus (₹)</label> <input type="number" class="form-control" id="settingReferralBonus" min="0" step="any"> </div> <div class="col-12 mb-3"> <label for="settingSupportContact" class="form-label">Admin Support Contact</label> <input type="text" class="form-control" id="settingSupportContact"> </div> <div class="col-12 mb-3"> <label for="settingUpiDetails" class="form-label">UPI ID for Payment</label> <input type="text" class="form-control" id="settingUpiDetails" placeholder="yourname@upi"> </div> <div class="col-12 mb-3"> <label for="settingQrCodeUrl" class="form-label">Payment QR Code Image URL</label> <input type="url" class="form-control" id="settingQrCodeUrl" placeholder="https://i.ibb.co/..."> </div> <div class="col-12 mb-3"> <label for="settingPolicyPrivacy" class="form-label">Privacy Policy</label> <textarea class="form-control" id="settingPolicyPrivacy" rows="5"></textarea> </div> <div class="col-12 mb-3"> <label for="settingPolicyTerms" class="form-label">Terms & Conditions</label> <textarea class="form-control" id="settingPolicyTerms" rows="5"></textarea> </div> <div class="col-12 mb-3"> <label for="settingPolicyRefund" class="form-label">Refund Policy</label> <textarea class="form-control" id="settingPolicyRefund" rows="5"></textarea> </div> <div class="col-12 mb-3"> <label for="settingPolicyFairPlay" class="form-label">Fair Play Policy</label> <textarea class="form-control" id="settingPolicyFairPlay" rows="5"></textarea> </div> </div> <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Save Settings</button> <div id="settingsStatus" class="mt-3"></div> </form> </div> </section>
+            
+            <!-- Staff Management Section -->
+            <section id="staff-section" class="section permission-gate" data-permission="manageStaff">
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                    <h2>Manage Staff Accounts</h2>
+                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#staffModal" id="addNewStaffBtn"><i class="bi bi-plus-circle"></i> Add Staff</button>
+                </div>
+                <div id="staffStatus" class="mb-3"></div>
+                <div class="table-responsive card">
+                    <table class="table table-dark table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Permissions</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staffTableBody">
+                            <tr class="loading-placeholder"><td colspan="4"><div class="py-3"></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -413,19 +487,141 @@
     <div class="modal fade" id="gameModal" tabindex="-1"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="gameModalTitle">Add New Game</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <form id="gameForm"> <input type="hidden" id="gameEditId"> <div class="mb-3"> <label for="gameName" class="form-label">Game Name</label> <input type="text" class="form-control" id="gameName" required> </div> <div class="mb-3"> <label for="gameImageUrl" class="form-label">Image URL</label> <input type="url" class="form-control" id="gameImageUrl" required> <small class="text-muted">Direct image URL (e.g., from ImgBB).</small> </div> <div class="mb-3"> <label for="gameImageFile" class="form-label">Upload New Image (Optional - Overwrites URL)</label> <input class="form-control" type="file" id="gameImageFile" accept="image/*"> <div class="imgbb-upload-status mt-2"></div> </div> <div id="gameStatus" class="mt-2"></div></form> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" id="saveGameBtn">Save Game</button> </div> </div> </div> </div>
     <!-- Add/Edit Promotion Modal -->
     <div class="modal fade" id="promotionModal" tabindex="-1"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="promotionModalTitle">Add New Promotion</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <form id="promotionForm"> <input type="hidden" id="promotionEditId"> <div class="mb-3"> <label for="promoImageUrl" class="form-label">Image URL</label> <input type="url" class="form-control" id="promoImageUrl" required> <small class="text-muted">Direct image URL (e.g., from ImgBB).</small> </div> <div class="mb-3"> <label for="promoImageFile" class="form-label">Upload New Image (Optional - Overwrites URL)</label> <input class="form-control" type="file" id="promoImageFile" accept="image/*"> <div class="imgbb-upload-status mt-2"></div> </div> <div class="mb-3"> <label for="promoLink" class="form-label">Link (Optional)</label> <input type="url" class="form-control" id="promoLink"> </div> <div id="promotionStatus" class="mt-2"></div></form> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" id="savePromotionBtn">Save Promotion</button> </div> </div> </div> </div>
+    
+    <!-- Add/Edit Image Library Modal -->
+    <div class="modal fade" id="imageLibraryModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageLibraryModalTitle">Add New Image</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="imageLibraryForm">
+                        <input type="hidden" id="imageLibraryEditId">
+                        <div class="mb-3">
+                            <label for="libraryImageName" class="form-label">Image Name</label>
+                            <input type="text" class="form-control" id="libraryImageName" placeholder="e.g., BGMI Banner" required>
+                            <small class="text-muted">A friendly name to identify this image in dropdowns.</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="libraryImageUrl" class="form-label">Image URL</label>
+                            <input type="url" class="form-control" id="libraryImageUrl">
+                            <small class="text-muted">Direct image URL (e.g., from ImgBB). Overwritten by file upload.</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="libraryImageFile" class="form-label">Upload New Image</label>
+                            <input class="form-control" type="file" id="libraryImageFile" accept="image/*">
+                            <div class="imgbb-upload-status mt-2"></div>
+                        </div>
+                        <div id="saveImageLibraryStatus" class="mt-2"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveImageToLibraryBtn">Save Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Add/Edit Tournament Modal -->
-    <div class="modal fade" id="addTournamentModal" tabindex="-1"> <div class="modal-dialog modal-lg"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="tournamentModalTitle">Add New Tournament</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <form id="tournamentForm"> <input type="hidden" id="tournamentEditId"> <div class="row"> <div class="col-md-6 mb-3"> <label for="tournamentGame" class="form-label">Game</label> <select class="form-select" id="tournamentGame" required></select> </div> <div class="col-md-6 mb-3"> <label for="tournamentName" class="form-label">Tournament Name</label> <input type="text" class="form-control" id="tournamentName" required> </div> <div class="col-md-6 mb-3"> <label for="tournamentStartTime" class="form-label">Start Date & Time</label> <input type="datetime-local" class="form-control" id="tournamentStartTime" required> </div> <div class="col-md-6 mb-3"> <label for="tournamentStatus" class="form-label">Status</label> <select class="form-select" id="tournamentStatus" required> <option value="upcoming">Upcoming</option> <option value="ongoing">Ongoing</option> <option value="completed">Completed</option> <option value="result">Result</option> <option value="cancelled">Cancelled</option> </select> </div> <div class="col-md-4 mb-3"> <label for="tournamentEntryFee" class="form-label">Entry Fee (₹)</label> <input type="number" class="form-control" id="tournamentEntryFee" min="0" value="0" required step="any"> </div> <div class="col-md-4 mb-3"> <label for="tournamentPrizePool" class="form-label">Total Prize Pool (₹)</label> <input type="number" class="form-control" id="tournamentPrizePool" min="0" value="0" step="any"> </div> <div class="col-md-4 mb-3"> <label for="tournamentPerKill" class="form-label">Per Kill Prize (₹)</label> <input type="number" class="form-control" id="tournamentPerKill" min="0" value="0" step="any"> </div> <div class="col-md-4 mb-3"> <label for="tournamentMaxPlayers" class="form-label">Max Players (0 for Unlimited)</label> <input type="number" class="form-control" id="tournamentMaxPlayers" min="0" value="0" required> </div> <div class="col-md-4 mb-3"> <label for="tournamentTags" class="form-label">Tags (comma-separated)</label> <input type="text" class="form-control" id="tournamentTags" placeholder="e.g., Solo, Erangel, TPP"> </div> <div class="col-md-4 mb-3"> <label for="tournamentIcon" class="form-label">Icon Class (Optional)</label> <input type="text" class="form-control" id="tournamentIcon" placeholder="e.g., bi-controller"> </div> <div class="col-12 mb-3"> <label for="tournamentDescription" class="form-label">Description / Rules</label> <textarea class="form-control" id="tournamentDescription" rows="4"></textarea> </div> <div class="col-12 mb-3"> <label for="tournamentPrizeDistribution" class="form-label">Prize Distribution (JSON object)</label> <textarea class="form-control" id="tournamentPrizeDistribution" rows="3" placeholder='e.g., {"1": 100, "2": 50, "3": 25}'></textarea> <small class="text-muted">Key is rank, value is prize amount.</small></div> <div class="col-md-6 mb-3"> <label for="tournamentRoomId" class="form-label">Room ID</label> <input type="text" class="form-control" id="tournamentRoomId"> </div> <div class="col-md-6 mb-3"> <label for="tournamentRoomPassword" class="form-label">Room Password</label> <input type="text" class="form-control" id="tournamentRoomPassword"> </div> <div class="form-check mb-3 ms-2"> <input class="form-check-input" type="checkbox" id="tournamentShowIdPass"> <label class="form-check-label" for="tournamentShowIdPass"> Show ID/Pass?</label> </div> </div> <div id="addTournamentStatus" class="mt-2"></div></form> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" id="saveTournamentBtn">Save Tournament</button> </div> </div> </div> </div>
-    <!-- View/Edit User Modal -->
+    <div class="modal fade" id="addTournamentModal" tabindex="-1"> <div class="modal-dialog modal-lg"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="tournamentModalTitle">Add New Tournament</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <form id="tournamentForm"> <input type="hidden" id="tournamentEditId"> <div class="row"> <div class="col-md-6 mb-3"> <label for="tournamentGame" class="form-label">Game</label> <select class="form-select" id="tournamentGame" required></select> </div> <div class="col-md-6 mb-3"> <label for="tournamentName" class="form-label">Tournament Name</label> <input type="text" class="form-control" id="tournamentName" required> </div> <div class="col-md-6 mb-3"> <label for="tournamentStartTime" class="form-label">Start Date & Time</label> <input type="datetime-local" class="form-control" id="tournamentStartTime" required> </div> 
+                
+                <div class="col-md-6 mb-3">
+                    <label for="tournamentStatus" class="form-label">Status</label>
+                    <select class="form-select" id="tournamentStatus" required>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="ongoing">Ongoing</option>
+                        <option value="completed">Completed</option>
+                        <option value="result">Result</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4 mb-3"> <label for="tournamentEntryFee" class="form-label">Entry Fee (₹)</label> <input type="number" class="form-control" id="tournamentEntryFee" min="0" value="0" required step="any"> </div> <div class="col-md-4 mb-3"> <label for="tournamentPrizePool" class="form-label">Total Prize Pool (₹)</label> <input type="number" class="form-control" id="tournamentPrizePool" min="0" value="0" step="any"> </div> <div class="col-md-4 mb-3"> <label for="tournamentPerKill" class="form-label">Per Kill Prize (₹)</label> <input type="number" class="form-control" id="tournamentPerKill" min="0" value="0" step="any"> </div> <div class="col-md-4 mb-3"> <label for="tournamentMaxPlayers" class="form-label">Max Players (0 for Unlimited)</label> <input type="number" class="form-control" id="tournamentMaxPlayers" min="0" value="0" required> </div> <div class="col-md-4 mb-3"> <label for="tournamentTags" class="form-label">Tags (comma-separated)</label> <input type="text" class="form-control" id="tournamentTags" placeholder="e.g., Solo, Erangel, TPP"> </div> <div class="col-md-4 mb-3"> <label for="tournamentIcon" class="form-label">Icon Class (Optional)</label> <input type="text" class="form-control" id="tournamentIcon" placeholder="e.g., bi-controller"> </div>
+                
+                <div class="col-12 mb-3">
+                    <label for="tournamentBannerSelect" class="form-label">Tournament Banner</label>
+                    <select class="form-select" id="tournamentBannerSelect">
+                        <option value="">-- No Banner --</option>
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                    <small class="text-muted">Manage images in the 'Image Library' section.</small>
+                </div>
+
+                <div class="col-12 mb-3"> <label for="tournamentDescription" class="form-label">Description / Rules</label> <textarea class="form-control" id="tournamentDescription" rows="4"></textarea> </div> <div class="col-12 mb-3"> <label for="tournamentPrizeDistribution" class="form-label">Prize Distribution (JSON object)</label> <textarea class="form-control" id="tournamentPrizeDistribution" rows="3" placeholder='e.g., {"1": 100, "2": 50, "3": 25}'></textarea> <small class="text-muted">Key is rank, value is prize amount.</small></div> <div class="col-md-6 mb-3"> <label for="tournamentRoomId" class="form-label">Room ID</label> <input type="text" class="form-control" id="tournamentRoomId"> </div> <div class="col-md-6 mb-3"> <label for="tournamentRoomPassword" class="form-label">Room Password</label> <input type="text" class="form-control" id="tournamentRoomPassword"> </div> <div class="form-check mb-3 ms-2"> <input class="form-check-input" type="checkbox" id="tournamentShowIdPass"> <label class="form-check-label" for="tournamentShowIdPass"> Show ID/Pass?</label> </div> </div> <div id="addTournamentStatus" class="mt-2"></div></form> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" id="saveTournamentBtn">Save Tournament</button> </div> </div> </div> </div>
+    
+        <!-- Add/Edit Staff Modal -->
+    <div class="modal fade" id="staffModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staffModalTitle">Add New Staff</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="staffForm">
+                        <input type="hidden" id="staffEditId">
+                        
+                        <!-- START: EDITED SECTION FOR ADDING STAFF -->
+                        <div class="add-staff-fields">
+                            <div class="alert alert-info small">
+                                <strong>नया स्टाफ जोड़ने के लिए:</strong><br>
+                                1. पहले Firebase Console > Authentication में जाकर एक नया यूजर (ईमेल/पासवर्ड के साथ) बनाएं।<br>
+                                2. वहां से यूजर का UID कॉपी करें और नीचे पेस्ट करें।
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="staffUid" class="form-label">Staff User ID (UID)</label>
+                                    <input type="text" class="form-control" id="staffUid" required placeholder="Firebase से UID पेस्ट करें">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="staffEmail" class="form-label">Staff Email</label>
+                                    <input type="email" class="form-control" id="staffEmail" required placeholder="Staff का ईमेल डालें">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END: EDITED SECTION -->
+
+                        <div class="row">
+                             <div class="col-md-12 mb-3">
+                                <label for="staffName" class="form-label">Staff Name</label>
+                                <input type="text" class="form-control" id="staffName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row password-field-group" style="display: none;">
+                            <div class="col-md-12 mb-3">
+                                <label for="staffPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="staffPassword" minlength="6">
+                                <small class="text-muted">Staff का पासवर्ड केवल Firebase Console से बदला जा सकता है।</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <h6>Permissions</h6>
+                        <div class="row" id="staffPermissionsContainer">
+                            <!-- Checkboxes will be dynamically inserted here -->
+                            <div class="col-12 text-center p-3 text-muted">Loading permissions...</div>
+                        </div>
+                        <div id="staffModalStatus" class="mt-2"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveStaffBtn">Save Staff</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Other Modals (Unchanged) -->
     <div class="modal fade" id="userModal" tabindex="-1"> <div class="modal-dialog modal-xl"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="userModalTitle">User Details</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <div class="row"> <div class="col-lg-4 border-end border-secondary"> <h5>User Info</h5> <p><strong>UID:</strong> <small id="userDetailUid" class="text-muted user-uid-copy"></small> <i class="bi bi-clipboard copy-btn ms-1" data-target="#userDetailUid" title="Copy UID"></i></p> <p><strong>Email:</strong> <span id="userDetailEmail"></span></p> <p><strong>Name:</strong> <span id="userDetailName"></span></p> <p><strong>Created At:</strong> <span id="userDetailCreatedAt">N/A</span></p> <hr> <h5>Wallet</h5> <p>Total Balance: ₹<span id="userDetailBalance">0.00</span></p> <p>Winning Cash: ₹<span id="userDetailWinning">0.00</span></p> <p>Bonus Cash: ₹<span id="userDetailBonus">0.00</span></p> <hr> <h5>Status & Actions</h5> <p>Current Status: <span id="userDetailStatus" class="fw-bold"></span></p> <button class="btn btn-sm mb-2" id="userBlockBtn"></button> <button class="btn btn-sm btn-danger mb-2" id="userDeleteBtn"><i class="bi bi-trash"></i> Delete User (DB Only)</button> </div> <div class="col-lg-4 border-end border-secondary"> <h5>Update Balance (Caution!)</h5> <form id="updateBalanceForm"> <input type="hidden" id="editUserUid"> <div class="row"> <div class="col-md-6 mb-3"> <label for="balanceUpdateAmount" class="form-label">Amount (+/-)</label> <input type="number" step="any" class="form-control" id="balanceUpdateAmount" placeholder="e.g., 50 or -20" required> </div> <div class="col-md-6 mb-3"> <label for="balanceUpdateType" class="form-label">Balance Type</label> <select id="balanceUpdateType" class="form-select" required> <option value="">--Select--</option> <option value="balance">Total Balance</option> <option value="winningCash">Winning Cash</option> <option value="bonusCash">Bonus Cash</option> </select> </div> </div> <div class="mb-3"> <label for="balanceUpdateReason" class="form-label">Reason</label> <input type="text" class="form-control" id="balanceUpdateReason" placeholder="Manual Deposit, Correction etc." required> </div> <button type="submit" class="btn btn-warning">Update Balance</button> <div id="balanceUpdateStatus" class="mt-2"></div> </form> <hr> <h5>Referral Info</h5> <p><strong>Referral Code:</strong> <span id="userDetailReferralCode" class="text-info">N/A</span> <i class="bi bi-clipboard copy-btn ms-1" data-target="#userDetailReferralCode" title="Copy Code"></i></p> <p><strong>Referred By:</strong> <span id="userDetailReferredBy">N/A</span></p> <p><strong>Users Referred:</strong> <span id="userDetailReferredCount">N/A</span></p> </div> <div class="col-lg-4"> <h5>Recent Transactions</h5> <div id="userTransactionsContainer" class="user-transactions-list"> <p class="text-muted text-center p-3">Loading transactions...</p> </div> </div> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> </div> </div> </div> </div>
-    <!-- Withdrawal Action Modal -->
     <div class="modal fade" id="withdrawalActionModal" tabindex="-1"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Withdrawal Action</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <p><strong>Request ID:</strong> <small id="withdrawalDetailId" class="text-muted"></small></p> <p><strong>User:</strong> <span id="withdrawalDetailUser"></span> (<small id="withdrawalDetailUserUid" class="text-muted"></small>)</p> <p><strong>Amount:</strong> ₹<span id="withdrawalDetailAmount"></span></p> <p><strong>Method:</strong> <span id="withdrawalDetailMethod"></span></p> <hr> <div id="withdrawalRejectReasonDiv" style="display: none;" class="mb-3"> <label for="withdrawalRejectReason" class="form-label">Reason for Rejection</label> <textarea class="form-control" id="withdrawalRejectReason" rows="3" required></textarea> </div> <div id="withdrawalApproveNoteDiv" style="display: none;" class="mb-3"> <label for="withdrawalApproveNote" class="form-label">Admin Note / Txn ID (Optional)</label> <input type="text" class="form-control" id="withdrawalApproveNote" placeholder="e.g., Transaction ID"> </div> <div id="withdrawalActionStatus" class="mt-2"></div> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> <button type="button" class="btn btn-danger" id="rejectWithdrawalBtn">Reject</button> <button type="button" class="btn btn-success" id="approveWithdrawalBtn">Approve</button> </div> </div> </div> </div>
-    <!-- Deposit Action Modal -->
     <div class="modal fade" id="depositActionModal" tabindex="-1"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Deposit Action</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <p><strong>Request ID:</strong> <small id="depositDetailId" class="text-muted"></small></p> <p><strong>User:</strong> <span id="depositDetailUser"></span> (<small id="depositDetailUserUid" class="text-muted"></small>)</p> <p><strong>Amount:</strong> ₹<span id="depositDetailAmount"></span></p> <p><strong>User's Txn ID:</strong> <span id="depositDetailTxnId" class="text-info" style="user-select: all;"></span> <i class="bi bi-clipboard copy-btn ms-1" data-target="#depositDetailTxnId" title="Copy Txn ID"></i></p> <hr> <div id="depositRejectReasonDiv" style="display: none;" class="mb-3"> <label for="depositRejectReason" class="form-label">Reason for Rejection</label> <textarea class="form-control" id="depositRejectReason" rows="3" required></textarea> </div> <div id="depositApproveNoteDiv" style="display: none;" class="mb-3"> <label for="depositApproveNote" class="form-label">Admin Note (Optional)</label> <input type="text" class="form-control" id="depositApproveNote" placeholder="e.g., Verified"> </div> <div id="depositActionStatus" class="mt-2"></div> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> <button type="button" class="btn btn-danger" id="rejectDepositBtn">Reject</button> <button type="button" class="btn btn-success" id="approveDepositBtn">Approve</button> </div> </div> </div> </div>
-    <!-- Add New User Modal -->
     <div class="modal fade" id="addUserModal" tabindex="-1"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Add New User</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <form id="addUserForm"> <div class="mb-3"> <label for="newUserName" class="form-label">Display Name</label> <input type="text" class="form-control" id="newUserName" required> </div> <div class="mb-3"> <label for="newUserEmail" class="form-label">Email Address</label> <input type="email" class="form-control" id="newUserEmail" required> </div> <div class="mb-3"> <label for="newUserPassword" class="form-label">Password (min 6 chars)</label> <input type="password" class="form-control" id="newUserPassword" required minlength="6"> </div> <div class="mb-3"> <label for="newUserInitialBalance" class="form-label">Initial Balance (₹)</label> <input type="number" step="any" class="form-control" id="newUserInitialBalance" value="0" min="0"> <small class="text-muted">This will be added to Total Balance.</small> </div> <div id="addUserStatus" class="mt-2"></div> </form> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" id="saveNewUserBtn">Create User</button> </div> </div> </div> </div>
-    <!-- Registered Players Modal -->
     <div class="modal fade" id="registeredPlayersModal" tabindex="-1"> <div class="modal-dialog modal-lg modal-dialog-scrollable"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="registeredPlayersModalTitle">Registered Players</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <p>Tournament: <strong id="registeredPlayersTournamentName"></strong></p> <div id="registeredPlayersStatus" class="mb-2"></div> <div class="table-responsive"> <table class="table table-dark table-sm table-hover"> <thead> <tr><th>User UID</th><th>Name</th><th>Email</th><th>In-Game ID</th><th>Joined At</th></tr> </thead> <tbody id="registeredPlayersTableBody"> <tr><td colspan="5" class="text-center p-3"><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div></td></tr> </tbody> </table> </div> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> </div> </div> </div> </div>
-    <!-- Declare Result Modal -->
     <div class="modal fade" id="declareResultModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -451,9 +647,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Hidden template for winner entry -->
-    <!-- *** MODIFIED: This template now uses a dropdown (<select>) instead of a text input for UID *** -->
     <div id="winner-entry-template" style="display: none;">
         <div class="row g-2 mb-2 align-items-center winner-entry-row">
             <div class="col-md-5">
@@ -483,208 +676,242 @@
     import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
     
     const firebaseConfig = {
-    apiKey: "AIzaSyBQu6IXF2T0F0NbrNYhFHykhGUBIhZb8Dg",
-    authDomain: "earning-karo---made-in-india.firebaseapp.com",
-    databaseURL: "https://earning-karo---made-in-india-default-rtdb.firebaseio.com",
-    projectId: "earning-karo---made-in-india",
-    storageBucket: "earning-karo---made-in-india.firebasestorage.app",
-    messagingSenderId: "144551856887",
-    appId: "1:144551856887:web:ec5b2fb196fcbfa7c861f2",
-    measurementId: "G-91YQHMH5L2"
+        apiKey: "AIzaSyBQu6IXF2T0F0NbrNYhFHykhGUBIhZb8Dg",
+        authDomain: "earning-karo---made-in-india.firebaseapp.com",
+        databaseURL: "https://earning-karo---made-in-india-default-rtdb.firebaseio.com",
+        projectId: "earning-karo---made-in-india",
+        storageBucket: "earning-karo---made-in-india.firebasestorage.app",
+        messagingSenderId: "144551856887",
+        appId: "1:144551856887:web:ec5b2fb196fcbfa7c861f2",
+        measurementId: "G-91YQHMH5L2"
     };
     
     // Initialize Firebase
     let app, db, auth;
     try {
-    app = initializeApp(firebaseConfig);
-    db = getDatabase(app);
-    auth = getAuth(app);
-    console.log("Admin Panel: Firebase Initialized");
+        app = initializeApp(firebaseConfig);
+        db = getDatabase(app);
+        auth = getAuth(app);
+        console.log("Admin Panel: Firebase Initialized");
     } catch (error) {
-    console.error("Admin Panel: Firebase initialization failed:", error);
-    document.body.innerHTML = `<div class="alert alert-danger m-5"><strong>Critical Error:</strong> Could not connect to Firebase services. Check console, config, and network. Error: ${error.message}</div>`;
+        console.error("Admin Panel: Firebase initialization failed:", error);
+        document.body.innerHTML = `<div class="alert alert-danger m-5"><strong>Critical Error:</strong> Could not connect to Firebase services. Check console, config, and network. Error: ${error.message}</div>`;
     }
     
-    // DOM Elements Cache
     const getElement = (id) => document.getElementById(id);
     const querySel = (selector) => document.querySelector(selector);
     const querySelAll = (selector) => document.querySelectorAll(selector);
     const elements = {
-    adminLoader: getElement('adminLoader'),
-    authContainer: getElement('auth-container'),
-    loginSection: getElement('admin-login-section'),
-    setupSection: getElement('admin-setup-section'),
-    mainArea: getElement('admin-main-area'),
-    adminLoginForm: getElement('adminLoginForm'),
-    adminEmailInput: getElement('adminEmail'),
-    adminPasswordInput: getElement('adminPassword'),
-    adminLoginStatus: getElement('adminLoginStatus'),
-    adminSetupForm: getElement('adminSetupForm'),
-    setupEmailInput: getElement('setupEmail'),
-    setupPasswordInput: getElement('setupPassword'),
-    setupStatus: getElement('adminSetupStatus'),
-    adminUserEmailDisplay: getElement('adminUserEmailShort'),
-    adminLogoutBtn: getElement('adminLogoutBtnHeader'),
-    sidebar: getElement('adminSidebar'),
-    sidebarLinks: querySelAll('#adminSidebar .nav-link'),
-    sections: querySelAll('#adminMainContent .section'),
-    adminPageTitle: getElement('adminPageTitle'),
-    adminHeaderLogo: getElement('adminHeaderLogo'),
-    dashboardSection: getElement('dashboard-section'),
-    statTotalUsers: getElement('statTotalUsers'),
-    statActiveTournaments: getElement('statActiveTournaments'),
-    statPendingDeposits: getElement('statPendingDeposits'),
-    statPendingWithdrawals: getElement('statPendingWithdrawals'),
-    statCompletedWithdrawals: getElement('statCompletedWithdrawals'),
-    statRejectedWithdrawals: getElement('statRejectedWithdrawals'),
-    statTotalGames: getElement('statTotalGames'),
-    statFinishedTournaments: getElement('statFinishedTournaments'),
-    dashboardStatus: getElement('dashboardStatus'),
-    pendingDepositCountBadge: getElement('pendingDepositCountBadge'),
-    pendingWithdrawalCountBadge: getElement('pendingWithdrawalCountBadge'),
-    gamesTableBody: getElement('gamesTableBody'),
-    gameModalEl: getElement('gameModal'),
-    gameModalTitle: getElement('gameModalTitle'),
-    gameForm: getElement('gameForm'),
-    gameEditId: getElement('gameEditId'),
-    gameNameInput: getElement('gameName'),
-    gameImageFileInput: getElement('gameImageFile'),
-    gameImageUrlInput: getElement('gameImageUrl'),
-    saveGameBtn: getElement('saveGameBtn'),
-    gameStatus: getElement('gameStatus'),
-    gamesStatus: getElement('gamesStatus'),
-    addNewGameBtn: getElement('addNewGameBtn'),
-    promotionsTableBody: getElement('promotionsTableBody'),
-    promotionModalEl: getElement('promotionModal'),
-    promotionModalTitle: getElement('promotionModalTitle'),
-    promotionForm: getElement('promotionForm'),
-    promotionEditId: getElement('promotionEditId'),
-    promoImageFileInput: getElement('promoImageFile'),
-    promoImageUrlInput: getElement('promoImageUrl'),
-    promoLinkInput: getElement('promoLink'),
-    savePromotionBtn: getElement('savePromotionBtn'),
-    promotionStatus: getElement('promotionStatus'),
-    promotionsStatus: getElement('promotionsStatus'),
-    addNewPromotionBtn: getElement('addNewPromotionBtn'),
-    tournamentsTableBody: getElement('tournamentsTableBody'),
-    addTournamentModalEl: getElement('addTournamentModal'),
-    tournamentForm: getElement('tournamentForm'),
-    tournamentModalTitle: getElement('tournamentModalTitle'),
-    tournamentEditId: getElement('tournamentEditId'),
-    tournamentGameSelect: getElement('tournamentGame'),
-    tournamentNameInput: getElement('tournamentName'),
-    tournamentStartTimeInput: getElement('tournamentStartTime'),
-    tournamentStatusSelect: getElement('tournamentStatus'),
-    tournamentEntryFeeInput: getElement('tournamentEntryFee'),
-    tournamentPrizePoolInput: getElement('tournamentPrizePool'),
-    tournamentPerKillInput: getElement('tournamentPerKill'),
-    tournamentMaxPlayersInput: getElement('tournamentMaxPlayers'),
-    tournamentTagsInput: getElement('tournamentTags'),
-    tournamentIconInput: getElement('tournamentIcon'),
-    tournamentDescriptionInput: getElement('tournamentDescription'),
-    tournamentPrizeDistributionInput: getElement('tournamentPrizeDistribution'),
-    tournamentRoomIdInput: getElement('tournamentRoomId'),
-    tournamentRoomPasswordInput: getElement('tournamentRoomPassword'),
-    tournamentShowIdPassCheckbox: getElement('tournamentShowIdPass'),
-    saveTournamentBtn: getElement('saveTournamentBtn'),
-    addNewTournamentBtn: getElement('addNewTournamentBtn'),
-    addTournamentStatus: getElement('addTournamentStatus'),
-    tournamentsStatus: getElement('tournamentsStatus'),
-    usersTableBody: getElement('usersTableBody'),
-    userSearchInput: getElement('userSearchInput'),
-    userModalEl: getElement('userModal'),
-    userModalTitle: getElement('userModalTitle'),
-    userDetailUid: getElement('userDetailUid'),
-    userDetailEmail: getElement('userDetailEmail'),
-    userDetailName: getElement('userDetailName'),
-    userDetailCreatedAt: getElement('userDetailCreatedAt'),
-    userDetailBalance: getElement('userDetailBalance'),
-    userDetailWinning: getElement('userDetailWinning'),
-    userDetailBonus: getElement('userDetailBonus'),
-    userDetailReferralCode: getElement('userDetailReferralCode'),
-    userDetailReferredBy: getElement('userDetailReferredBy'),
-    userDetailReferredCount: getElement('userDetailReferredCount'),
-    userDetailStatus: getElement('userDetailStatus'),
-    updateBalanceForm: getElement('updateBalanceForm'),
-    editUserUid: getElement('editUserUid'),
-    balanceUpdateAmountInput: getElement('balanceUpdateAmount'),
-    balanceUpdateTypeSelect: getElement('balanceUpdateType'),
-    balanceUpdateReasonInput: getElement('balanceUpdateReason'),
-    balanceUpdateStatus: getElement('balanceUpdateStatus'),
-    userBlockBtn: getElement('userBlockBtn'),
-    userDeleteBtn: getElement('userDeleteBtn'),
-    userTransactionsContainer: getElement('userTransactionsContainer'),
-    addUserModalEl: getElement('addUserModal'),
-    addUserForm: getElement('addUserForm'),
-    newUserNameInput: getElement('newUserName'),
-    newUserEmailInput: getElement('newUserEmail'),
-    newUserPasswordInput: getElement('newUserPassword'),
-    newUserInitialBalanceInput: getElement('newUserInitialBalance'),
-    saveNewUserBtn: getElement('saveNewUserBtn'),
-    addUserStatus: getElement('addUserStatus'),
-    usersStatus: getElement('usersStatus'),
-    depositsSection: getElement('deposits-section'),
-    pendingDepositsTableBody: getElement('pendingDepositsTableBody'),
-    approvedDepositsTableBody: getElement('approvedDepositsTableBody'),
-    rejectedDepositsTableBody: getElement('rejectedDepositsTableBody'),
-    depositActionModalEl: getElement('depositActionModal'),
-    depositDetailId: getElement('depositDetailId'),
-    depositDetailUser: getElement('depositDetailUser'),
-    depositDetailUserUid: getElement('depositDetailUserUid'),
-    depositDetailAmount: getElement('depositDetailAmount'),
-    depositDetailTxnId: getElement('depositDetailTxnId'),
-    depositRejectReasonDiv: getElement('depositRejectReasonDiv'),
-    depositRejectReasonInput: getElement('depositRejectReason'),
-    depositApproveNoteDiv: getElement('depositApproveNoteDiv'),
-    depositApproveNoteInput: getElement('depositApproveNote'),
-    depositActionStatus: getElement('depositActionStatus'),
-    rejectDepositBtn: getElement('rejectDepositBtn'),
-    approveDepositBtn: getElement('approveDepositBtn'),
-    depositsStatus: getElement('depositsStatus'),
-    pendingWithdrawalsTableBody: getElement('pendingWithdrawalsTableBody'),
-    completedWithdrawalsTableBody: getElement('completedWithdrawalsTableBody'),
-    rejectedWithdrawalsTableBody: getElement('rejectedWithdrawalsTableBody'),
-    withdrawalActionModalEl: getElement('withdrawalActionModal'),
-    withdrawalDetailId: getElement('withdrawalDetailId'),
-    withdrawalDetailUser: getElement('withdrawalDetailUser'),
-    withdrawalDetailUserUid: getElement('withdrawalDetailUserUid'),
-    withdrawalDetailAmount: getElement('withdrawalDetailAmount'),
-    withdrawalDetailMethod: getElement('withdrawalDetailMethod'),
-    withdrawalRejectReasonDiv: getElement('withdrawalRejectReasonDiv'),
-    withdrawalRejectReasonInput: getElement('withdrawalRejectReason'),
-    withdrawalApproveNoteDiv: getElement('withdrawalApproveNoteDiv'),
-    withdrawalApproveNoteInput: getElement('withdrawalApproveNote'),
-    withdrawalActionStatus: getElement('withdrawalActionStatus'),
-    rejectWithdrawalBtn: getElement('rejectWithdrawalBtn'),
-    approveWithdrawalBtn: getElement('approveWithdrawalBtn'),
-    withdrawalsStatus: getElement('withdrawalsStatus'),
-    registeredPlayersModalEl: getElement('registeredPlayersModal'),
-    registeredPlayersModalTitle: getElement('registeredPlayersModalTitle'),
-    registeredPlayersTournamentName: getElement('registeredPlayersTournamentName'),
-    registeredPlayersTableBody: getElement('registeredPlayersTableBody'),
-    registeredPlayersStatus: getElement('registeredPlayersStatus'),
-    declareResultModalEl: getElement('declareResultModal'),
-    declareResultModalTitle: getElement('declareResultModalTitle'),
-    declareResultTournamentName: getElement('declareResultTournamentName'),
-    prizeDistributionInfo: getElement('prizeDistributionInfo'),
-    winnerEntriesContainer: getElement('winner-entries-container'),
-    addWinnerEntryBtn: getElement('add-winner-entry-btn'),
-    submitResultsBtn: getElement('submitResultsBtn'),
-    declareResultStatus: getElement('declareResultStatus'),
-    appSettingsForm: getElement('appSettingsForm'),
-    settingLogoUrlInput: getElement('settingLogoUrl'),
-    settingAppNameInput: getElement('settingAppName'),
-    settingMinWithdrawInput: getElement('settingMinWithdraw'),
-    settingReferralBonusInput: getElement('settingReferralBonus'),
-    settingSupportContactInput: getElement('settingSupportContact'),
-    settingUpiDetailsInput: getElement('settingUpiDetails'),
-    settingQrCodeUrlInput: getElement('settingQrCodeUrl'),
-    settingPolicyPrivacyInput: getElement('settingPolicyPrivacy'),
-    settingPolicyTermsInput: getElement('settingPolicyTerms'),
-    settingPolicyRefundInput: getElement('settingPolicyRefund'),
-    settingPolicyFairPlayInput: getElement('settingPolicyFairPlay'),
-    settingsStatus: getElement('settingsStatus'),
-    addDemoDataBtn: getElement('addDemoDataBtn')
+        adminLoader: getElement('adminLoader'),
+        authContainer: getElement('auth-container'),
+        loginSection: getElement('admin-login-section'),
+        setupSection: getElement('admin-setup-section'),
+        mainArea: getElement('admin-main-area'),
+        adminLoginForm: getElement('adminLoginForm'),
+        adminEmailInput: getElement('adminEmail'),
+        adminPasswordInput: getElement('adminPassword'),
+        adminLoginStatus: getElement('adminLoginStatus'),
+        adminSetupForm: getElement('adminSetupForm'),
+        setupEmailInput: getElement('setupEmail'),
+        setupPasswordInput: getElement('setupPassword'),
+        setupStatus: getElement('adminSetupStatus'),
+        adminUserEmailDisplay: getElement('adminUserEmailShort'),
+        adminLogoutBtn: getElement('adminLogoutBtnHeader'),
+        sidebar: getElement('adminSidebar'),
+        sidebarLinks: querySelAll('#adminSidebar .nav-link'),
+        sections: querySelAll('#adminMainContent .section'),
+        adminPageTitle: getElement('adminPageTitle'),
+        adminHeaderLogo: getElement('adminHeaderLogo'),
+        dashboardSection: getElement('dashboard-section'),
+        statTotalUsers: getElement('statTotalUsers'),
+        statActiveTournaments: getElement('statActiveTournaments'),
+        statPendingDeposits: getElement('statPendingDeposits'),
+        statPendingWithdrawals: getElement('statPendingWithdrawals'),
+        statCompletedWithdrawals: getElement('statCompletedWithdrawals'),
+        statRejectedWithdrawals: getElement('statRejectedWithdrawals'),
+        statTotalGames: getElement('statTotalGames'),
+        statFinishedTournaments: getElement('statFinishedTournaments'),
+        dashboardStatus: getElement('dashboardStatus'),
+        pendingDepositCountBadge: getElement('pendingDepositCountBadge'),
+        pendingWithdrawalCountBadge: getElement('pendingWithdrawalCountBadge'),
+        gamesTableBody: getElement('gamesTableBody'),
+        gameModalEl: getElement('gameModal'),
+        gameModalTitle: getElement('gameModalTitle'),
+        gameForm: getElement('gameForm'),
+        gameEditId: getElement('gameEditId'),
+        gameNameInput: getElement('gameName'),
+        gameImageFileInput: getElement('gameImageFile'),
+        gameImageUrlInput: getElement('gameImageUrl'),
+        saveGameBtn: getElement('saveGameBtn'),
+        gameStatus: getElement('gameStatus'),
+        gamesStatus: getElement('gamesStatus'),
+        addNewGameBtn: getElement('addNewGameBtn'),
+        promotionsTableBody: getElement('promotionsTableBody'),
+        promotionModalEl: getElement('promotionModal'),
+        promotionModalTitle: getElement('promotionModalTitle'),
+        promotionForm: getElement('promotionForm'),
+        promotionEditId: getElement('promotionEditId'),
+        promoImageFileInput: getElement('promoImageFile'),
+        promoImageUrlInput: getElement('promoImageUrl'),
+        promoLinkInput: getElement('promoLink'),
+        savePromotionBtn: getElement('savePromotionBtn'),
+        promotionStatus: getElement('promotionStatus'),
+        promotionsStatus: getElement('promotionsStatus'),
+        addNewPromotionBtn: getElement('addNewPromotionBtn'),
+        imageLibraryTableBody: getElement('imageLibraryTableBody'),
+        imageLibraryModalEl: getElement('imageLibraryModal'),
+        imageLibraryModalTitle: getElement('imageLibraryModalTitle'),
+        imageLibraryForm: getElement('imageLibraryForm'),
+        imageLibraryEditId: getElement('imageLibraryEditId'),
+        libraryImageNameInput: getElement('libraryImageName'),
+        libraryImageUrlInput: getElement('libraryImageUrl'),
+        libraryImageFileInput: getElement('libraryImageFile'),
+        saveImageToLibraryBtn: getElement('saveImageToLibraryBtn'),
+        saveImageLibraryStatus: getElement('saveImageLibraryStatus'),
+        imageLibraryStatus: getElement('imageLibraryStatus'),
+        addNewImageToLibraryBtn: getElement('addNewImageToLibraryBtn'),
+        tournamentsTableBody: getElement('tournamentsTableBody'),
+        addTournamentModalEl: getElement('addTournamentModal'),
+        tournamentForm: getElement('tournamentForm'),
+        tournamentModalTitle: getElement('tournamentModalTitle'),
+        tournamentEditId: getElement('tournamentEditId'),
+        tournamentGameSelect: getElement('tournamentGame'),
+        tournamentNameInput: getElement('tournamentName'),
+        tournamentStartTimeInput: getElement('tournamentStartTime'),
+        tournamentStatusSelect: getElement('tournamentStatus'),
+        tournamentEntryFeeInput: getElement('tournamentEntryFee'),
+        tournamentPrizePoolInput: getElement('tournamentPrizePool'),
+        tournamentPerKillInput: getElement('tournamentPerKill'),
+        tournamentMaxPlayersInput: getElement('tournamentMaxPlayers'),
+        tournamentTagsInput: getElement('tournamentTags'),
+        tournamentIconInput: getElement('tournamentIcon'),
+        tournamentBannerSelect: getElement('tournamentBannerSelect'),
+        tournamentDescriptionInput: getElement('tournamentDescription'),
+        tournamentPrizeDistributionInput: getElement('tournamentPrizeDistribution'),
+        tournamentRoomIdInput: getElement('tournamentRoomId'),
+        tournamentRoomPasswordInput: getElement('tournamentRoomPassword'),
+        tournamentShowIdPassCheckbox: getElement('tournamentShowIdPass'),
+        saveTournamentBtn: getElement('saveTournamentBtn'),
+        addNewTournamentBtn: getElement('addNewTournamentBtn'),
+        addTournamentStatus: getElement('addTournamentStatus'),
+        tournamentsStatus: getElement('tournamentsStatus'),
+        usersTableBody: getElement('usersTableBody'),
+        userSearchInput: getElement('userSearchInput'),
+        userModalEl: getElement('userModal'),
+        userModalTitle: getElement('userModalTitle'),
+        userDetailUid: getElement('userDetailUid'),
+        userDetailEmail: getElement('userDetailEmail'),
+        userDetailName: getElement('userDetailName'),
+        userDetailCreatedAt: getElement('userDetailCreatedAt'),
+        userDetailBalance: getElement('userDetailBalance'),
+        userDetailWinning: getElement('userDetailWinning'),
+        userDetailBonus: getElement('userDetailBonus'),
+        userDetailReferralCode: getElement('userDetailReferralCode'),
+        userDetailReferredBy: getElement('userDetailReferredBy'),
+        userDetailReferredCount: getElement('userDetailReferredCount'),
+        userDetailStatus: getElement('userDetailStatus'),
+        updateBalanceForm: getElement('updateBalanceForm'),
+        editUserUid: getElement('editUserUid'),
+        balanceUpdateAmountInput: getElement('balanceUpdateAmount'),
+        balanceUpdateTypeSelect: getElement('balanceUpdateType'),
+        balanceUpdateReasonInput: getElement('balanceUpdateReason'),
+        balanceUpdateStatus: getElement('balanceUpdateStatus'),
+        userBlockBtn: getElement('userBlockBtn'),
+        userDeleteBtn: getElement('userDeleteBtn'),
+        userTransactionsContainer: getElement('userTransactionsContainer'),
+        addUserModalEl: getElement('addUserModal'),
+        addUserForm: getElement('addUserForm'),
+        newUserNameInput: getElement('newUserName'),
+        newUserEmailInput: getElement('newUserEmail'),
+        newUserPasswordInput: getElement('newUserPassword'),
+        newUserInitialBalanceInput: getElement('newUserInitialBalance'),
+        saveNewUserBtn: getElement('saveNewUserBtn'),
+        addUserStatus: getElement('addUserStatus'),
+        usersStatus: getElement('usersStatus'),
+        depositsSection: getElement('deposits-section'),
+        pendingDepositsTableBody: getElement('pendingDepositsTableBody'),
+        approvedDepositsTableBody: getElement('approvedDepositsTableBody'),
+        rejectedDepositsTableBody: getElement('rejectedDepositsTableBody'),
+        depositActionModalEl: getElement('depositActionModal'),
+        depositDetailId: getElement('depositDetailId'),
+        depositDetailUser: getElement('depositDetailUser'),
+        depositDetailUserUid: getElement('depositDetailUserUid'),
+        depositDetailAmount: getElement('depositDetailAmount'),
+        depositDetailTxnId: getElement('depositDetailTxnId'),
+        depositRejectReasonDiv: getElement('depositRejectReasonDiv'),
+        depositRejectReasonInput: getElement('depositRejectReason'),
+        depositApproveNoteDiv: getElement('depositApproveNoteDiv'),
+        depositApproveNoteInput: getElement('depositApproveNote'),
+        depositActionStatus: getElement('depositActionStatus'),
+        rejectDepositBtn: getElement('rejectDepositBtn'),
+        approveDepositBtn: getElement('approveDepositBtn'),
+        depositsStatus: getElement('depositsStatus'),
+        pendingWithdrawalsTableBody: getElement('pendingWithdrawalsTableBody'),
+        completedWithdrawalsTableBody: getElement('completedWithdrawalsTableBody'),
+        rejectedWithdrawalsTableBody: getElement('rejectedWithdrawalsTableBody'),
+        withdrawalActionModalEl: getElement('withdrawalActionModal'),
+        withdrawalDetailId: getElement('withdrawalDetailId'),
+        withdrawalDetailUser: getElement('withdrawalDetailUser'),
+        withdrawalDetailUserUid: getElement('withdrawalDetailUserUid'),
+        withdrawalDetailAmount: getElement('withdrawalDetailAmount'),
+        withdrawalDetailMethod: getElement('withdrawalDetailMethod'),
+        withdrawalRejectReasonDiv: getElement('withdrawalRejectReasonDiv'),
+        withdrawalRejectReasonInput: getElement('withdrawalRejectReason'),
+        withdrawalApproveNoteDiv: getElement('withdrawalApproveNoteDiv'),
+        withdrawalApproveNoteInput: getElement('withdrawalApproveNote'),
+        withdrawalActionStatus: getElement('withdrawalActionStatus'),
+        rejectWithdrawalBtn: getElement('rejectWithdrawalBtn'),
+        approveWithdrawalBtn: getElement('approveWithdrawalBtn'),
+        withdrawalsStatus: getElement('withdrawalsStatus'),
+        registeredPlayersModalEl: getElement('registeredPlayersModal'),
+        registeredPlayersModalTitle: getElement('registeredPlayersModalTitle'),
+        registeredPlayersTournamentName: getElement('registeredPlayersTournamentName'),
+        registeredPlayersTableBody: getElement('registeredPlayersTableBody'),
+        registeredPlayersStatus: getElement('registeredPlayersStatus'),
+        declareResultModalEl: getElement('declareResultModal'),
+        declareResultModalTitle: getElement('declareResultModalTitle'),
+        declareResultTournamentName: getElement('declareResultTournamentName'),
+        prizeDistributionInfo: getElement('prizeDistributionInfo'),
+        winnerEntriesContainer: getElement('winner-entries-container'),
+        addWinnerEntryBtn: getElement('add-winner-entry-btn'),
+        submitResultsBtn: getElement('submitResultsBtn'),
+        declareResultStatus: getElement('declareResultStatus'),
+        appSettingsForm: getElement('appSettingsForm'),
+        settingLogoUrlInput: getElement('settingLogoUrl'),
+        settingAppNameInput: getElement('settingAppName'),
+        settingMinWithdrawInput: getElement('settingMinWithdraw'),
+        settingReferralBonusInput: getElement('settingReferralBonus'),
+        settingSupportContactInput: getElement('settingSupportContact'),
+        settingUpiDetailsInput: getElement('settingUpiDetails'),
+        settingQrCodeUrlInput: getElement('settingQrCodeUrl'),
+        settingPolicyPrivacyInput: getElement('settingPolicyPrivacy'),
+        settingPolicyTermsInput: getElement('settingPolicyTerms'),
+        settingPolicyRefundInput: getElement('settingPolicyRefund'),
+        settingPolicyFairPlayInput: getElement('settingPolicyFairPlay'),
+        settingsStatus: getElement('settingsStatus'),
+        addDemoDataBtn: getElement('addDemoDataBtn'),
+        // Staff Elements
+        staffTableBody: getElement('staffTableBody'),
+        staffModalEl: getElement('staffModal'),
+        staffModalTitle: getElement('staffModalTitle'),
+        staffForm: getElement('staffForm'),
+        staffEditId: getElement('staffEditId'),
+        staffNameInput: getElement('staffName'),
+        staffEmailInput: getElement('staffEmail'),
+        staffPasswordInput: getElement('staffPassword'),
+        staffPermissionsContainer: getElement('staffPermissionsContainer'),
+        saveStaffBtn: getElement('saveStaffBtn'),
+        staffModalStatus: getElement('staffModalStatus'),
+        staffStatus: getElement('staffStatus'),
+        addNewStaffBtn: getElement('addNewStaffBtn'),
+        // Notification Elements
+        sendNotificationForm: getElement('sendNotificationForm'),
+        notificationTarget: getElement('notificationTarget'),
+        specificUserContainer: getElement('specificUserContainer'),
+        notificationUser: getElement('notificationUser'),
+        notificationTitle: getElement('notificationTitle'),
+        notificationBody: getElement('notificationBody'),
+        notificationSendStatus: getElement('notificationSendStatus'),
     };
     
     // Bootstrap Modal/Offcanvas Instances Cache
@@ -708,9 +935,8 @@
     const getOffcanvasInstance = (element) => getComponentInstance(element, 'Offcanvas');
     
     // --- App State ---
-    let currentAdminUser = null;
+    let currentAdminUser = null; // Will now hold { uid, email, isSuperAdmin, permissions }
     let currentActionDetails = {};
-    let currentEditingItemId = null;
     let gameDataCache = {};
     let userDataCache = {};
     let fullUserDataCache = {};
@@ -719,8 +945,120 @@
     let designatedAdminUid = null;
     let appSettings = {};
     
+    // Staff Permissions Definition
+    const PERMISSIONS = {
+        manageGames: "Manage Games",
+        managePromotions: "Manage Promotions",
+        manageImageLibrary: "Manage Image Library",
+        manageTournaments: "Manage Tournaments",
+        manageUsers: "Manage Users (View, Edit Balance)",
+        manageDeposits: "Manage Deposits",
+        manageWithdrawals: "Manage Withdrawals",
+        manageNotifications: "Send Notifications",
+        manageSettings: "Manage App Settings",
+        manageStaff: "Manage Staff Accounts"
+    };
+
     // --- Admin Auth & Security ---
-    const isDesignatedAdmin = (user) => user && designatedAdminUid && user.uid === designatedAdminUid;
+    const hasPermission = (permissionKey) => {
+        if (!currentAdminUser) return false;
+        if (currentAdminUser.isSuperAdmin) return true; // Super admin has all permissions
+        return !!currentAdminUser.permissions?.[permissionKey];
+    };
+
+    const applyUIPermissions = () => {
+        const allPermissionGates = document.querySelectorAll('.permission-gate');
+        allPermissionGates.forEach(el => {
+            const requiredPermission = el.dataset.permission;
+            if (requiredPermission) {
+                if (hasPermission(requiredPermission)) {
+                    el.style.display = ''; 
+                    if(el.tagName === 'BUTTON' || el.tagName === 'INPUT') el.disabled = false;
+                } else {
+                    el.style.display = 'none';
+                    if(el.tagName === 'BUTTON' || el.tagName === 'INPUT') el.disabled = true;
+                }
+            }
+        });
+    };
+    
+    // --- (यह नया फंक्शन पेस्ट करें) ---
+async function handleAdminAuthStateChange(user) {
+    showLoader(true);
+    detachAllAdminListeners();
+    currentAdminUser = null; // हर बार ऑथेंटिकेशन बदलने पर रीसेट करें
+
+    // महत्वपूर्ण सुधार: सबसे पहले, यह जांचें कि सेटअप पूरा हुआ है या नहीं।
+    // यह फंक्शन अब सही ऑथेंटिकेशन के साथ चलेगा (या तो यूज़र लॉग इन है, या नहीं)।
+    await checkAdminSetup();
+
+    if (user) {
+        // एक यूज़र लॉग इन है। अब हम जांचेंगे कि वह एडमिन/स्टाफ है या नहीं।
+        let userData = {
+            uid: user.uid,
+            email: user.email,
+            isSuperAdmin: false,
+            permissions: {}
+        };
+
+        // सुपर एडमिन है या नहीं, यह जांचें
+        if (user.uid === designatedAdminUid) {
+            userData.isSuperAdmin = true;
+            currentAdminUser = userData;
+        } else {
+            // स्टाफ है या नहीं, यह जांचें
+            try {
+                const staffSnap = await get(ref(db, `staffAccounts/${user.uid}`));
+                if (staffSnap.exists()) {
+                    const staffData = staffSnap.val();
+                    userData.permissions = staffData.permissions || {};
+                    currentAdminUser = userData;
+                }
+            } catch (e) {
+                console.error("स्टाफ स्टेटस जांचने में एरर:", e);
+            }
+        }
+
+        if (currentAdminUser) {
+            // सफलता: यूज़र लॉग इन है और एडमिन/स्टाफ भी है। मेन पैनल दिखाएं।
+            elements.adminUserEmailDisplay.textContent = user.email;
+            elements.authContainer.style.display = 'none';
+            elements.mainArea.style.display = 'block';
+            applyUIPermissions();
+            await loadSettings();
+            showAdminSection('dashboard-section');
+            setupRealtimeAdminListeners();
+        } else {
+            // असफलता: यूज़र लॉग इन है लेकिन एडमिन/स्टाफ नहीं है।
+            // उसे लॉग आउट कर दें। इससे यह फंक्शन user=null के साथ फिर से चलेगा।
+            alert(`एक्सेस डिनाइड। आपका अकाउंट (${user.email}) इस एडमिन पैनल के लिए अधिकृत नहीं है।`);
+            await logoutAdminUser();
+        }
+
+    } else {
+        // कोई भी यूज़र लॉग इन नहीं है।
+        // हमने checkAdminSetup() पहले ही चला लिया है, इसलिए हमें पता है कि सिस्टम कॉन्फ़िगर है या नहीं।
+        elements.mainArea.style.display = 'none';
+        elements.authContainer.style.display = 'block';
+
+        if (isAdminSetupComplete) {
+            // अगर सेटअप पूरा हो चुका है, तो LOGIN फॉर्म दिखाएं।
+            elements.loginSection.style.display = 'block';
+            elements.setupSection.style.display = 'none';
+        } else {
+            // अगर सेटअप पूरा नहीं हुआ है, तो SETUP फॉर्म दिखाएं।
+            elements.loginSection.style.display = 'none';
+            elements.setupSection.style.display = 'block';
+        }
+        
+        // कैश और स्टेट को साफ़ करें
+        gameDataCache = {}; userDataCache = {}; fullUserDataCache = {}; appSettings = {};
+        elements.adminHeaderLogo.src = 'https://via.placeholder.com/35/1E293B/94A3B8?text=L';
+        elements.adminHeaderLogo.style.display = 'none';
+        document.title = 'Admin Panel';
+    }
+    setTimeout(() => showLoader(false), 150);
+}
     
     // --- Utility Functions ---
     const showLoader = (show) => { if (elements.adminLoader) elements.adminLoader.style.display = show ? 'flex' : 'none'; };
@@ -734,53 +1072,121 @@
     
     // --- UI Functions ---
     function showAdminSection(sectionId) {
-    elements.sections.forEach(sec => sec.classList.remove('active'));
-    const targetSection = getElement(sectionId);
-    if (targetSection) {
-    targetSection.classList.add('active');
-    const linkElement = querySel(`#adminSidebar .nav-link[data-section="${sectionId}"]`);
-    let title = 'Admin Panel';
-    if (linkElement) {
-    title = (linkElement.textContent.trim().split(' ')[0] || sectionId.replace('-section', '')).replace(/^\w/, c => c.toUpperCase());
-    }
-    elements.adminPageTitle.textContent = title;
-    elements.sidebarLinks?.forEach(link => { link.classList.toggle('active', link.dataset.section === sectionId); });
-    loadDataForSection(sectionId);
-    const sidebar = getOffcanvasInstance(elements.sidebar);
-    if (sidebar?._isShown) sidebar.hide();
-    } else { showAdminSection('dashboard-section'); }
+        let targetSectionId = sectionId;
+        const permissionMap = {
+            'games-section': 'manageGames',
+            'promotions-section': 'managePromotions',
+            'imagelibrary-section': 'manageImageLibrary',
+            'tournaments-section': 'manageTournaments',
+            'users-section': 'manageUsers',
+            'deposits-section': 'manageDeposits',
+            'withdrawals-section': 'manageWithdrawals',
+            'settings-section': 'manageSettings',
+            'staff-section': 'manageStaff',
+            'notifications-section': 'manageNotifications'
+        };
+        const requiredPermission = permissionMap[sectionId];
+        if (requiredPermission && !hasPermission(requiredPermission)) {
+            targetSectionId = 'dashboard-section';
+        }
+
+        elements.sections.forEach(sec => sec.classList.remove('active'));
+        const targetSection = getElement(targetSectionId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+            const linkElement = querySel(`#adminSidebar .nav-link[data-section="${targetSectionId}"]`);
+            let title = 'Admin Panel';
+            if (linkElement) {
+                title = (linkElement.textContent.trim().split(' ')[0] || targetSectionId.replace('-section', '')).replace(/^\w/, c => c.toUpperCase());
+            }
+            elements.adminPageTitle.textContent = title;
+            elements.sidebarLinks?.forEach(link => { link.classList.toggle('active', link.dataset.section === targetSectionId); });
+            loadDataForSection(targetSectionId);
+            const sidebar = getOffcanvasInstance(elements.sidebar);
+            if (sidebar?._isShown) sidebar.hide();
+        } else {
+             showAdminSection('dashboard-section');
+        }
     }
     
     function loadDataForSection(sectionId) {
-    if (!isDesignatedAdmin(currentAdminUser)) return;
-    console.log(`Loading data for section: ${sectionId}`);
-    clearStatus(elements.dashboardStatus); clearStatus(elements.gamesStatus); clearStatus(elements.promotionsStatus);
-    clearStatus(elements.tournamentsStatus); clearStatus(elements.usersStatus); clearStatus(elements.depositsStatus);
-    clearStatus(elements.withdrawalsStatus); clearStatus(elements.settingsStatus);
-    
-    switch(sectionId) {
-    case 'dashboard-section': loadDashboardStats(); break;
-    case 'games-section': loadGames(); break;
-    case 'promotions-section': loadPromotions(); break;
-    case 'tournaments-section': loadTournaments(); break;
-    case 'users-section': loadUsers(); break;
-    case 'deposits-section': loadDeposits('pending'); loadDeposits('approved'); loadDeposits('rejected'); break;
-    case 'withdrawals-section': loadWithdrawals('pending'); loadWithdrawals('completed'); loadWithdrawals('rejected'); break;
-    case 'settings-section': loadSettings(); break;
+        if (!currentAdminUser) return;
+        Object.values(elements).forEach(el => { if (el && el.id && el.id.endsWith('Status')) clearStatus(el); });
+        
+        switch(sectionId) {
+            case 'dashboard-section': loadDashboardStats(); break;
+            case 'games-section': if(hasPermission('manageGames')) loadGames(); break;
+            case 'promotions-section': if(hasPermission('managePromotions')) loadPromotions(); break;
+            case 'imagelibrary-section': if(hasPermission('manageImageLibrary')) loadImagesFromLibrary(); break;
+            case 'tournaments-section': if(hasPermission('manageTournaments')) loadTournaments(); break;
+            case 'users-section': if(hasPermission('manageUsers')) loadUsers(); break;
+            case 'deposits-section': if(hasPermission('manageDeposits')) { loadDeposits('pending'); loadDeposits('approved'); loadDeposits('rejected'); } break;
+            case 'withdrawals-section': if(hasPermission('manageWithdrawals')) { loadWithdrawals('pending'); loadWithdrawals('completed'); loadWithdrawals('rejected'); } break;
+            case 'settings-section': if(hasPermission('manageSettings')) loadSettings(); break;
+            case 'staff-section': if(hasPermission('manageStaff')) loadStaff(); break;
+        }
     }
-    }
     
-    // --- Firebase Auth & Setup ---
+    // --- Firebase Auth & Setup (Unchanged Logic) ---
     async function loginAdmin(event) { event.preventDefault(); if (!auth) return; showLoader(true); try { await signInWithEmailAndPassword(auth, elements.adminEmailInput.value, elements.adminPasswordInput.value); } catch (error) { showStatus(elements.adminLoginStatus, "Login Failed: Invalid email or password.", 'danger'); } finally { showLoader(false); } }
     async function logoutAdminUser() { if (auth) await signOut(auth); }
     async function checkAdminSetup() { const adminConfigRef = ref(db, 'adminConfig'); try { const snapshot = await get(adminConfigRef); if (snapshot.exists()) { const d = snapshot.val(); isAdminSetupComplete = d.setupComplete === true; designatedAdminUid = d.adminUid || null; } else { isAdminSetupComplete = false; designatedAdminUid = null; } return isAdminSetupComplete; } catch (error) { const el = elements.loginSection?.style.display === 'block' ? elements.adminLoginStatus : elements.setupStatus; showStatus(el, `Config check error: ${error.message}. Check Rules.`, "danger", false); return false; } }
-    async function setupAdmin(event) { event.preventDefault(); if (!auth || !db || isAdminSetupComplete) return; const email = elements.setupEmailInput.value.trim(); const password = elements.setupPasswordInput.value; if (password.length < 6) { showStatus(elements.setupStatus, "Password must be at least 6 characters long.", "warning"); return; } showLoader(true); try { const cred = await createUserWithEmailAndPassword(auth, email, password); const uid = cred.user.uid; await set(ref(db, 'adminConfig'), { setupComplete: true, adminUid: uid }); await signOut(auth); alert("Admin account created! Please login now."); await handleInitialLoad(); } catch (error) { console.error("Admin Setup Error:", error); let message; switch (error.code) { case 'auth/email-already-in-use': message = "Setup failed: This email is already in use. If an admin account has already been created, please refresh the page to log in."; break; case 'auth/weak-password': message = "Setup failed: The password is too weak. Please use a stronger password."; break; case 'auth/invalid-email': message = "Setup failed: The email address is not valid."; break; case 'permission-denied': message = "Setup failed: Permission Denied. Check your Firebase Database Rules to allow writes to '/adminConfig'."; break; default: message = `Setup failed with an unexpected error: ${error.code}. Please check the console.`; } showStatus(elements.setupStatus, message, "danger", false); } finally { showLoader(false); } }
-    async function handleInitialLoad() { if (!auth || !db) return; showLoader(true); await checkAdminSetup(); elements.setupSection.style.display = !isAdminSetupComplete ? 'block' : 'none'; elements.loginSection.style.display = isAdminSetupComplete ? 'block' : 'none'; elements.mainArea.style.display = 'none'; elements.authContainer.style.display = 'block'; showLoader(false); }
-    async function handleAdminAuthStateChange(user) { showLoader(true); currentAdminUser = user; detachAllAdminListeners(); if (user) { if (!designatedAdminUid) await checkAdminSetup(); if (isDesignatedAdmin(user)) { elements.adminUserEmailDisplay.textContent = user.email; elements.authContainer.style.display = 'none'; elements.mainArea.style.display = 'block'; await loadSettings(); showAdminSection('dashboard-section'); setupRealtimeAdminListeners(); } else { alert(`Access Denied. ${user.email} is not the designated admin.`); await logoutAdminUser(); } } else { currentAdminUser = null; designatedAdminUid = null; isAdminSetupComplete = false; elements.mainArea.style.display = 'none'; elements.authContainer.style.display = 'block'; gameDataCache = {}; userDataCache = {}; fullUserDataCache = {}; appSettings = {}; elements.adminHeaderLogo.src = 'https://via.placeholder.com/35/1E293B/94A3B8?text=L'; elements.adminHeaderLogo.style.display = 'none'; document.title = 'Admin Panel'; await handleInitialLoad(); } setTimeout(() => showLoader(false), 150); }
+    async function setupAdmin(event) {
+    event.preventDefault();
+    if (!auth || !db || isAdminSetupComplete) return;
+    const email = elements.setupEmailInput.value.trim();
+    const password = elements.setupPasswordInput.value;
+    if (password.length < 6) {
+        showStatus(elements.setupStatus, "Password must be at least 6 characters long.", "warning");
+        return;
+    }
+    showLoader(true);
+    try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        const uid = cred.user.uid;
+        await set(ref(db, 'adminConfig'), { setupComplete: true, adminUid: uid });
+        await signOut(auth); // यह अपने आप पेज को सही स्थिति में रीलोड कर देगा
+        alert("Admin account created! Please login now.");
+        // await handleInitialLoad(); // <--- यह लाइन हटा दी गई है
+    } catch (error) {
+        console.error("Admin Setup Error:", error);
+        let message;
+        switch (error.code) {
+            case 'auth/email-already-in-use':
+                message = "Setup failed: This email is already in use. If an admin account has already been created, please refresh the page to log in.";
+                break;
+            case 'auth/weak-password':
+                message = "Setup failed: The password is too weak. Please use a stronger password.";
+                break;
+            case 'auth/invalid-email':
+                message = "Setup failed: The email address is not valid.";
+                break;
+            case 'permission-denied':
+                message = "Setup failed: Permission Denied. Check your Firebase Database Rules to allow writes to '/adminConfig'.";
+                break;
+            default:
+                message = `Setup failed with an unexpected error: ${error.code}. Please check the console.`;
+        }
+        showStatus(elements.setupStatus, message, "danger", false);
+    } finally {
+        showLoader(false);
+    }
+}
+    // --- (इस पूरे फंक्शन को डिलीट कर दें) ---
+async function handleInitialLoad() { 
+    if (!auth || !db) return; 
+    showLoader(true); 
+    await checkAdminSetup(); 
+    elements.setupSection.style.display = !isAdminSetupComplete ? 'block' : 'none'; 
+    elements.loginSection.style.display = isAdminSetupComplete ? 'block' : 'none'; 
+    elements.mainArea.style.display = 'none'; 
+    elements.authContainer.style.display = 'block'; 
+    showLoader(false); 
+}
     
     // --- Database Load Functions ---
     async function loadDashboardStats() {
-    if (!isDesignatedAdmin(currentAdminUser)) return;
+    if (!currentAdminUser) return;
     Object.values(elements).filter(el => el.id?.startsWith('stat')).forEach(el => el.textContent = '...');
     const getCount = async (path, queryKey = null, queryValue = null) => {
     try {
@@ -797,8 +1203,10 @@
     getCount('users'), getCount('games'),
     getCount('tournaments', 'status', 'ongoing'), getCount('tournaments', 'status', 'upcoming'),
     getCount('tournaments', 'status', 'completed'), getCount('tournaments', 'status', 'result'), getCount('tournaments', 'status', 'cancelled'),
-    getCount('depositRequests', 'status', 'pending'), getCount('withdrawals', 'status', 'pending'),
-    getCount('withdrawals', 'status', 'completed'), getCount('withdrawals', 'status', 'rejected')
+    hasPermission('manageDeposits') ? getCount('depositRequests', 'status', 'pending') : Promise.resolve(0),
+    hasPermission('manageWithdrawals') ? getCount('withdrawals', 'status', 'pending') : Promise.resolve(0),
+    hasPermission('manageWithdrawals') ? getCount('withdrawals', 'status', 'completed') : Promise.resolve(0),
+    hasPermission('manageWithdrawals') ? getCount('withdrawals', 'status', 'rejected') : Promise.resolve(0)
     ]);
     const activeTournaments = (typeof ongoingTournaments === 'number' && typeof upcomingTournaments === 'number') ? ongoingTournaments + upcomingTournaments : 'Error';
     const finishedTournaments = (typeof completedTournaments === 'number' && typeof resultTournaments === 'number' && typeof cancelledTournaments === 'number') ? completedTournaments + resultTournaments + cancelledTournaments : 'Error';
@@ -812,15 +1220,17 @@
     elements.statRejectedWithdrawals.textContent = rejectedWithdrawals;
     }
     
-    async function loadGames() { if (!isDesignatedAdmin(currentAdminUser)) return; elements.gamesTableBody.innerHTML = tableLoadingPlaceholderHtml(4); try { const snapshot = await get(ref(db, 'games')); let html = ''; gameDataCache = {}; if (snapshot.exists()) { snapshot.forEach(child => { const game = child.val(); gameDataCache[child.key] = game.name; html += `<tr><td><img src="${sanitizeHTML(game.imageUrl)}" class="preview-img"></td><td>${sanitizeHTML(game.name)}</td><td><small class="text-muted">${sanitizeHTML(child.key)}</small></td><td class="action-buttons"><button class="btn btn-sm btn-info btn-edit-game" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-pencil-square"></i></button><button class="btn btn-sm btn-danger btn-delete-game" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-trash"></i></button></td></tr>`; }); } elements.gamesTableBody.innerHTML = html || `<tr><td colspan="4" class="text-center p-3 text-muted">No games found.</td></tr>`; } catch (e) { elements.gamesTableBody.innerHTML = `<tr><td colspan="4" class="text-danger p-3">Error loading games. Check Rules.</td></tr>`; showStatus(elements.gamesStatus, e.message, 'danger', false); } }
-    async function loadPromotions() { if (!isDesignatedAdmin(currentAdminUser)) return; elements.promotionsTableBody.innerHTML = tableLoadingPlaceholderHtml(3); try { const snapshot = await get(ref(db, 'promotions')); let html = ''; if (snapshot.exists()) { snapshot.forEach(child => { const promo = child.val(); const shortLink = promo.link?.substring(0, 50) + (promo.link?.length > 50 ? '...' : ''); html += `<tr><td><img src="${sanitizeHTML(promo.imageUrl)}" class="preview-img"></td><td>${promo.link ? `<a href="${sanitizeHTML(promo.link)}" target="_blank">${shortLink}</a>` : 'N/A'}</td><td class="action-buttons"><button class="btn btn-sm btn-info btn-edit-promo" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-pencil-square"></i></button><button class="btn btn-sm btn-danger btn-delete-promo" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-trash"></i></button></td></tr>`; }); } elements.promotionsTableBody.innerHTML = html || `<tr><td colspan="3" class="text-center p-3 text-muted">No promotions found.</td></tr>`; } catch (e) { elements.promotionsTableBody.innerHTML = `<tr><td colspan="3" class="text-danger p-3">Error loading promotions. Check Rules.</td></tr>`; showStatus(elements.promotionsStatus, e.message, 'danger', false); } }
-    async function loadTournaments() { if (!isDesignatedAdmin(currentAdminUser)) return; elements.tournamentsTableBody.innerHTML = tableLoadingPlaceholderHtml(8); if (Object.keys(gameDataCache).length === 0) await loadGames(); try { const snapshot = await get(ref(db, 'tournaments')); let html = ''; if (snapshot.exists()) { snapshot.forEach(child => { const t = child.val(); const statusClass = { upcoming: 'info', ongoing: 'success', result: 'primary', completed: 'secondary', cancelled: 'danger' }[t.status] || 'secondary'; const players = `${Object.keys(t.registeredPlayers || {}).length}${t.maxPlayers > 0 ? `/${t.maxPlayers}` : ''}`; let actionButtons = `<button class="btn btn-sm btn-info btn-edit-tournament" data-id="${child.key}"><i class="bi bi-pencil-square"></i></button><button class="btn btn-sm btn-secondary btn-view-registered" data-id="${child.key}" data-name="${sanitizeHTML(t.name)}"><i class="bi bi-people"></i></button>`; if (['ongoing', 'completed'].includes(t.status)) { actionButtons += `<button class="btn btn-sm btn-warning btn-declare-result" data-id="${child.key}"><i class="bi bi-award"></i> Declare</button>`; } actionButtons += `<button class="btn btn-sm btn-danger btn-delete-tournament" data-id="${child.key}"><i class="bi bi-trash"></i></button>`; html += `<tr><td>${sanitizeHTML(t.name)}</td><td>${gameDataCache[t.gameId] || 'Unknown'}</td><td>${formatCurrency(t.entryFee)}</td><td>${formatCurrency(t.prizePool)}</td><td>${formatDate(t.startTime)}</td><td><span class="status-badge text-bg-${statusClass}">${t.status}</span></td><td>${players}</td><td class="action-buttons">${actionButtons}</td></tr>`; }); } elements.tournamentsTableBody.innerHTML = html || `<tr><td colspan="8" class="text-center p-3 text-muted">No tournaments found.</td></tr>`; } catch (e) { elements.tournamentsTableBody.innerHTML = `<tr><td colspan="8" class="text-danger p-3">Error loading tournaments. Check Rules.</td></tr>`; showStatus(elements.tournamentsStatus, e.message, 'danger', false); } }
+    async function loadGames() { if (!hasPermission('manageGames')) return; elements.gamesTableBody.innerHTML = tableLoadingPlaceholderHtml(4); try { const snapshot = await get(ref(db, 'games')); let html = ''; gameDataCache = {}; if (snapshot.exists()) { snapshot.forEach(child => { const game = child.val(); gameDataCache[child.key] = game.name; html += `<tr><td><img src="${sanitizeHTML(game.imageUrl)}" class="preview-img"></td><td>${sanitizeHTML(game.name)}</td><td><small class="text-muted">${sanitizeHTML(child.key)}</small></td><td class="action-buttons"><button class="btn btn-sm btn-info btn-edit-game" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-pencil-square"></i></button><button class="btn btn-sm btn-danger btn-delete-game" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-trash"></i></button></td></tr>`; }); } elements.gamesTableBody.innerHTML = html || `<tr><td colspan="4" class="text-center p-3 text-muted">No games found.</td></tr>`; } catch (e) { elements.gamesTableBody.innerHTML = `<tr><td colspan="4" class="text-danger p-3">Error loading games. Check Rules.</td></tr>`; showStatus(elements.gamesStatus, e.message, 'danger', false); } }
+    async function loadPromotions() { if (!hasPermission('managePromotions')) return; elements.promotionsTableBody.innerHTML = tableLoadingPlaceholderHtml(3); try { const snapshot = await get(ref(db, 'promotions')); let html = ''; if (snapshot.exists()) { snapshot.forEach(child => { const promo = child.val(); const shortLink = promo.link?.substring(0, 50) + (promo.link?.length > 50 ? '...' : ''); html += `<tr><td><img src="${sanitizeHTML(promo.imageUrl)}" class="preview-img"></td><td>${promo.link ? `<a href="${sanitizeHTML(promo.link)}" target="_blank">${shortLink}</a>` : 'N/A'}</td><td class="action-buttons"><button class="btn btn-sm btn-info btn-edit-promo" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-pencil-square"></i></button><button class="btn btn-sm btn-danger btn-delete-promo" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-trash"></i></button></td></tr>`; }); } elements.promotionsTableBody.innerHTML = html || `<tr><td colspan="3" class="text-center p-3 text-muted">No promotions found.</td></tr>`; } catch (e) { elements.promotionsTableBody.innerHTML = `<tr><td colspan="3" class="text-danger p-3">Error loading promotions. Check Rules.</td></tr>`; showStatus(elements.promotionsStatus, e.message, 'danger', false); } }
+    async function loadTournaments() { if (!hasPermission('manageTournaments')) return; elements.tournamentsTableBody.innerHTML = tableLoadingPlaceholderHtml(8); if (Object.keys(gameDataCache).length === 0) await loadGames(); try { const snapshot = await get(ref(db, 'tournaments')); let html = ''; if (snapshot.exists()) { snapshot.forEach(child => { const t = child.val(); const statusClass = { upcoming: 'info', ongoing: 'success', result: 'primary', completed: 'secondary', cancelled: 'danger' }[t.status] || 'secondary'; const players = `${Object.keys(t.registeredPlayers || {}).length}${t.maxPlayers > 0 ? `/${t.maxPlayers}` : ''}`; let actionButtons = `<button class="btn btn-sm btn-info btn-edit-tournament" data-id="${child.key}"><i class="bi bi-pencil-square"></i></button><button class="btn btn-sm btn-secondary btn-view-registered" data-id="${child.key}" data-name="${sanitizeHTML(t.name)}"><i class="bi bi-people"></i></button>`; if (['ongoing', 'completed'].includes(t.status)) { actionButtons += `<button class="btn btn-sm btn-warning btn-declare-result" data-id="${child.key}"><i class="bi bi-award"></i> Declare</button>`; } actionButtons += `<button class="btn btn-sm btn-danger btn-delete-tournament" data-id="${child.key}"><i class="bi bi-trash"></i></button>`; html += `<tr><td>${sanitizeHTML(t.name)}</td><td>${gameDataCache[t.gameId] || 'Unknown'}</td><td>${formatCurrency(t.entryFee)}</td><td>${formatCurrency(t.prizePool)}</td><td>${formatDate(t.startTime)}</td><td><span class="status-badge text-bg-${statusClass}">${t.status}</span></td><td>${players}</td><td class="action-buttons">${actionButtons}</td></tr>`; }); } elements.tournamentsTableBody.innerHTML = html || `<tr><td colspan="8" class="text-center p-3 text-muted">No tournaments found.</td></tr>`; } catch (e) { elements.tournamentsTableBody.innerHTML = `<tr><td colspan="8" class="text-danger p-3">Error loading tournaments. Check Rules.</td></tr>`; showStatus(elements.tournamentsStatus, e.message, 'danger', false); } }
     function renderUsersTable(usersArray) { let html = ''; if (usersArray?.length > 0) { usersArray.sort((a, b) => (a.displayName || '').localeCompare(b.displayName || '')); usersArray.forEach(user => { html += `<tr><td><small class="text-muted">${user.uid}</small></td><td>${sanitizeHTML(user.displayName)}</td><td>${sanitizeHTML(user.email)}</td><td>${formatCurrency(user.balance)}</td><td><span class="status-badge text-bg-${user.status === 'active' ? 'success' : 'danger'}">${user.status}</span></td><td class="action-buttons"><button class="btn btn-sm btn-info btn-view-user" data-id="${user.uid}"><i class="bi bi-eye"></i></button> <button class="btn btn-sm btn-danger btn-delete-user" data-id="${user.uid}"><i class="bi bi-trash"></i></button></td></tr>`; }); } elements.usersTableBody.innerHTML = html || `<tr><td colspan="6" class="text-center p-3 text-muted">No users found.</td></tr>`; }
-    async function loadUsers() { if (!isDesignatedAdmin(currentAdminUser)) return; elements.usersTableBody.innerHTML = tableLoadingPlaceholderHtml(6); elements.userSearchInput.value = ''; try { const snapshot = await get(ref(db, 'users')); fullUserDataCache = {}; if (snapshot.exists()) { snapshot.forEach(child => { const user = child.val(); user.uid = child.key; fullUserDataCache[child.key] = user; }); } renderUsersTable(Object.values(fullUserDataCache)); } catch (e) { elements.usersTableBody.innerHTML = `<tr><td colspan="6" class="text-danger p-3">Error loading users. Check Rules.</td></tr>`; showStatus(elements.usersStatus, e.message, 'danger', false); } }
+    async function loadUsers() { if (!hasPermission('manageUsers')) return; elements.usersTableBody.innerHTML = tableLoadingPlaceholderHtml(6); elements.userSearchInput.value = ''; try { const snapshot = await get(ref(db, 'users')); fullUserDataCache = {}; if (snapshot.exists()) { snapshot.forEach(child => { const user = child.val(); user.uid = child.key; fullUserDataCache[child.key] = user; }); } renderUsersTable(Object.values(fullUserDataCache)); } catch (e) { elements.usersTableBody.innerHTML = `<tr><td colspan="6" class="text-danger p-3">Error loading users. Check Rules.</td></tr>`; showStatus(elements.usersStatus, e.message, 'danger', false); } }
     
     async function loadRequestList(type, status) {
-    if (!isDesignatedAdmin(currentAdminUser)) return;
     const isDeposit = type === 'deposit';
+    if(isDeposit && !hasPermission('manageDeposits')) return;
+    if(!isDeposit && !hasPermission('manageWithdrawals')) return;
+
     const path = isDeposit ? 'depositRequests' : 'withdrawals';
     const tableBody = getElement(`${status}${isDeposit ? 'Deposits' : 'Withdrawals'}TableBody`);
     const statusEl = elements[`${isDeposit ? 'deposits' : 'withdrawals'}Status`];
@@ -878,158 +1288,274 @@
     const loadDeposits = (status) => loadRequestList('deposit', status);
     const loadWithdrawals = (status) => loadRequestList('withdrawal', status);
     
-    async function loadSettings() { if (!isDesignatedAdmin(currentAdminUser)) return; try { const snapshot = await get(ref(db, 'settings')); if (snapshot.exists()) { appSettings = snapshot.val() || {}; elements.settingLogoUrlInput.value = appSettings.logoUrl || ''; elements.settingAppNameInput.value = appSettings.appName || ''; elements.settingMinWithdrawInput.value = appSettings.minWithdraw || 0; elements.settingReferralBonusInput.value = appSettings.referralBonus || 0; elements.settingSupportContactInput.value = appSettings.supportContact || ''; elements.settingUpiDetailsInput.value = appSettings.upiDetails || ''; elements.settingQrCodeUrlInput.value = appSettings.qrCodeUrl || ''; elements.settingPolicyPrivacyInput.value = appSettings.policyPrivacy || ''; elements.settingPolicyTermsInput.value = appSettings.policyTerms || ''; elements.settingPolicyRefundInput.value = appSettings.policyRefund || ''; elements.settingPolicyFairPlayInput.value = appSettings.policyFairPlay || ''; if(appSettings.logoUrl) { elements.adminHeaderLogo.src = appSettings.logoUrl; elements.adminHeaderLogo.style.display = 'inline-block'; } document.title = `${appSettings.appName || 'Gaming'} - Admin`; } else { showStatus(elements.settingsStatus, "No settings found. Please configure.", "info"); } } catch (e) { showStatus(elements.settingsStatus, `Error loading settings: ${e.message}`, "danger", false); } }
-    async function saveSettings(event) { event.preventDefault(); if (!isDesignatedAdmin(currentAdminUser)) return; const settingsData = { logoUrl: elements.settingLogoUrlInput.value.trim(), appName: elements.settingAppNameInput.value.trim(), minWithdraw: parseFloat(elements.settingMinWithdrawInput.value) || 0, referralBonus: parseFloat(elements.settingReferralBonusInput.value) || 0, supportContact: elements.settingSupportContactInput.value.trim(), upiDetails: elements.settingUpiDetailsInput.value.trim(), qrCodeUrl: elements.settingQrCodeUrlInput.value.trim(), policyPrivacy: elements.settingPolicyPrivacyInput.value.trim(), policyTerms: elements.settingPolicyTermsInput.value.trim(), policyRefund: elements.settingPolicyRefundInput.value.trim(), policyFairPlay: elements.settingPolicyFairPlayInput.value.trim(), lastUpdated: serverTimestamp() }; showLoader(true); try { await set(ref(db, 'settings'), settingsData); showStatus(elements.settingsStatus, "Settings saved!", "success"); loadSettings(); } catch (e) { showStatus(elements.settingsStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
+    async function loadSettings() { if (!hasPermission('manageSettings')) return; try { const snapshot = await get(ref(db, 'settings')); if (snapshot.exists()) { appSettings = snapshot.val() || {}; elements.settingLogoUrlInput.value = appSettings.logoUrl || ''; elements.settingAppNameInput.value = appSettings.appName || ''; elements.settingMinWithdrawInput.value = appSettings.minWithdraw || 0; elements.settingReferralBonusInput.value = appSettings.referralBonus || 0; elements.settingSupportContactInput.value = appSettings.supportContact || ''; elements.settingUpiDetailsInput.value = appSettings.upiDetails || ''; elements.settingQrCodeUrlInput.value = appSettings.qrCodeUrl || ''; elements.settingPolicyPrivacyInput.value = appSettings.policyPrivacy || ''; elements.settingPolicyTermsInput.value = appSettings.policyTerms || ''; elements.settingPolicyRefundInput.value = appSettings.policyRefund || ''; elements.settingPolicyFairPlayInput.value = appSettings.policyFairPlay || ''; if(appSettings.logoUrl) { elements.adminHeaderLogo.src = appSettings.logoUrl; elements.adminHeaderLogo.style.display = 'inline-block'; } document.title = `${appSettings.appName || 'Gaming'} - Admin`; } else { showStatus(elements.settingsStatus, "No settings found. Please configure.", "info"); } } catch (e) { showStatus(elements.settingsStatus, `Error loading settings: ${e.message}`, "danger", false); } }
     
-    // --- Save, Update, Delete Functions ---
+    // --- Image Library Functions ---
+    async function loadImagesFromLibrary() {
+        if (!hasPermission('manageImageLibrary')) return;
+        elements.imageLibraryTableBody.innerHTML = tableLoadingPlaceholderHtml(4);
+        try {
+            const snapshot = await get(ref(db, 'image_library'));
+            let html = '';
+            if (snapshot.exists()) {
+                snapshot.forEach(child => {
+                    const img = child.val();
+                    const shortUrl = img.url.substring(0, 30) + (img.url.length > 30 ? '...' : '');
+                    html += `<tr>
+                        <td><img src="${sanitizeHTML(img.url)}" class="preview-img"></td>
+                        <td>${sanitizeHTML(img.name)}</td>
+                        <td><a href="${sanitizeHTML(img.url)}" target="_blank">${shortUrl}</a> <i class="bi bi-clipboard copy-btn ms-1" onclick="navigator.clipboard.writeText('${img.url}')" title="Copy URL"></i></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-sm btn-info btn-edit-library-image" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-delete-library-image" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>`;
+                });
+            }
+            elements.imageLibraryTableBody.innerHTML = html || `<tr><td colspan="4" class="text-center p-3 text-muted">No images found in the library.</td></tr>`;
+        } catch (e) {
+            elements.imageLibraryTableBody.innerHTML = `<tr><td colspan="4" class="text-danger p-3">Error loading image library. Check Rules.</td></tr>`;
+            showStatus(elements.imageLibraryStatus, e.message, 'danger', false);
+        }
+    }
+    
+    // --- Staff Management Functions ---
+    function populatePermissionsCheckboxes(container, currentPermissions = {}) {
+        let html = '';
+        Object.entries(PERMISSIONS).forEach(([key, label]) => {
+            const isChecked = currentPermissions[key] ? 'checked' : '';
+            // Super admin only permissions cannot be delegated
+            const isDisabled = (key === 'manageSettings' || key === 'manageStaff') ? 'disabled' : '';
+            const hint = isDisabled ? '<small class="text-warning d-block">Super Admin Only</small>' : '';
+
+            html += `
+                <div class="col-md-6 mb-2">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="perm_${key}" data-permission-key="${key}" ${isChecked} ${isDisabled}>
+                        <label class="form-check-label" for="perm_${key}">${label}</label>
+                        ${hint}
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    async function loadStaff() {
+        if (!hasPermission('manageStaff')) return;
+        elements.staffTableBody.innerHTML = tableLoadingPlaceholderHtml(4);
+        try {
+            const snapshot = await get(ref(db, 'staffAccounts'));
+            let html = '';
+            if (snapshot.exists()) {
+                snapshot.forEach(child => {
+                    const staff = child.val();
+                    const staffId = child.key;
+                    if (staffId === designatedAdminUid) return; // Don't show super admin in staff list
+
+                    const perms = staff.permissions ? Object.keys(staff.permissions).filter(k => staff.permissions[k]).length : 0;
+                    const permSummary = `${perms} permission(s)`;
+
+                    html += `<tr>
+                        <td>${sanitizeHTML(staff.name)}</td>
+                        <td>${sanitizeHTML(staff.email)}</td>
+                        <td><small class="text-muted">${permSummary}</small></td>
+                        <td class="action-buttons">
+                            <button class="btn btn-sm btn-info btn-edit-staff" data-id="${sanitizeHTML(staffId)}"><i class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-delete-staff" data-id="${sanitizeHTML(staffId)}"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>`;
+                });
+            }
+            elements.staffTableBody.innerHTML = html || `<tr><td colspan="4" class="text-center p-3 text-muted">No staff accounts found.</td></tr>`;
+        } catch (e) {
+            elements.staffTableBody.innerHTML = `<tr><td colspan="4" class="text-danger p-3">Error loading staff. Check Rules.</td></tr>`;
+            showStatus(elements.staffStatus, e.message, 'danger', false);
+        }
+    }
+    
+    // --- Save, Update, Delete Functions (with permissions) ---
+    async function sendNotification(userId, title, body, type = 'general', link = null) {
+        if (!userId || !title || !body) {
+            console.error("sendNotification: Missing required parameters.");
+            return;
+        }
+        const notifRef = ref(db, `notifications/${userId}`);
+        const newNotif = {
+            title,
+            body,
+            timestamp: serverTimestamp(),
+            read: false,
+            type
+        };
+        if (link) newNotif.link = link;
+        try {
+            await push(notifRef, newNotif);
+        } catch (e) {
+            console.error(`Failed to send notification to ${userId}:`, e);
+        }
+    }
     const IMGBB_API_KEY = '1579b196953465c653d3639ab091448c';
     async function uploadToImgBB(file, statusElement) { if (!file) throw new Error("File not selected."); if (IMGBB_API_KEY.includes('YOUR_')) throw new Error("ImgBB API Key not set."); const formData = new FormData(); formData.append('image', file); if (statusElement) statusElement.textContent = 'Uploading...'; try { const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: 'POST', body: formData }); const data = await response.json(); if (data.success) return data.data.url; else throw new Error(data.error?.message || 'Upload failed'); } catch (error) { if (statusElement) statusElement.textContent = `Upload Error: ${error.message}`; throw error; } }
-    async function saveGame() { if (!isDesignatedAdmin(currentAdminUser)) return; const isEditing = !!elements.gameEditId.value; const name = elements.gameNameInput.value.trim(); if (!name) { showStatus(elements.gameStatus, "Game Name required.", "warning"); return; } showLoader(true); try { let imageUrl = elements.gameImageUrlInput.value.trim(); const imageFile = elements.gameImageFileInput.files[0]; if (imageFile) imageUrl = await uploadToImgBB(imageFile, elements.gameForm.querySelector('.imgbb-upload-status')); if (!imageUrl) throw new Error("Image URL is required."); const gameData = { name, imageUrl, updatedAt: serverTimestamp() }; const gameRef = isEditing ? ref(db, `games/${elements.gameEditId.value}`) : push(ref(db, 'games')); if (!isEditing) gameData.createdAt = serverTimestamp(); await set(gameRef, gameData); showStatus(elements.gamesStatus, `Game ${isEditing ? 'updated' : 'added'}!`, "success"); getModalInstance(elements.gameModalEl)?.hide(); loadGames(); } catch (e) { showStatus(elements.gameStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
-    async function savePromotion() { if (!isDesignatedAdmin(currentAdminUser)) return; const isEditing = !!elements.promotionEditId.value; showLoader(true); try { let imageUrl = elements.promoImageUrlInput.value.trim(); const imageFile = elements.promoImageFileInput.files[0]; if (imageFile) imageUrl = await uploadToImgBB(imageFile, elements.promotionForm.querySelector('.imgbb-upload-status')); if (!imageUrl) throw new Error("Image URL required."); const promoData = { imageUrl, link: elements.promoLinkInput.value.trim() || null, updatedAt: serverTimestamp() }; const promoRef = isEditing ? ref(db, `promotions/${elements.promotionEditId.value}`) : push(ref(db, 'promotions')); if (!isEditing) promoData.createdAt = serverTimestamp(); await set(promoRef, promoData); showStatus(elements.promotionsStatus, `Promotion ${isEditing ? 'updated' : 'added'}!`, "success"); getModalInstance(elements.promotionModalEl)?.hide(); loadPromotions(); } catch (e) { showStatus(elements.promotionStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
+    async function saveGame() { if (!hasPermission('manageGames')) { alert('Access Denied'); return; } const isEditing = !!elements.gameEditId.value; const name = elements.gameNameInput.value.trim(); if (!name) { showStatus(elements.gameStatus, "Game Name required.", "warning"); return; } showLoader(true); try { let imageUrl = elements.gameImageUrlInput.value.trim(); const imageFile = elements.gameImageFileInput.files[0]; if (imageFile) imageUrl = await uploadToImgBB(imageFile, elements.gameForm.querySelector('.imgbb-upload-status')); if (!imageUrl) throw new Error("Image URL is required."); const gameData = { name, imageUrl, updatedAt: serverTimestamp() }; const gameRef = isEditing ? ref(db, `games/${elements.gameEditId.value}`) : push(ref(db, 'games')); if (!isEditing) gameData.createdAt = serverTimestamp(); await set(gameRef, gameData); showStatus(elements.gamesStatus, `Game ${isEditing ? 'updated' : 'added'}!`, "success"); getModalInstance(elements.gameModalEl)?.hide(); loadGames(); } catch (e) { showStatus(elements.gameStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
+    async function savePromotion() { if (!hasPermission('managePromotions')) { alert('Access Denied'); return; } const isEditing = !!elements.promotionEditId.value; showLoader(true); try { let imageUrl = elements.promoImageUrlInput.value.trim(); const imageFile = elements.promoImageFileInput.files[0]; if (imageFile) imageUrl = await uploadToImgBB(imageFile, elements.promotionForm.querySelector('.imgbb-upload-status')); if (!imageUrl) throw new Error("Image URL required."); const promoData = { imageUrl, link: elements.promoLinkInput.value.trim() || null, updatedAt: serverTimestamp() }; const promoRef = isEditing ? ref(db, `promotions/${elements.promotionEditId.value}`) : push(ref(db, 'promotions')); if (!isEditing) promoData.createdAt = serverTimestamp(); await set(promoRef, promoData); showStatus(elements.promotionsStatus, `Promotion ${isEditing ? 'updated' : 'added'}!`, "success"); getModalInstance(elements.promotionModalEl)?.hide(); loadPromotions(); } catch (e) { showStatus(elements.promotionStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
+    async function saveImageToLibrary() { if (!hasPermission('manageImageLibrary')) { alert('Access Denied'); return; } const isEditing = !!elements.imageLibraryEditId.value; const name = elements.libraryImageNameInput.value.trim(); if (!name) { showStatus(elements.saveImageLibraryStatus, "Image Name is required.", "warning"); return; } showLoader(true); try { let imageUrl = elements.libraryImageUrlInput.value.trim(); const imageFile = elements.libraryImageFileInput.files[0]; if (imageFile) { const statusDiv = elements.imageLibraryForm.querySelector('.imgbb-upload-status'); statusDiv.style.display = 'block'; imageUrl = await uploadToImgBB(imageFile, statusDiv); } if (!imageUrl) { throw new Error("Image URL is required (either paste a link or upload a file)."); } const imageData = { name, url: imageUrl, updatedAt: serverTimestamp() }; const imageRef = isEditing ? ref(db, `image_library/${elements.imageLibraryEditId.value}`) : push(ref(db, 'image_library')); if (!isEditing) imageData.createdAt = serverTimestamp(); await set(imageRef, imageData); showStatus(elements.imageLibraryStatus, `Image ${isEditing ? 'updated' : 'added'}!`, "success"); getModalInstance(elements.imageLibraryModalEl)?.hide(); loadImagesFromLibrary(); } catch (e) { showStatus(elements.saveImageLibraryStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
+        async function saveStaff() {
+        if (!hasPermission('manageStaff')) {
+            showStatus(elements.staffModalStatus, "Access Denied.", "danger");
+            return;
+        }
+
+        const staffId = elements.staffEditId.value;
+        const isEditing = !!staffId;
+        const name = elements.staffNameInput.value.trim();
+        
+        if (!name) {
+            showStatus(elements.staffModalStatus, "Name is required.", "warning");
+            return;
+        }
+
+        showLoader(true);
+        try {
+            let uid, email;
+            
+            if (isEditing) {
+                uid = staffId;
+                email = elements.staffEmailInput.value.trim();
+            } else {
+                // नया स्टाफ जोड़ते समय
+                uid = getElement('staffUid').value.trim();
+                email = elements.staffEmailInput.value.trim();
+                if (!uid || !email) {
+                    throw new Error("Staff UID and Email are required to add a new staff member.");
+                }
+                
+                // जांचें कि यह स्टाफ पहले से मौजूद है या नहीं
+                const existingStaffSnap = await get(ref(db, `staffAccounts/${uid}`));
+                if (existingStaffSnap.exists()) {
+                    throw new Error("A staff member with this UID already exists. Please edit them instead.");
+                }
+            }
+            
+            const permissions = {};
+            elements.staffPermissionsContainer.querySelectorAll('input[type="checkbox"]:not(:disabled)').forEach(box => {
+                permissions[box.dataset.permissionKey] = box.checked;
+            });
+
+            const staffData = {
+                name,
+                email,
+                permissions,
+                updatedAt: serverTimestamp()
+            };
+            if (!isEditing) staffData.createdAt = serverTimestamp();
+
+            await set(ref(db, `staffAccounts/${uid}`), staffData);
+            showStatus(elements.staffStatus, `Staff account for ${name} ${isEditing ? 'updated' : 'created'}!`, "success");
+            getModalInstance(elements.staffModalEl)?.hide();
+            loadStaff();
+
+        } catch (e) {
+            console.error("Staff Save Error:", e);
+            showStatus(elements.staffModalStatus, `Error: ${e.message}`, "danger", false);
+        } finally {
+            showLoader(false);
+        }
+    }
+    async function saveSettings(event) { event.preventDefault(); if (!hasPermission('manageSettings')) { alert('Access Denied'); return; } const settingsData = { logoUrl: elements.settingLogoUrlInput.value.trim(), appName: elements.settingAppNameInput.value.trim(), minWithdraw: parseFloat(elements.settingMinWithdrawInput.value) || 0, referralBonus: parseFloat(elements.settingReferralBonusInput.value) || 0, supportContact: elements.settingSupportContactInput.value.trim(), upiDetails: elements.settingUpiDetailsInput.value.trim(), qrCodeUrl: elements.settingQrCodeUrlInput.value.trim(), policyPrivacy: elements.settingPolicyPrivacyInput.value.trim(), policyTerms: elements.settingPolicyTermsInput.value.trim(), policyRefund: elements.settingPolicyRefundInput.value.trim(), policyFairPlay: elements.settingPolicyFairPlayInput.value.trim(), lastUpdated: serverTimestamp() }; showLoader(true); try { await set(ref(db, 'settings'), settingsData); showStatus(elements.settingsStatus, "Settings saved!", "success"); loadSettings(); } catch (e) { showStatus(elements.settingsStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
     
     async function refundTournamentEntryFees(tournamentId, tournamentData) {
-    const entryFee = parseFloat(tournamentData.entryFee) || 0;
-    const players = tournamentData.registeredPlayers || {};
-    const userIds = Object.keys(players);
-    
-    if (entryFee <= 0) {
-    console.log(`Tournament ${tournamentId} has no entry fee. No refunds will be processed.`);
-    return;
+        const entryFee = parseFloat(tournamentData.entryFee) || 0;
+        const players = tournamentData.registeredPlayers || {};
+        const userIds = Object.keys(players);
+        if (entryFee <= 0 || userIds.length === 0) return;
+        showStatus(elements.tournamentsStatus, `Refunding players for tournament: ${tournamentData.name}...`, "info", 10000);
+        const updates = {};
+        const transactionPromises = [];
+        for (const userId of userIds) {
+        const userRef = ref(db, `users/${userId}`);
+        const promise = runTransaction(userRef, (user) => { if (user) { user.balance = (user.balance || 0) + entryFee; } return user; }).then(txResult => {
+        if (txResult.committed) {
+        const newBalance = txResult.snapshot.val().balance;
+        const txKey = push(ref(db, `transactions/${userId}`)).key;
+        updates[`transactions/${userId}/${txKey}`] = { type: 'refund', amount: entryFee, description: `Refund for cancelled tournament: ${sanitizeHTML(tournamentData.name)}`, timestamp: serverTimestamp(), balanceAfter: newBalance, details: { tournamentId } };
+        } }).catch(error => { console.error(`Error processing refund for user ${userId}:`, error); });
+        transactionPromises.push(promise);
+        }
+        await Promise.all(transactionPromises);
+        if (Object.keys(updates).length > 0) { await update(ref(db), updates); return `Refunded ${Object.keys(updates).length} players.`; } else { return "No players were refunded."; }
     }
-    if (userIds.length === 0) {
-    console.log(`Tournament ${tournamentId} has no registered players. No refunds needed.`);
-    return;
-    }
-    
-    console.log(`Starting refund process for tournament: ${tournamentId}. Refunding ${formatCurrency(entryFee)} to ${userIds.length} players.`);
-    showStatus(elements.tournamentsStatus, `Refunding players for tournament: ${tournamentData.name}...`, "info", 10000);
-    
-    const updates = {};
-    const transactionPromises = [];
-    
-    for (const userId of userIds) {
-    const userRef = ref(db, `users/${userId}`);
-    const promise = runTransaction(userRef, (user) => {
-    if (user) {
-    user.balance = (user.balance || 0) + entryFee;
-    }
-    return user;
-    }).then(txResult => {
-    if (txResult.committed) {
-    const newBalance = txResult.snapshot.val().balance;
-    const txKey = push(ref(db, `transactions/${userId}`)).key;
-    updates[`transactions/${userId}/${txKey}`] = {
-    type: 'refund',
-    amount: entryFee,
-    description: `Refund for cancelled tournament: ${sanitizeHTML(tournamentData.name)}`,
-    timestamp: serverTimestamp(),
-    balanceAfter: newBalance,
-    details: { tournamentId }
-    };
-    } else {
-    console.warn(`Transaction for user ${userId} failed or was aborted. They were not refunded.`);
-    }
-    }).catch(error => {
-    console.error(`Error processing refund for user ${userId}:`, error);
-    });
-    transactionPromises.push(promise);
-    }
-    
-    await Promise.all(transactionPromises);
-    
-    if (Object.keys(updates).length > 0) {
-    await update(ref(db), updates);
-    console.log("All refund transaction logs have been written to the database.");
-    return `Refunded ${Object.keys(updates).length} players.`;
-    } else {
-    return "No players were refunded (perhaps they were deleted or transaction failed).";
-    }
-    }
-    
+
     async function saveTournament(event) {
-    event.preventDefault();
-    if (!isDesignatedAdmin(currentAdminUser)) return;
-    const isEditing = !!currentActionDetails.id;
-    
-    try {
-    const newStatus = elements.tournamentStatusSelect.value;
-    const oldStatus = isEditing ? currentActionDetails.status : null;
-    let refundMessage = "";
-    
-    if (isEditing && newStatus === 'cancelled' && oldStatus !== 'cancelled') {
-    showLoader(true);
-    refundMessage = await refundTournamentEntryFees(currentActionDetails.id, currentActionDetails);
+        event.preventDefault();
+        if (!hasPermission('manageTournaments')) { alert('Access Denied'); return; }
+        const isEditing = !!currentActionDetails.id;
+        showLoader(true);
+        try {
+            const newStatus = elements.tournamentStatusSelect.value;
+            const oldStatus = isEditing ? currentActionDetails.status : null;
+            let refundMessage = "";
+            if (isEditing && newStatus === 'cancelled' && oldStatus !== 'cancelled') { refundMessage = await refundTournamentEntryFees(currentActionDetails.id, currentActionDetails); }
+            const bannerUrl = elements.tournamentBannerSelect.value;
+            const prizeDistText = elements.tournamentPrizeDistributionInput.value.trim();
+            let prizeDistribution = null;
+            if (prizeDistText) { try { prizeDistribution = JSON.parse(prizeDistText); } catch(e) { throw new Error("Prize Distribution is not a valid JSON object."); } }
+            const tournamentData = { gameId: elements.tournamentGameSelect.value, name: elements.tournamentNameInput.value.trim(), startTime: new Date(elements.tournamentStartTimeInput.value).getTime(), status: elements.tournamentStatusSelect.value, entryFee: parseFloat(elements.tournamentEntryFeeInput.value) || 0, prizePool: parseFloat(elements.tournamentPrizePoolInput.value) || 0, perKillPrize: parseFloat(elements.tournamentPerKillInput.value) || 0, maxPlayers: parseInt(elements.tournamentMaxPlayersInput.value) || 0, tags: elements.tournamentTagsInput.value.split(',').map(t => t.trim()).filter(Boolean), icon: elements.tournamentIconInput.value.trim() || null, bannerUrl: bannerUrl || null, description: elements.tournamentDescriptionInput.value.trim(), prizeDistribution: prizeDistribution, roomId: elements.tournamentRoomIdInput.value.trim(), roomPassword: elements.tournamentRoomPasswordInput.value.trim(), showIdPass: elements.tournamentShowIdPassCheckbox.checked, updatedAt: serverTimestamp() };
+            if (!tournamentData.gameId || !tournamentData.name || !tournamentData.startTime) { showStatus(elements.addTournamentStatus, "Game, Name, Start Time required.", "warning"); showLoader(false); return; }
+            const tRef = isEditing ? ref(db, `tournaments/${currentActionDetails.id}`) : push(ref(db, 'tournaments'));
+            if (isEditing) {
+                if(currentActionDetails.registeredPlayers) tournamentData.registeredPlayers = currentActionDetails.registeredPlayers;
+                if(currentActionDetails.results) tournamentData.results = currentActionDetails.results;
+            } else { tournamentData.createdAt = serverTimestamp(); }
+            await set(tRef, tournamentData);
+            let successMessage = `Tournament ${isEditing ? 'updated' : 'added'} successfully!`;
+            if (refundMessage) successMessage += ` ${refundMessage}`;
+            showStatus(elements.tournamentsStatus, successMessage, "success", 8000);
+            getModalInstance(elements.addTournamentModalEl)?.hide();
+            loadTournaments();
+            loadDashboardStats();
+        } catch (e) { showStatus(elements.addTournamentStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); }
     }
     
-    const prizeDistText = elements.tournamentPrizeDistributionInput.value.trim();
-    let prizeDistribution = null;
-    if (prizeDistText) { try { prizeDistribution = JSON.parse(prizeDistText); } catch(e) { throw new Error("Prize Distribution is not a valid JSON object."); } }
-    const tournamentData = { gameId: elements.tournamentGameSelect.value, name: elements.tournamentNameInput.value.trim(), startTime: new Date(elements.tournamentStartTimeInput.value).getTime(), status: elements.tournamentStatusSelect.value, entryFee: parseFloat(elements.tournamentEntryFeeInput.value) || 0, prizePool: parseFloat(elements.tournamentPrizePoolInput.value) || 0, perKillPrize: parseFloat(elements.tournamentPerKillInput.value) || 0, maxPlayers: parseInt(elements.tournamentMaxPlayersInput.value) || 0, tags: elements.tournamentTagsInput.value.split(',').map(t => t.trim()).filter(Boolean), icon: elements.tournamentIconInput.value.trim() || null, description: elements.tournamentDescriptionInput.value.trim(), prizeDistribution: prizeDistribution, roomId: elements.tournamentRoomIdInput.value.trim(), roomPassword: elements.tournamentRoomPasswordInput.value.trim(), showIdPass: elements.tournamentShowIdPassCheckbox.checked, updatedAt: serverTimestamp() };
-    if (!tournamentData.gameId || !tournamentData.name || !tournamentData.startTime) { showStatus(elements.addTournamentStatus, "Game, Name, Start Time required.", "warning"); return; }
-    
-    showLoader(true);
-    const tRef = isEditing ? ref(db, `tournaments/${currentActionDetails.id}`) : push(ref(db, 'tournaments'));
-    if (isEditing) {
-    if(currentActionDetails.registeredPlayers) tournamentData.registeredPlayers = currentActionDetails.registeredPlayers;
-    if(currentActionDetails.results) tournamentData.results = currentActionDetails.results;
-    } else {
-    tournamentData.createdAt = serverTimestamp();
-    }
-    
-    await set(tRef, tournamentData);
-    
-    let successMessage = `Tournament ${isEditing ? 'updated' : 'added'} successfully!`;
-    if (refundMessage) {
-    successMessage += ` ${refundMessage}`;
-    }
-    showStatus(elements.tournamentsStatus, successMessage, "success", 8000);
-    
-    getModalInstance(elements.addTournamentModalEl)?.hide();
-    loadTournaments();
-    loadDashboardStats();
-    
-    } catch (e) {
-    showStatus(elements.addTournamentStatus, `Error: ${e.message}`, "danger", false);
-    } finally {
-    showLoader(false);
-    }
-    }
-    
-    async function updateUserBalance(event) { event.preventDefault(); if (!isDesignatedAdmin(currentAdminUser)) return; const userId = elements.editUserUid.value; const amount = parseFloat(elements.balanceUpdateAmountInput.value); const type = elements.balanceUpdateTypeSelect.value; const reason = elements.balanceUpdateReasonInput.value.trim(); if (!userId || isNaN(amount) || amount === 0 || !type || !reason) { showStatus(elements.balanceUpdateStatus, "All fields required, amount non-zero.", "warning"); return; } showLoader(true); try { const txResult = await runTransaction(ref(db, `users/${userId}`), (user) => { if (!user) return user; user.balance = (user.balance || 0) + amount; if (type === 'winningCash') user.winningCash = (user.winningCash || 0) + amount; if (type === 'bonusCash') user.bonusCash = (user.bonusCash || 0) + amount; if (user.balance < 0 || user.winningCash < 0 || user.bonusCash < 0) { if (!confirm(`Warning: A balance will become negative. Proceed?`)) throw "Cancelled by admin."; } return user; }); if (!txResult.committed) throw new Error("Balance update failed (transaction aborted)."); const logType = `admin_${type}_${amount > 0 ? 'add' : 'deduct'}`; await push(ref(db, `transactions/${userId}`), { type: logType, amount, description: `Admin: ${reason}`, timestamp: serverTimestamp(), balanceAfter: txResult.snapshot.val().balance, adminUid: currentAdminUser.uid }); showStatus(elements.balanceUpdateStatus, "Balance updated!", "success"); openUserModal(userId); } catch (e) { showStatus(elements.balanceUpdateStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
-    
-    async function genericDelete(path, id, type, statusEl) {
+    async function updateUserBalance(event) { event.preventDefault(); if (!hasPermission('manageUsers')) { alert('Access Denied'); return; } const userId = elements.editUserUid.value; const amount = parseFloat(elements.balanceUpdateAmountInput.value); const type = elements.balanceUpdateTypeSelect.value; const reason = elements.balanceUpdateReasonInput.value.trim(); if (!userId || isNaN(amount) || amount === 0 || !type || !reason) { showStatus(elements.balanceUpdateStatus, "All fields required, amount non-zero.", "warning"); return; } showLoader(true); try { const txResult = await runTransaction(ref(db, `users/${userId}`), (user) => { if (!user) return user; user.balance = (user.balance || 0) + amount; if (type === 'winningCash') user.winningCash = (user.winningCash || 0) + amount; if (type === 'bonusCash') user.bonusCash = (user.bonusCash || 0) + amount; if (user.balance < 0 || user.winningCash < 0 || user.bonusCash < 0) { if (!confirm(`Warning: A balance will become negative. Proceed?`)) throw "Cancelled by admin."; } return user; }); if (!txResult.committed) throw new Error("Balance update failed (transaction aborted)."); const logType = `admin_${type}_${amount > 0 ? 'add' : 'deduct'}`; await push(ref(db, `transactions/${userId}`), { type: logType, amount, description: `Admin: ${reason}`, timestamp: serverTimestamp(), balanceAfter: txResult.snapshot.val().balance, adminUid: currentAdminUser.uid }); showStatus(elements.balanceUpdateStatus, "Balance updated!", "success"); openUserModal(userId); } catch (e) { showStatus(elements.balanceUpdateStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
+    async function genericDelete(path, id, type, statusEl, permissionKey) {
+    if (!hasPermission(permissionKey)) { alert("Access Denied"); return; }
     const confirmMessage = type === 'Tournament'
     ? `DELETE Tournament ID: ${id}?\n\nWARNING: This will NOT refund players. To refund players, please use the 'Edit' button and set the status to 'Cancelled'.\n\nThis action cannot be undone.`
     : `DELETE ${type} ID: ${id}? Cannot be undone.`;
     
-    if (!isDesignatedAdmin(currentAdminUser) || !confirm(confirmMessage)) return;
-    
+    if (!confirm(confirmMessage)) return;
     showLoader(true);
     try {
     await remove(ref(db, `${path}/${id}`));
     showStatus(statusEl, `${type} deleted.`, "success");
-    
     if (type === 'Game') { delete gameDataCache[id]; loadGames(); }
     if (type === 'Promotion') loadPromotions();
     if (type === 'Tournament') loadTournaments();
-    
+    if (type === 'Library Image') loadImagesFromLibrary();
     loadDashboardStats();
     } catch (e) {
     showStatus(statusEl, `Error deleting ${type}: ${e.message}`, "danger", false);
-    } finally {
-    showLoader(false);
+    } finally { showLoader(false); }
     }
+    const deleteGame = (id) => genericDelete('games', id, 'Game', elements.gamesStatus, 'manageGames');
+    const deletePromotion = (id) => genericDelete('promotions', id, 'Promotion', elements.promotionsStatus, 'managePromotions');
+    const deleteTournament = (id) => genericDelete('tournaments', id, 'Tournament', elements.tournamentsStatus, 'manageTournaments');
+    const deleteLibraryImage = (id) => genericDelete('image_library', id, 'Library Image', elements.imageLibraryStatus, 'manageImageLibrary');
+    async function deleteUser(userId) { if (!hasPermission('manageUsers')) { alert('Access Denied'); return; } if (!confirm(`DELETE USER: ${userId}?\n\nWARNING: Removes user data from Realtime Database ONLY. DOES NOT delete from Firebase Auth. Cannot be undone.`)) return; showLoader(true); getModalInstance(elements.userModalEl)?.hide(); try { await remove(ref(db, `users/${userId}`)); delete fullUserDataCache[userId]; delete userDataCache[userId]; showStatus(elements.usersStatus, `User ${userId} deleted from DB.`, "success"); renderUsersTable(Object.values(fullUserDataCache)); loadDashboardStats(); } catch (e) { showStatus(elements.usersStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
+    async function deleteStaff(staffId) {
+        if (!hasPermission('manageStaff')) { alert("Access Denied"); return; }
+        if (!confirm(`Are you sure you want to delete this staff account?\n\nThis will remove their access from the admin panel.\nNOTE: The user will NOT be deleted from Firebase Authentication. You must do that manually in the Firebase Console to fully remove them.`)) return;
+        showLoader(true);
+        try { await remove(ref(db, `staffAccounts/${staffId}`)); showStatus(elements.staffStatus, "Staff account removed.", "success"); loadStaff(); } catch (e) { showStatus(elements.staffStatus, `Error deleting staff: ${e.message}`, "danger"); } finally { showLoader(false); }
     }
-    const deleteGame = (id) => genericDelete('games', id, 'Game', elements.gamesStatus);
-    const deletePromotion = (id) => genericDelete('promotions', id, 'Promotion', elements.promotionsStatus);
-    const deleteTournament = (id) => genericDelete('tournaments', id, 'Tournament', elements.tournamentsStatus);
-    
-    async function deleteUser(userId) { if (!isDesignatedAdmin(currentAdminUser) || !confirm(`DELETE USER: ${userId}?\n\nWARNING: Removes user data from Realtime Database ONLY. DOES NOT delete from Firebase Auth. Cannot be undone.`)) return; showLoader(true); getModalInstance(elements.userModalEl)?.hide(); try { await remove(ref(db, `users/${userId}`)); delete fullUserDataCache[userId]; delete userDataCache[userId]; showStatus(elements.usersStatus, `User ${userId} deleted from DB.`, "success"); filterUsers(); loadDashboardStats(); } catch (e) { showStatus(elements.usersStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
-    
+
     // --- Action Modals & Processing ---
     async function openRequestActionModal(type, id) {
-    if (!isDesignatedAdmin(currentAdminUser)) return;
     const isDeposit = type === 'deposit';
+    if(isDeposit && !hasPermission('manageDeposits')) { alert('Access Denied'); return; }
+    if(!isDeposit && !hasPermission('manageWithdrawals')) { alert('Access Denied'); return; }
+    
     const path = isDeposit ? 'depositRequests' : 'withdrawals';
     const modalEl = isDeposit ? elements.depositActionModalEl : elements.withdrawalActionModalEl;
     showLoader(true);
@@ -1066,175 +1592,171 @@
     } catch (e) { alert(`Error: ${e.message}`); } finally { showLoader(false); }
     }
     async function processRequestAction(action) {
-    if (!isDesignatedAdmin(currentAdminUser) || !currentActionDetails.id) return;
-    const { id, type, userId, amount } = currentActionDetails;
-    const isDeposit = type === 'deposit';
-    const isApprove = action === 'approve';
-    const path = isDeposit ? 'depositRequests' : 'withdrawals';
-    const statusEl = getElement(`${type}ActionStatus`);
-    const modalEl = isDeposit ? elements.depositActionModalEl : elements.withdrawalActionModalEl;
-    
-    showLoader(true);
-    try {
-    const note = getElement(`${type}ApproveNote`).value.trim();
-    const reason = getElement(`${type}RejectReason`).value.trim();
-    if (!isApprove && !reason) throw new Error("Rejection reason is required.");
-    
-    const updates = {};
-    const reqRefPath = `${path}/${id}`;
-    updates[`${reqRefPath}/status`] = isApprove ? (isDeposit ? 'approved' : 'completed') : 'rejected';
-    updates[`${reqRefPath}/processedAt`] = serverTimestamp();
-    updates[`${reqRefPath}/processedBy`] = currentAdminUser.email;
-    if (isApprove) updates[`${reqRefPath}/adminNote`] = note || 'Approved';
-    else updates[`${reqRefPath}/rejectReason`] = reason;
-    
-    if(isApprove) {
-    const txResult = await runTransaction(ref(db, `users/${userId}`), (user) => {
-    if(user) {
-    if (isDeposit) { // Add to balance
-    user.balance = (user.balance || 0) + amount;
-    } else { // Withdrawal: no balance change needed as it was pre-deducted
-    // no-op for balance
-    }
-    }
-    return user;
-    });
-    if (!txResult.committed) throw new Error("Failed to update user state.");
-    if(isDeposit) {
-    updates[`transactions/${userId}/${push(ref(db)).key}`] = { type: 'deposit_approved', amount, description: `Deposit: ${note || 'Approved'}`, timestamp: serverTimestamp(), balanceAfter: txResult.snapshot.val().balance, adminUid: currentAdminUser.uid };
-    }
-    }
-    
-    if(!isApprove && !isDeposit) { // Withdrawal rejected, refund both total and winning cash
-    const txResult = await runTransaction(ref(db, `users/${userId}`), (user) => {
-    if (user) { 
-    user.balance = (user.balance || 0) + amount; 
-    user.winningCash = (user.winningCash || 0) + amount; 
-    }
-    return user;
-    });
-    if (!txResult.committed) throw new Error("Failed to refund user balance.");
-    updates[`transactions/${userId}/${push(ref(db)).key}`] = { type: 'withdrawal_refund', amount, description: `Refund Rejected Withdrawal. Reason: ${reason}`, timestamp: serverTimestamp(), balanceAfter: txResult.snapshot.val().balance, adminUid: currentAdminUser.uid };
-    }
-    
-    await update(ref(db), updates);
-    showStatus(elements[`${isDeposit ? 'deposits' : 'withdrawals'}Status`], `Request ${action}d successfully!`, "success");
-    getModalInstance(modalEl)?.hide();
-    isDeposit ? loadDeposits('pending') : loadWithdrawals('pending');
-    loadDashboardStats();
-    } catch(e) { showStatus(statusEl, `Error: ${e.message}`, "danger", false); }
-    finally { showLoader(false); }
+        const { id, type, userId, amount } = currentActionDetails;
+        const isDeposit = type === 'deposit';
+        if (isDeposit && !hasPermission('manageDeposits')) { alert('Access Denied'); return; }
+        if (!isDeposit && !hasPermission('manageWithdrawals')) { alert('Access Denied'); return; }
+
+        const isApprove = action === 'approve';
+        const path = isDeposit ? 'depositRequests' : 'withdrawals';
+        const statusEl = getElement(`${type}ActionStatus`);
+        const modalEl = isDeposit ? elements.depositActionModalEl : elements.withdrawalActionModalEl;
+        
+        showLoader(true);
+        try {
+            const note = getElement(`${type}ApproveNote`).value.trim();
+            const reason = getElement(`${type}RejectReason`).value.trim();
+            if (!isApprove && !reason) throw new Error("Rejection reason is required.");
+            
+            const updates = {};
+            const reqRefPath = `${path}/${id}`;
+            updates[`${reqRefPath}/status`] = isApprove ? (isDeposit ? 'approved' : 'completed') : 'rejected';
+            updates[`${reqRefPath}/processedAt`] = serverTimestamp();
+            updates[`${reqRefPath}/processedBy`] = currentAdminUser.email;
+            if (isApprove) updates[`${reqRefPath}/adminNote`] = note || 'Approved';
+            else updates[`${reqRefPath}/rejectReason`] = reason;
+            
+            if (isApprove) {
+                if (isDeposit) {
+                    const txResult = await runTransaction(ref(db, `users/${userId}`), (user) => { if(user) { user.balance = (user.balance || 0) + amount; } return user; });
+                    if (!txResult.committed) throw new Error("Failed to update user balance.");
+                    updates[`transactions/${userId}/${push(ref(db)).key}`] = { type: 'deposit_approved', amount, description: `Deposit: ${note || 'Approved'}`, timestamp: serverTimestamp(), balanceAfter: txResult.snapshot.val().balance, adminUid: currentAdminUser.uid };
+                    await sendNotification(userId, 'Deposit Approved', `Your deposit of ${formatCurrency(amount)} has been approved and added to your wallet.`, 'deposit_approved');
+                } else { // Withdrawal approved - balance already deducted on request
+                    await sendNotification(userId, 'Withdrawal Processed', `Your withdrawal request for ${formatCurrency(amount)} has been processed.`, 'withdrawal_completed');
+                }
+            } else { // Reject
+                if (isDeposit) {
+                     await sendNotification(userId, 'Deposit Rejected', `Your deposit of ${formatCurrency(amount)} was rejected. Reason: ${reason}`, 'deposit_rejected');
+                } else { // Withdrawal rejected, refund both total and winning cash
+                    const txResult = await runTransaction(ref(db, `users/${userId}`), (user) => { if (user) { user.balance = (user.balance || 0) + amount; user.winningCash = (user.winningCash || 0) + amount; } return user; });
+                    if (!txResult.committed) throw new Error("Failed to refund user balance.");
+                    updates[`transactions/${userId}/${push(ref(db)).key}`] = { type: 'withdrawal_refund', amount, description: `Refund Rejected Withdrawal. Reason: ${reason}`, timestamp: serverTimestamp(), balanceAfter: txResult.snapshot.val().balance, adminUid: currentAdminUser.uid };
+                    await sendNotification(userId, 'Withdrawal Rejected', `Your withdrawal of ${formatCurrency(amount)} was rejected and the amount has been refunded. Reason: ${reason}`, 'withdrawal_rejected');
+                }
+            }
+            
+            await update(ref(db), updates);
+            showStatus(elements[`${isDeposit ? 'deposits' : 'withdrawals'}Status`], `Request ${action}d successfully!`, "success");
+            getModalInstance(modalEl)?.hide();
+            isDeposit ? loadDeposits('pending') : loadWithdrawals('pending');
+            loadDashboardStats();
+        } catch(e) { showStatus(statusEl, `Error: ${e.message}`, "danger", false); }
+        finally { showLoader(false); }
     }
     
     // --- Realtime Listeners ---
     function setupRealtimeAdminListeners() {
-    if (!isDesignatedAdmin(currentAdminUser)) return;
-    const createCountListener = (path, element, dashboardStat) => {
-    const q = query(ref(db, path), orderByChild('status'), equalTo('pending'));
-    const listener = onValue(q, (s) => {
-    const count = s.exists() ? s.size : 0;
-    element.textContent = count;
-    element.style.display = count > 0 ? 'inline-block' : 'none';
-    if (dashboardStat && dashboardStat.closest('.section.active')) dashboardStat.textContent = count;
-    }, e => { console.error(`Listener error (${path}):`, e); element.textContent = '!'; element.style.display = 'inline-block'; });
-    return { ref: q, func: listener };
-    };
-    const wListener = createCountListener('withdrawals', elements.pendingWithdrawalCountBadge, elements.statPendingWithdrawals);
-    const dListener = createCountListener('depositRequests', elements.pendingDepositCountBadge, elements.statPendingDeposits);
-    dbListeners['pendingWithdrawalsCount'] = wListener;
-    dbListeners['pendingDepositsCount'] = dListener;
+        if (!currentAdminUser) return;
+        const createCountListener = (path, element, dashboardStat, permissionKey) => {
+            if (!hasPermission(permissionKey)) {
+                element.style.display = 'none';
+                return;
+            }
+            const q = query(ref(db, path), orderByChild('status'), equalTo('pending'));
+            const listener = onValue(q, (s) => {
+                const count = s.exists() ? s.size : 0;
+                element.textContent = count;
+                element.style.display = count > 0 ? 'inline-block' : 'none';
+                if (dashboardStat && dashboardStat.closest('.section.active')) dashboardStat.textContent = count;
+            }, e => { console.error(`Listener error (${path}):`, e); element.textContent = '!'; element.style.display = 'inline-block'; });
+            dbListeners[path] = { ref: q, func: listener };
+        };
+        createCountListener('withdrawals', elements.pendingWithdrawalCountBadge, elements.statPendingWithdrawals, 'manageWithdrawals');
+        createCountListener('depositRequests', elements.pendingDepositCountBadge, elements.statPendingDeposits, 'manageDeposits');
     }
     function detachAllAdminListeners() { Object.values(dbListeners).forEach(({ ref, func }) => off(ref, 'value', func)); dbListeners = {}; }
     
     // --- Modal Opening Helpers ---
     async function openEditGameModal(id) { showLoader(true); try { const s = await get(ref(db, `games/${id}`)); if (!s.exists()) throw "Not found"; elements.gameModalTitle.textContent = "Edit Game"; elements.gameEditId.value = id; const game = s.val(); elements.gameNameInput.value = game.name; elements.gameImageUrlInput.value = game.imageUrl; getModalInstance(elements.gameModalEl)?.show(); } catch (e) { alert(`Error: ${e}`); } finally { showLoader(false); } }
     async function openEditPromotionModal(id) { showLoader(true); try { const s = await get(ref(db, `promotions/${id}`)); if (!s.exists()) throw "Not found"; elements.promotionModalTitle.textContent = "Edit Promotion"; elements.promotionEditId.value = id; const promo = s.val(); elements.promoImageUrlInput.value = promo.imageUrl; elements.promoLinkInput.value = promo.link; getModalInstance(elements.promotionModalEl)?.show(); } catch (e) { alert(`Error: ${e}`); } finally { showLoader(false); } }
+    async function openEditLibraryImageModal(id) { showLoader(true); try { const s = await get(ref(db, `image_library/${id}`)); if (!s.exists()) throw "Not found"; elements.imageLibraryModalTitle.textContent = "Edit Image"; elements.imageLibraryEditId.value = id; const img = s.val(); elements.libraryImageNameInput.value = img.name; elements.libraryImageUrlInput.value = img.url; getModalInstance(elements.imageLibraryModalEl)?.show(); } catch (e) { alert(`Error: ${e}`); } finally { showLoader(false); } }
     async function populateGameSelect(selectedValue = null) { elements.tournamentGameSelect.innerHTML = '<option>Loading...</option>'; if (Object.keys(gameDataCache).length === 0) await loadGames(); let options = '<option value="">-- Select Game --</option>'; Object.entries(gameDataCache).sort(([,a],[,b]) => a.localeCompare(b)).forEach(([id, name]) => options += `<option value="${id}">${sanitizeHTML(name)}</option>`); elements.tournamentGameSelect.innerHTML = options; if (selectedValue) elements.tournamentGameSelect.value = selectedValue; }
-    
+    async function populateBannerImageSelect(selectedValue = null) {
+        elements.tournamentBannerSelect.innerHTML = '<option>Loading images...</option>';
+        try {
+            const snapshot = await get(ref(db, 'image_library'));
+            let options = '<option value="">-- No Banner --</option>';
+            if (snapshot.exists()) {
+                const images = [];
+                snapshot.forEach(child => images.push({ ...child.val(), id: child.key }));
+                images.sort((a,b) => a.name.localeCompare(b.name));
+                images.forEach(img => options += `<option value="${sanitizeHTML(img.url)}">${sanitizeHTML(img.name)}</option>`);
+            }
+            elements.tournamentBannerSelect.innerHTML = options;
+            if (selectedValue) elements.tournamentBannerSelect.value = selectedValue;
+        } catch (e) {
+            elements.tournamentBannerSelect.innerHTML = '<option value="">Error loading images</option>';
+            console.error("Error populating banner select:", e);
+        }
+    }
     async function openEditTournamentModal(id) {
-    showLoader(true);
-    try {
-    const s = await get(ref(db, `tournaments/${id}`));
-    if (!s.exists()) throw new Error("Tournament not found");
-    const t = s.val();
+        showLoader(true);
+        try {
+            const s = await get(ref(db, `tournaments/${id}`));
+            if (!s.exists()) throw new Error("Tournament not found");
+            const t = s.val();
+            currentActionDetails = { id, ...t }; 
+            elements.tournamentModalTitle.textContent = "Edit Tournament";
+            await populateGameSelect(t.gameId);
+            await populateBannerImageSelect(t.bannerUrl);
+            elements.tournamentNameInput.value = t.name || '';
+            if (t.startTime) { try { const d = new Date(t.startTime); const timezoneOffset = d.getTimezoneOffset() * 60000; elements.tournamentStartTimeInput.value = new Date(d - timezoneOffset).toISOString().slice(0, 16); } catch(e) { console.warn("Error formatting date for input", e); } }
+            
+            // --- START: PROBLEM FIX (100% Solution for Edit) ---
+            // पहले ड्रॉपडाउन में सभी ऑप्शन भरें
+            elements.tournamentStatusSelect.innerHTML = `
+                <option value="upcoming">Upcoming</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+                <option value="result">Result</option>
+                <option value="cancelled">Cancelled</option>
+            `;
+            // फिर टूर्नामेंट का सेव किया हुआ स्टेटस चुनें
+            elements.tournamentStatusSelect.value = t.status || 'upcoming'; 
+            // --- END: PROBLEM FIX ---
     
-    await populateGameSelect(t.gameId);
-    currentActionDetails = { id, ...t }; // Store all tournament data
-    elements.tournamentModalTitle.textContent = "Edit Tournament";
-    elements.tournamentGameSelect.value = t.gameId || '';
-    elements.tournamentNameInput.value = t.name || '';
-    if (t.startTime) {
-    try { const d = new Date(t.startTime); const timezoneOffset = d.getTimezoneOffset() * 60000; elements.tournamentStartTimeInput.value = new Date(d - timezoneOffset).toISOString().slice(0, 16); } catch(e) { console.warn("Error formatting date for input", e); }
+            elements.tournamentEntryFeeInput.value = t.entryFee ?? 0;
+            elements.tournamentPrizePoolInput.value = t.prizePool ?? 0;
+            elements.tournamentPerKillInput.value = t.perKillPrize ?? 0;
+            elements.tournamentMaxPlayersInput.value = t.maxPlayers ?? 0;
+            elements.tournamentTagsInput.value = (t.tags || []).join(', ');
+            elements.tournamentIconInput.value = t.icon || '';
+            elements.tournamentDescriptionInput.value = t.description || '';
+            elements.tournamentPrizeDistributionInput.value = t.prizeDistribution ? JSON.stringify(t.prizeDistribution, null, 2) : '';
+            elements.tournamentRoomIdInput.value = t.roomId || '';
+            elements.tournamentRoomPasswordInput.value = t.roomPassword || '';
+            elements.tournamentShowIdPassCheckbox.checked = t.showIdPass || false;
+            getModalInstance(elements.addTournamentModalEl)?.show();
+        } catch (e) {
+            alert(`Error: ${e.message}`);
+            console.error("Error opening edit tournament modal:", e);
+        } finally { showLoader(false); }
     }
-    elements.tournamentStatusSelect.value = t.status || 'upcoming';
-    elements.tournamentEntryFeeInput.value = t.entryFee ?? 0;
-    elements.tournamentPrizePoolInput.value = t.prizePool ?? 0;
-    elements.tournamentPerKillInput.value = t.perKillPrize ?? 0;
-    elements.tournamentMaxPlayersInput.value = t.maxPlayers ?? 0;
-    elements.tournamentTagsInput.value = (t.tags || []).join(', ');
-    elements.tournamentIconInput.value = t.icon || '';
-    elements.tournamentDescriptionInput.value = t.description || '';
-    elements.tournamentPrizeDistributionInput.value = t.prizeDistribution ? JSON.stringify(t.prizeDistribution, null, 2) : '';
-    elements.tournamentRoomIdInput.value = t.roomId || '';
-    elements.tournamentRoomPasswordInput.value = t.roomPassword || '';
-    elements.tournamentShowIdPassCheckbox.checked = t.showIdPass || false;
-    
-    getModalInstance(elements.addTournamentModalEl)?.show();
-    } catch (e) {
-    alert(`Error: ${e.message}`);
-    console.error("Error opening edit tournament modal:", e);
-    } finally { showLoader(false); }
-    }
-    
     async function openUserModal(userId) {
     showLoader(true);
     try {
     const userSnap = await get(ref(db, `users/${userId}`));
     if (!userSnap.exists()) throw "User not found";
     const user = userSnap.val();
-    
     elements.userModalTitle.textContent = `User: ${user.displayName}`;
     elements.userDetailUid.textContent = userId;
     elements.userDetailEmail.textContent = user.email;
     elements.userDetailName.textContent = user.displayName;
     elements.userDetailCreatedAt.textContent = formatDate(user.createdAt);
-    
     elements.userDetailBalance.textContent = (user.balance || 0).toFixed(2);
     elements.userDetailWinning.textContent = (user.winningCash || 0).toFixed(2);
     elements.userDetailBonus.textContent = (user.bonusCash || 0).toFixed(2);
     elements.editUserUid.value = userId;
-    
-    // User Status and Block/Unblock button
     const currentStatus = user.status || 'active';
     elements.userDetailStatus.textContent = currentStatus.charAt(0).toUpperCase() + currentStatus.slice(1);
     elements.userDetailStatus.className = `fw-bold text-${currentStatus === 'active' ? 'success' : 'danger'}`;
     elements.userBlockBtn.dataset.uid = userId;
     elements.userBlockBtn.dataset.currentStatus = currentStatus;
-    if (currentStatus === 'active') {
-    elements.userBlockBtn.className = 'btn btn-sm btn-outline-danger mb-2';
-    elements.userBlockBtn.innerHTML = `<i class="bi bi-slash-circle"></i> Block User`;
-    } else {
-    elements.userBlockBtn.className = 'btn btn-sm btn-outline-success mb-2';
-    elements.userBlockBtn.innerHTML = `<i class="bi bi-check-circle"></i> Unblock User`;
-    }
-    
-    // Referral Info
+    if (currentStatus === 'active') { elements.userBlockBtn.className = 'btn btn-sm btn-outline-danger mb-2'; elements.userBlockBtn.innerHTML = `<i class="bi bi-slash-circle"></i> Block User`; } else { elements.userBlockBtn.className = 'btn btn-sm btn-outline-success mb-2'; elements.userBlockBtn.innerHTML = `<i class="bi bi-check-circle"></i> Unblock User`; }
     elements.userDetailReferralCode.textContent = user.referralCode || 'N/A';
     elements.userDetailReferredCount.textContent = user.referredUsers ? Object.keys(user.referredUsers).length : 0;
-    
-    if (user.referredBy) {
-    const referrerSnap = await get(ref(db, `users/${user.referredBy}`));
-    if (referrerSnap.exists()) {
-    const referrer = referrerSnap.val();
-    elements.userDetailReferredBy.textContent = `${referrer.displayName} (${user.referredBy})`;
-    } else {
-    elements.userDetailReferredBy.textContent = `User not found (${user.referredBy})`;
-    }
-    } else {
-    elements.userDetailReferredBy.textContent = 'N/A';
-    }
-    
-    // Transactions
+    if (user.referredBy) { const referrerSnap = await get(ref(db, `users/${user.referredBy}`)); if (referrerSnap.exists()) { const referrer = referrerSnap.val(); elements.userDetailReferredBy.textContent = `${referrer.displayName} (${user.referredBy})`; } else { elements.userDetailReferredBy.textContent = `User not found (${user.referredBy})`; } } else { elements.userDetailReferredBy.textContent = 'N/A'; }
     const txSnap = await get(query(ref(db, `transactions/${userId}`), limitToLast(15)));
     let txHtml = '<p class="text-muted text-center p-3">No transactions found.</p>';
     if (txSnap.exists()) {
@@ -1244,331 +1766,338 @@
     txHtml += '</ul>';
     }
     elements.userTransactionsContainer.innerHTML = txHtml;
-    
     getModalInstance(elements.userModalEl)?.show();
     } catch (e) {
     alert(`Error opening user modal: ${e}`);
     console.error(e);
-    } finally {
-    showLoader(false);
+    } finally { showLoader(false); }
     }
-    }
-    
     async function toggleUserBlockStatus(uid, currentStatus) {
+    if (!hasPermission('manageUsers')) { alert('Access Denied'); return; }
     const newStatus = currentStatus === 'active' ? 'blocked' : 'active';
     if (!confirm(`Are you sure you want to ${newStatus === 'blocked' ? 'BLOCK' : 'UNBLOCK'} this user?`)) return;
-    
     showLoader(true);
-    try {
-    await update(ref(db, `users/${uid}`), { status: newStatus });
-    showStatus(elements.usersStatus, `User has been ${newStatus}.`, 'success');
-    openUserModal(uid); // Refresh the modal
-    loadUsers(); // Refresh the table
-    } catch (e) {
-    showStatus(elements.usersStatus, `Error updating status: ${e.message}`, 'danger', false);
-    } finally {
-    showLoader(false);
+    try { await update(ref(db, `users/${uid}`), { status: newStatus }); showStatus(elements.usersStatus, `User has been ${newStatus}.`, 'success'); openUserModal(uid); loadUsers(); } catch (e) { showStatus(elements.usersStatus, `Error updating status: ${e.message}`, 'danger', false); } finally { showLoader(false); }
     }
-    }
-    
     async function openRegisteredPlayersModal(tournamentId, tournamentName) {
-    if (!isDesignatedAdmin(currentAdminUser)) return;
+    if (!hasPermission('manageTournaments')) return;
     elements.registeredPlayersTournamentName.textContent = tournamentName;
-    elements.registeredPlayersTableBody.innerHTML = `<tr><td colspan="5" class="text-center p-3"><div class="spinner-border spinner-border-sm"></div></td></tr>`; // Colspan is now 5
+    elements.registeredPlayersTableBody.innerHTML = `<tr><td colspan="5" class="text-center p-3"><div class="spinner-border spinner-border-sm"></div></td></tr>`;
     getModalInstance(elements.registeredPlayersModalEl)?.show();
     clearStatus(elements.registeredPlayersStatus);
-    
     try {
     const playersRef = ref(db, `tournaments/${tournamentId}/registeredPlayers`);
     const snapshot = await get(playersRef);
-    if (!snapshot.exists()) {
-    elements.registeredPlayersTableBody.innerHTML = `<tr><td colspan="5" class="text-center p-3 text-muted">No players have registered yet.</td></tr>`;
-    return;
-    }
-    
+    if (!snapshot.exists()) { elements.registeredPlayersTableBody.innerHTML = `<tr><td colspan="5" class="text-center p-3 text-muted">No players have registered yet.</td></tr>`; return; }
     const registeredData = snapshot.val();
     const userIds = Object.keys(registeredData);
-    
     elements.registeredPlayersTableBody.closest('table').querySelector('thead tr').innerHTML = '<th>User UID</th><th>Name</th><th>Email</th><th>In-Game ID</th><th>Joined At</th>';
-    
     const userPromises = userIds.map(uid => get(ref(db, `users/${uid}`)));
     const userSnapshots = await Promise.all(userPromises);
-    
     let tableHtml = '';
     userSnapshots.forEach((userSnap, index) => {
     const uid = userIds[index];
     const regInfo = registeredData[uid];
     const joinedAt = regInfo?.joinedAt;
     const inGameName = regInfo?.inGameName || '<em class="text-muted">Not Provided</em>';
-    
     if (userSnap.exists()) {
     const user = userSnap.val();
-    tableHtml += `<tr>
-    <td><small class="text-muted">${uid}</small></td>
-    <td>${sanitizeHTML(user.displayName)}</td>
-    <td>${sanitizeHTML(user.email)}</td>
-    <td><strong>${sanitizeHTML(inGameName)}</strong></td>
-    <td>${formatDate(joinedAt)}</td>
-    </tr>`;
+    tableHtml += `<tr><td><small class="text-muted">${uid}</small></td><td>${sanitizeHTML(user.displayName)}</td><td>${sanitizeHTML(user.email)}</td><td><strong>${sanitizeHTML(inGameName)}</strong></td><td>${formatDate(joinedAt)}</td></tr>`;
     } else {
-    tableHtml += `<tr>
-    <td><small class="text-muted">${uid}</small></td>
-    <td colspan="2" class="text-warning">User profile not found</td>
-    <td><strong>${sanitizeHTML(inGameName)}</strong></td>
-    <td>${formatDate(joinedAt)}</td>
-    </tr>`;
+    tableHtml += `<tr><td><small class="text-muted">${uid}</small></td><td colspan="2" class="text-warning">User profile not found</td><td><strong>${sanitizeHTML(inGameName)}</strong></td><td>${formatDate(joinedAt)}</td></tr>`;
     }
     });
     elements.registeredPlayersTableBody.innerHTML = tableHtml;
-    
     } catch (error) {
     console.error("Error loading registered players:", error);
     elements.registeredPlayersTableBody.innerHTML = `<tr><td colspan="5" class="text-center p-3 text-danger">Error loading player details.</td></tr>`;
     showStatus(elements.registeredPlayersStatus, `Error: ${error.message}`, 'danger');
     }
     }
-    
-    // REPLACE the existing openDeclareResultModal function with this new one
-    
     async function openDeclareResultModal(tournamentId) {
-    if (!isDesignatedAdmin(currentAdminUser)) return;
+    if (!hasPermission('manageTournaments')) return;
     showLoader(true);
     clearStatus(elements.declareResultStatus);
-    
     try {
     const tSnap = await get(ref(db, `tournaments/${tournamentId}`));
     if (!tSnap.exists()) throw new Error("Tournament not found.");
     const tournament = tSnap.val();
-    
     currentActionDetails = { id: tournamentId, ...tournament };
-    
     elements.declareResultTournamentName.textContent = tournament.name;
-    
     let prizeInfoHtml = `<strong>Per Kill Prize:</strong> ${formatCurrency(tournament.perKillPrize || 0)}`;
-    if (tournament.prizeDistribution) {
-    const prizeList = Object.entries(tournament.prizeDistribution)
-    .map(([r, p]) => `Rank ${r}: ${formatCurrency(p)}`)
-    .join(', ');
-    prizeInfoHtml += `<br><strong>Rank Prizes:</strong> ${prizeList}`;
-    } else {
-    prizeInfoHtml += `<br><strong>Rank Prizes:</strong> Not set.`;
-    }
+    if (tournament.prizeDistribution) { const prizeList = Object.entries(tournament.prizeDistribution).map(([r, p]) => `Rank ${r}: ${formatCurrency(p)}`).join(', '); prizeInfoHtml += `<br><strong>Rank Prizes:</strong> ${prizeList}`; } else { prizeInfoHtml += `<br><strong>Rank Prizes:</strong> Not set.`; }
     elements.prizeDistributionInfo.innerHTML = prizeInfoHtml;
-    
-    // --- MODIFIED LOGIC: Now uses inGameName for the dropdown ---
     const registeredPlayers = tournament.registeredPlayers || {};
     const playerIds = Object.keys(registeredPlayers);
-    
     if (playerIds.length === 0) {
     showStatus(elements.declareResultStatus, "No players are registered for this tournament. Cannot declare results.", "warning", false);
     elements.winnerEntriesContainer.innerHTML = '';
     elements.addWinnerEntryBtn.disabled = true;
     } else {
-    const playerOptions = playerIds.map(uid => {
-    // Get the inGameName directly from the tournament registration data
-    const inGameName = registeredPlayers[uid]?.inGameName;
-    return { 
-    uid: uid, 
-    // Use the In-Game Name. If not available, show a fallback message.
-    name: inGameName || `UID: ${uid.substring(0,8)}... (No IGN)` 
-    };
-    }).sort((a, b) => a.name.localeCompare(b.name)); // Sort by In-Game Name
-    
+    const playerOptions = playerIds.map(uid => { const inGameName = registeredPlayers[uid]?.inGameName; return { uid: uid, name: inGameName || `UID: ${uid.substring(0,8)}... (No IGN)` }; }).sort((a, b) => a.name.localeCompare(b.name));
     currentActionDetails.playerOptions = playerOptions;
     elements.addWinnerEntryBtn.disabled = false;
     }
-    
     elements.winnerEntriesContainer.innerHTML = ''; 
     addWinnerEntryRow();
-    
     getModalInstance(elements.declareResultModalEl)?.show();
-    
     } catch (e) {
     console.error("Error opening declare result modal:", e);
     showStatus(elements.tournamentsStatus, `Error: ${e.message}`, 'danger');
-    } finally {
-    showLoader(false);
+    } finally { showLoader(false); }
     }
+        async function openEditStaffModal(staffId) {
+        showLoader(true);
+        try {
+            const snap = await get(ref(db, `staffAccounts/${staffId}`));
+            if (!snap.exists()) throw new Error("Staff member not found.");
+            const staff = snap.val();
+            elements.staffModalTitle.textContent = `Edit Staff: ${staff.name}`;
+            elements.staffEditId.value = staffId;
+            elements.staffNameInput.value = staff.name;
+            elements.staffEmailInput.value = staff.email;
+
+            // UI को एडिट करने के लिए सेट करें
+            querySel('#staffModal .add-staff-fields').style.display = 'none'; // UID/Email इनपुट छिपाएं
+            elements.staffEmailInput.disabled = true; // ईमेल को एडिट होने से रोकें
+            querySel('#staffModal .password-field-group').style.display = 'block'; // पासवर्ड वाला नोट दिखाएं
+
+            populatePermissionsCheckboxes(elements.staffPermissionsContainer, staff.permissions);
+            getModalInstance(elements.staffModalEl)?.show();
+        } catch (e) { alert(`Error: ${e.message}`); } finally { showLoader(false); }
     }
 
-    // *** MODIFIED: Now populates a dropdown with registered players ***
     function addWinnerEntryRow() {
         const template = getElement('winner-entry-template').firstElementChild.cloneNode(true);
         const selectElement = template.querySelector('.winner-uid-select');
-        
         if (currentActionDetails.playerOptions && selectElement) {
             let optionsHtml = '<option value="">-- Select a Player --</option>';
-            currentActionDetails.playerOptions.forEach(player => {
-                optionsHtml += `<option value="${player.uid}">${sanitizeHTML(player.name)}</option>`;
-            });
+            currentActionDetails.playerOptions.forEach(player => optionsHtml += `<option value="${player.uid}">${sanitizeHTML(player.name)}</option>`);
             selectElement.innerHTML = optionsHtml;
         }
-        
         elements.winnerEntriesContainer.appendChild(template);
     }
     
-    // *** MODIFIED: Now reads winner UID from the dropdown select ***
     async function processAndDeclareWinners() {
-        if (!isDesignatedAdmin(currentAdminUser) || !currentActionDetails.id) return;
+        if (!hasPermission('manageTournaments')) { alert('Access Denied'); return; }
         const statusEl = elements.declareResultStatus;
         clearStatus(statusEl);
         showLoader(true);
-        
         try {
             const winnerEntries = [];
             const enteredUIDs = new Set();
             const allRows = elements.winnerEntriesContainer.querySelectorAll('.winner-entry-row');
             if(allRows.length === 0) throw new Error("Please add at least one winner.");
-            
             for (const row of allRows) {
                 const uid = row.querySelector('.winner-uid-select').value;
                 const rank = parseInt(row.querySelector('.winner-rank').value, 10);
                 const kills = parseInt(row.querySelector('.winner-kills').value, 10);
-                
                 if (!uid) continue;
-                if (isNaN(rank) || rank < 1) {
-                    const selectedOption = row.querySelector('.winner-uid-select').selectedOptions[0];
-                    const playerName = selectedOption ? selectedOption.text : `player with UID ${uid}`;
-                    throw new Error(`Invalid rank for ${playerName}.`);
-                }
+                if (isNaN(rank) || rank < 1) { const selectedOption = row.querySelector('.winner-uid-select').selectedOptions[0]; const playerName = selectedOption ? selectedOption.text : `player with UID ${uid}`; throw new Error(`Invalid rank for ${playerName}.`); }
                 if (isNaN(kills) || kills < 0) throw new Error(`Invalid kills for user ${uid}.`);
                 if (enteredUIDs.has(uid)) throw new Error(`Duplicate User ID found: ${uid}.`);
-                
                 enteredUIDs.add(uid);
                 winnerEntries.push({ uid, rank, kills });
             }
             if (winnerEntries.length === 0) throw new Error("No valid winner entries provided.");
-            
             const updates = {};
             const finalResults = [];
             const tData = currentActionDetails;
-            
             for (const winner of winnerEntries) {
                 let totalPrize = 0;
-                
                 const killPrize = (winner.kills || 0) * (tData.perKillPrize || 0);
                 totalPrize += killPrize;
-                
                 const rankPrize = tData.prizeDistribution?.[winner.rank] || 0;
                 totalPrize += rankPrize;
-                
                 if (totalPrize > 0) {
                     const userRef = ref(db, `users/${winner.uid}`);
-                    const txResult = await runTransaction(userRef, (user) => {
-                        if(user){
-                            user.balance = (user.balance || 0) + totalPrize;
-                            user.winningCash = (user.winningCash || 0) + totalPrize;
-                            user.totalEarnings = (user.totalEarnings || 0) + totalPrize;
-                        }
-                        return user;
-                    });
+                    const txResult = await runTransaction(userRef, (user) => { if(user){ user.balance = (user.balance || 0) + totalPrize; user.winningCash = (user.winningCash || 0) + totalPrize; user.totalEarnings = (user.totalEarnings || 0) + totalPrize; } return user; });
                     if(!txResult.committed) throw new Error(`Failed to update balance for user ${winner.uid}`);
-                    
                     const txKey = push(ref(db, `transactions/${winner.uid}`)).key;
-                    updates[`transactions/${winner.uid}/${txKey}`] = {
-                        type: 'prize_win',
-                        amount: totalPrize,
-                        description: `Prize for ${tData.name}`,
-                        timestamp: serverTimestamp(),
-                        balanceAfter: txResult.snapshot.val().balance,
-                        details: { tournamentId: tData.id, rank: winner.rank, kills: winner.kills }
-                    };
+                    updates[`transactions/${winner.uid}/${txKey}`] = { type: 'prize_win', amount: totalPrize, description: `Prize for ${tData.name}`, timestamp: serverTimestamp(), balanceAfter: txResult.snapshot.val().balance, details: { tournamentId: tData.id, rank: winner.rank, kills: winner.kills } };
+                    await sendNotification(winner.uid, 'Tournament Prize Won!', `Congratulations! You won ${formatCurrency(totalPrize)} in ${tData.name}.`, 'prize_win');
                 }
                 finalResults.push({ ...winner, prize: totalPrize });
             }
-            
             updates[`tournaments/${tData.id}/status`] = 'result';
             updates[`tournaments/${tData.id}/results`] = finalResults;
-            
             await update(ref(db), updates);
-            
             showStatus(elements.tournamentsStatus, "Results declared and prizes distributed successfully!", "success");
             getModalInstance(elements.declareResultModalEl)?.hide();
             loadTournaments();
             loadDashboardStats();
-            
         } catch (e) {
             console.error("Error declaring results:", e);
             showStatus(statusEl, `Error: ${e.message}`, "danger", false);
+        } finally { showLoader(false); }
+    }
+    
+    // --- Notification Send Handler ---
+    async function handleSendNotificationForm(event) {
+        event.preventDefault();
+        if (!hasPermission('manageNotifications')) { alert("Access Denied."); return; }
+        const target = elements.notificationTarget.value;
+        const title = elements.notificationTitle.value.trim();
+        const body = elements.notificationBody.value.trim();
+        const specificUserInput = elements.notificationUser.value.trim();
+        const statusEl = elements.notificationSendStatus;
+
+        if (!title || !body) {
+            showStatus(statusEl, "Title and Message are required.", "warning");
+            return;
+        }
+
+        showLoader(true);
+        clearStatus(statusEl);
+
+        try {
+            if (target === 'all') {
+                if (!confirm(`This will send a notification to ALL users. Are you sure?`)) {
+                    showLoader(false);
+                    return;
+                }
+                const usersSnap = await get(ref(db, 'users'));
+                if (!usersSnap.exists()) throw new Error("No users found in database.");
+                const userIds = Object.keys(usersSnap.val());
+                const promises = userIds.map(uid => sendNotification(uid, title, body));
+                await Promise.all(promises);
+                showStatus(statusEl, `Notification sent to ${userIds.length} users.`, 'success');
+
+            } else { // specific user
+                if (!specificUserInput) throw new Error("User Email or UID is required for specific target.");
+                let userId = null;
+                // Check if input is UID
+                if (specificUserInput.length > 20) { // Rough check
+                     userId = specificUserInput;
+                } else { // Assume it's an email
+                    const q = query(ref(db, 'users'), orderByChild('email'), equalTo(specificUserInput));
+                    const userSnap = await get(q);
+                    if (userSnap.exists()) {
+                        userId = Object.keys(userSnap.val())[0];
+                    } else {
+                        throw new Error(`User with email "${specificUserInput}" not found.`);
+                    }
+                }
+                await sendNotification(userId, title, body);
+                showStatus(statusEl, `Notification sent to user ${specificUserInput}.`, 'success');
+            }
+            elements.sendNotificationForm.reset();
+        } catch (e) {
+            console.error("Error sending notification:", e);
+            showStatus(statusEl, `Error: ${e.message}`, 'danger', false);
         } finally {
             showLoader(false);
         }
     }
-    
+
     // --- Event Listeners Initialization ---
     function initializeAdminEventListeners() {
-    elements.adminSetupForm.addEventListener('submit', setupAdmin);
-    elements.adminLoginForm.addEventListener('submit', loginAdmin);
-    elements.adminLogoutBtn.addEventListener('click', logoutAdminUser);
-    elements.sidebarLinks.forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); showAdminSection(link.dataset.section); }));
-    
-    elements.saveGameBtn.addEventListener('click', saveGame);
-    elements.savePromotionBtn.addEventListener('click', savePromotion);
-    elements.saveTournamentBtn.addEventListener('click', saveTournament);
-    elements.saveNewUserBtn.addEventListener('click', () => { /* ... unchanged ... */ });
-    
-    elements.appSettingsForm.addEventListener('submit', saveSettings);
-    elements.updateBalanceForm.addEventListener('submit', updateUserBalance);
-    
-    elements.addNewGameBtn.addEventListener('click', () => { elements.gameForm.reset(); elements.gameEditId.value = ''; elements.gameModalTitle.textContent = "Add New Game"; });
-    elements.addNewPromotionBtn.addEventListener('click', () => { elements.promotionForm.reset(); elements.promotionEditId.value = ''; elements.promotionModalTitle.textContent = "Add New Promotion"; });
-    elements.addNewTournamentBtn.addEventListener('click', () => { currentActionDetails = {}; elements.tournamentForm.reset(); elements.tournamentModalTitle.textContent = "Add New Tournament"; populateGameSelect(); });
-    
-    elements.approveWithdrawalBtn.addEventListener('click', () => processRequestAction('approve'));
-    elements.rejectWithdrawalBtn.addEventListener('click', () => { getElement('withdrawalRejectReasonDiv').style.display = 'block'; if(getElement('withdrawalRejectReason').value.trim()) processRequestAction('reject'); });
-    elements.approveDepositBtn.addEventListener('click', () => processRequestAction('approve'));
-    elements.rejectDepositBtn.addEventListener('click', () => { getElement('depositRejectReasonDiv').style.display = 'block'; if(getElement('depositRejectReason').value.trim()) processRequestAction('reject'); });
-    
-    // Declare Result Modal listeners
-    elements.addWinnerEntryBtn.addEventListener('click', addWinnerEntryRow);
-    elements.submitResultsBtn.addEventListener('click', processAndDeclareWinners);
-    elements.winnerEntriesContainer.addEventListener('click', (e) => {
-    if (e.target.closest('.btn-remove-winner')) {
-    e.target.closest('.winner-entry-row').remove();
-    }
-    });
-    
-    elements.userBlockBtn.addEventListener('click', (e) => {
-    const btn = e.currentTarget;
-    toggleUserBlockStatus(btn.dataset.uid, btn.dataset.currentStatus);
-    });
-    
-    elements.userSearchInput.addEventListener('input', () => { const term = elements.userSearchInput.value.toLowerCase(); const filtered = Object.values(fullUserDataCache).filter(u => u.displayName?.toLowerCase().includes(term) || u.email?.toLowerCase().includes(term)); renderUsersTable(filtered); });
-    
-    document.body.addEventListener('click', (event) => {
-    const button = event.target.closest('button[data-id]');
-    if (!button) return;
-    const id = button.dataset.id;
-    if (button.classList.contains('btn-delete-game')) deleteGame(id);
-    else if (button.classList.contains('btn-edit-game')) openEditGameModal(id);
-    else if (button.classList.contains('btn-delete-promo')) deletePromotion(id);
-    else if (button.classList.contains('btn-edit-promo')) openEditPromotionModal(id);
-    else if (button.classList.contains('btn-delete-tournament')) deleteTournament(id); 
-    else if (button.classList.contains('btn-edit-tournament')) openEditTournamentModal(id);
-    else if (button.classList.contains('btn-view-user')) openUserModal(id);
-    else if (button.classList.contains('btn-delete-user')) deleteUser(id);
-    else if (button.classList.contains('btn-view-registered')) openRegisteredPlayersModal(id, button.dataset.name);
-    else if (button.classList.contains('btn-approve-deposit')) openRequestActionModal('deposit', id);
-    else if (button.classList.contains('btn-reject-deposit')) openRequestActionModal('deposit', id);
-    else if (button.classList.contains('btn-approve-withdrawal')) openRequestActionModal('withdrawal', id);
-    else if (button.classList.contains('btn-reject-withdrawal')) openRequestActionModal('withdrawal', id);
-    else if (button.classList.contains('btn-declare-result')) openDeclareResultModal(id);
-    });
-    
-    [elements.gameModalEl, elements.promotionModalEl, elements.addTournamentModalEl, elements.userModalEl, elements.depositActionModalEl, elements.withdrawalActionModalEl, elements.declareResultModalEl].forEach(modal => {
-    modal?.addEventListener('hidden.bs.modal', () => {
-    modal.querySelectorAll('form').forEach(form => form.reset());
-    modal.querySelectorAll('div[id$="Status"]').forEach(el => clearStatus(el));
-    currentActionDetails = {};
-    });
-    });
+        elements.adminSetupForm.addEventListener('submit', setupAdmin);
+        elements.adminLoginForm.addEventListener('submit', loginAdmin);
+        elements.adminLogoutBtn.addEventListener('click', logoutAdminUser);
+        elements.sidebarLinks.forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); showAdminSection(link.dataset.section); }));
+        elements.saveGameBtn.addEventListener('click', saveGame);
+        elements.savePromotionBtn.addEventListener('click', savePromotion);
+        elements.saveTournamentBtn.addEventListener('click', saveTournament);
+        elements.saveImageToLibraryBtn.addEventListener('click', saveImageToLibrary);
+        elements.saveStaffBtn.addEventListener('click', saveStaff);
+        elements.appSettingsForm.addEventListener('submit', saveSettings);
+        elements.updateBalanceForm.addEventListener('submit', updateUserBalance);
+        
+        elements.addNewGameBtn.addEventListener('click', () => { elements.gameForm.reset(); elements.gameEditId.value = ''; elements.gameModalTitle.textContent = "Add New Game"; });
+        elements.addNewPromotionBtn.addEventListener('click', () => { elements.promotionForm.reset(); elements.promotionEditId.value = ''; elements.promotionModalTitle.textContent = "Add New Promotion"; });
+        elements.addNewImageToLibraryBtn.addEventListener('click', () => { elements.imageLibraryForm.reset(); elements.imageLibraryEditId.value = ''; elements.imageLibraryModalTitle.textContent = "Add New Image"; });
+        
+        elements.addNewTournamentBtn.addEventListener('click', () => { 
+            currentActionDetails = {}; 
+            elements.tournamentForm.reset(); 
+            elements.tournamentModalTitle.textContent = "Add New Tournament";
+            
+            // --- START: PROBLEM FIX (100% Solution) ---
+            // ड्रॉपडाउन को हर बार मैन्युअल रूप से भरें ताकि यह कभी खाली न हो
+            elements.tournamentStatusSelect.innerHTML = `
+                <option value="upcoming">Upcoming</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+                <option value="result">Result</option>
+                <option value="cancelled">Cancelled</option>
+            `;
+            elements.tournamentStatusSelect.value = 'upcoming'; // डिफ़ॉल्ट वैल्यू सेट करें
+            // --- END: PROBLEM FIX ---
+            
+            populateGameSelect(); 
+            populateBannerImageSelect(); 
+        });
+
+                elements.addNewStaffBtn.addEventListener('click', () => {
+            elements.staffForm.reset();
+            elements.staffEditId.value = '';
+            elements.staffModalTitle.textContent = "Add New Staff";
+            
+            // UI को नया स्टाफ जोड़ने के लिए सेट करें
+            querySel('#staffModal .add-staff-fields').style.display = 'block';
+            elements.staffEmailInput.disabled = false;
+            querySel('#staffModal .password-field-group').style.display = 'none'; // पासवर्ड फ़ील्ड छिपाएं
+
+            populatePermissionsCheckboxes(elements.staffPermissionsContainer);
+            clearStatus(elements.staffModalStatus);
+        });
+
+        elements.approveWithdrawalBtn.addEventListener('click', () => processRequestAction('approve'));
+        elements.rejectWithdrawalBtn.addEventListener('click', () => { getElement('withdrawalRejectReasonDiv').style.display = 'block'; if(getElement('withdrawalRejectReason').value.trim()) processRequestAction('reject'); });
+        elements.approveDepositBtn.addEventListener('click', () => processRequestAction('approve'));
+        elements.rejectDepositBtn.addEventListener('click', () => { getElement('depositRejectReasonDiv').style.display = 'block'; if(getElement('depositRejectReason').value.trim()) processRequestAction('reject'); });
+        
+        elements.addWinnerEntryBtn.addEventListener('click', addWinnerEntryRow);
+        elements.submitResultsBtn.addEventListener('click', processAndDeclareWinners);
+        elements.winnerEntriesContainer.addEventListener('click', (e) => { if (e.target.closest('.btn-remove-winner')) { e.target.closest('.winner-entry-row').remove(); } });
+        elements.userBlockBtn.addEventListener('click', (e) => { const btn = e.currentTarget; toggleUserBlockStatus(btn.dataset.uid, btn.dataset.currentStatus); });
+        elements.userSearchInput.addEventListener('input', () => { const term = elements.userSearchInput.value.toLowerCase(); const filtered = Object.values(fullUserDataCache).filter(u => u.displayName?.toLowerCase().includes(term) || u.email?.toLowerCase().includes(term)); renderUsersTable(filtered); });
+        
+        elements.sendNotificationForm.addEventListener('submit', handleSendNotificationForm);
+        
+        elements.notificationTarget.addEventListener('change', (e) => {
+            elements.specificUserContainer.style.display = e.target.value === 'specific' ? 'block' : 'none';
+        });
+
+        document.body.addEventListener('click', (event) => {
+            const button = event.target.closest('button[data-id]');
+            if (!button) return;
+            const id = button.dataset.id;
+            if (button.classList.contains('btn-delete-game')) deleteGame(id);
+            else if (button.classList.contains('btn-edit-game')) openEditGameModal(id);
+            else if (button.classList.contains('btn-delete-promo')) deletePromotion(id);
+            else if (button.classList.contains('btn-edit-promo')) openEditPromotionModal(id);
+            else if (button.classList.contains('btn-delete-library-image')) deleteLibraryImage(id);
+            else if (button.classList.contains('btn-edit-library-image')) openEditLibraryImageModal(id);
+            else if (button.classList.contains('btn-delete-tournament')) deleteTournament(id); 
+            else if (button.classList.contains('btn-edit-tournament')) openEditTournamentModal(id);
+            else if (button.classList.contains('btn-view-user')) openUserModal(id);
+            else if (button.classList.contains('btn-delete-user')) deleteUser(id);
+            else if (button.classList.contains('btn-view-registered')) openRegisteredPlayersModal(id, button.dataset.name);
+            else if (button.classList.contains('btn-approve-deposit')) openRequestActionModal('deposit', id);
+            else if (button.classList.contains('btn-reject-deposit')) openRequestActionModal('deposit', id);
+            else if (button.classList.contains('btn-approve-withdrawal')) openRequestActionModal('withdrawal', id);
+            else if (button.classList.contains('btn-reject-withdrawal')) openRequestActionModal('withdrawal', id);
+            else if (button.classList.contains('btn-declare-result')) openDeclareResultModal(id);
+            else if (button.classList.contains('btn-edit-staff')) openEditStaffModal(id);
+            else if (button.classList.contains('btn-delete-staff')) deleteStaff(id);
+        });
+        
+        [elements.gameModalEl, elements.promotionModalEl, elements.imageLibraryModalEl, elements.addTournamentModalEl, elements.userModalEl, elements.depositActionModalEl, elements.withdrawalActionModalEl, elements.declareResultModalEl, elements.staffModalEl].forEach(modal => {
+            modal?.addEventListener('hidden.bs.modal', () => {
+                modal.querySelectorAll('form').forEach(form => form.reset());
+                modal.querySelectorAll('div[id$="Status"]').forEach(el => clearStatus(el));
+                currentActionDetails = {};
+            });
+        });
     }
     
     // --- Initialization ---
     document.addEventListener('DOMContentLoaded', () => {
-    if (!app) return;
-    initializeAdminEventListeners();
-    onAuthStateChanged(auth, handleAdminAuthStateChange);
+        if (!app) return;
+        initializeAdminEventListeners();
+        onAuthStateChanged(auth, handleAdminAuthStateChange);
     });
     </script>
 </body>
