@@ -455,7 +455,7 @@
 
             <!-- Settings Section -->
             <section id="settings-section" class="section card permission-gate" data-permission="manageSettings"> <div class="card-body"> <h2 class="card-title">App Settings</h2> <form id="appSettingsForm"> <div class="row"> <div class="col-md-6 mb-3"> <label for="settingLogoUrl" class="form-label">Logo URL</label> <input type="url" class="form-control" id="settingLogoUrl"> </div> <div class="col-md-6 mb-3"> <label for="settingAppName" class="form-label">App Name</label> <input type="text" class="form-control" id="settingAppName"> </div> <div class="col-md-6 mb-3"> <label for="settingMinWithdraw" class="form-label">Min Withdraw (₹)</label> <input type="number" class="form-control" id="settingMinWithdraw" min="0" step="any"> </div> <div class="col-md-6 mb-3"> <label for="settingReferralBonus" class="form-label">Referral Bonus (₹)</label> <input type="number" class="form-control" id="settingReferralBonus" min="0" step="any"> </div> <div class="col-12 mb-3"> <label for="settingSupportContact" class="form-label">Admin Support Contact</label> <input type="text" class="form-control" id="settingSupportContact"> </div> <div class="col-12 mb-3"> <label for="settingUpiDetails" class="form-label">UPI ID for Payment</label> <input type="text" class="form-control" id="settingUpiDetails" placeholder="yourname@upi"> </div> <div class="col-12 mb-3"> <label for="settingQrCodeUrl" class="form-label">Payment QR Code Image URL</label> <input type="url" class="form-control" id="settingQrCodeUrl" placeholder="https://i.ibb.co/..."> </div> <div class="col-12 mb-3"> <label for="settingPolicyPrivacy" class="form-label">Privacy Policy</label> <textarea class="form-control" id="settingPolicyPrivacy" rows="5"></textarea> </div> <div class="col-12 mb-3"> <label for="settingPolicyTerms" class="form-label">Terms & Conditions</label> <textarea class="form-control" id="settingPolicyTerms" rows="5"></textarea> </div> <div class="col-12 mb-3"> <label for="settingPolicyRefund" class="form-label">Refund Policy</label> <textarea class="form-control" id="settingPolicyRefund" rows="5"></textarea> </div> <div class="col-12 mb-3"> <label for="settingPolicyFairPlay" class="form-label">Fair Play Policy</label> <textarea class="form-control" id="settingPolicyFairPlay" rows="5"></textarea> </div> </div> <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Save Settings</button> <div id="settingsStatus" class="mt-3"></div> </form> </div> </section>
-            
+
             <!-- Staff Management Section -->
             <section id="staff-section" class="section permission-gate" data-permission="manageStaff">
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
@@ -487,7 +487,7 @@
     <div class="modal fade" id="gameModal" tabindex="-1"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="gameModalTitle">Add New Game</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <form id="gameForm"> <input type="hidden" id="gameEditId"> <div class="mb-3"> <label for="gameName" class="form-label">Game Name</label> <input type="text" class="form-control" id="gameName" required> </div> <div class="mb-3"> <label for="gameImageUrl" class="form-label">Image URL</label> <input type="url" class="form-control" id="gameImageUrl" required> <small class="text-muted">Direct image URL (e.g., from ImgBB).</small> </div> <div class="mb-3"> <label for="gameImageFile" class="form-label">Upload New Image (Optional - Overwrites URL)</label> <input class="form-control" type="file" id="gameImageFile" accept="image/*"> <div class="imgbb-upload-status mt-2"></div> </div> <div id="gameStatus" class="mt-2"></div></form> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" id="saveGameBtn">Save Game</button> </div> </div> </div> </div>
     <!-- Add/Edit Promotion Modal -->
     <div class="modal fade" id="promotionModal" tabindex="-1"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="promotionModalTitle">Add New Promotion</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <form id="promotionForm"> <input type="hidden" id="promotionEditId"> <div class="mb-3"> <label for="promoImageUrl" class="form-label">Image URL</label> <input type="url" class="form-control" id="promoImageUrl" required> <small class="text-muted">Direct image URL (e.g., from ImgBB).</small> </div> <div class="mb-3"> <label for="promoImageFile" class="form-label">Upload New Image (Optional - Overwrites URL)</label> <input class="form-control" type="file" id="promoImageFile" accept="image/*"> <div class="imgbb-upload-status mt-2"></div> </div> <div class="mb-3"> <label for="promoLink" class="form-label">Link (Optional)</label> <input type="url" class="form-control" id="promoLink"> </div> <div id="promotionStatus" class="mt-2"></div></form> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" id="savePromotionBtn">Save Promotion</button> </div> </div> </div> </div>
-    
+
     <!-- Add/Edit Image Library Modal -->
     <div class="modal fade" id="imageLibraryModal" tabindex="-1">
         <div class="modal-dialog">
@@ -527,7 +527,7 @@
 
     <!-- Add/Edit Tournament Modal -->
     <div class="modal fade" id="addTournamentModal" tabindex="-1"> <div class="modal-dialog modal-lg"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="tournamentModalTitle">Add New Tournament</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div> <div class="modal-body"> <form id="tournamentForm"> <input type="hidden" id="tournamentEditId"> <div class="row"> <div class="col-md-6 mb-3"> <label for="tournamentGame" class="form-label">Game</label> <select class="form-select" id="tournamentGame" required></select> </div> <div class="col-md-6 mb-3"> <label for="tournamentName" class="form-label">Tournament Name</label> <input type="text" class="form-control" id="tournamentName" required> </div> <div class="col-md-6 mb-3"> <label for="tournamentStartTime" class="form-label">Start Date & Time</label> <input type="datetime-local" class="form-control" id="tournamentStartTime" required> </div> 
-                
+
                 <div class="col-md-6 mb-3">
                     <label for="tournamentStatus" class="form-label">Status</label>
                     <select class="form-select" id="tournamentStatus" required>
@@ -540,7 +540,7 @@
                 </div>
 
                 <div class="col-md-4 mb-3"> <label for="tournamentEntryFee" class="form-label">Entry Fee (₹)</label> <input type="number" class="form-control" id="tournamentEntryFee" min="0" value="0" required step="any"> </div> <div class="col-md-4 mb-3"> <label for="tournamentPrizePool" class="form-label">Total Prize Pool (₹)</label> <input type="number" class="form-control" id="tournamentPrizePool" min="0" value="0" step="any"> </div> <div class="col-md-4 mb-3"> <label for="tournamentPerKill" class="form-label">Per Kill Prize (₹)</label> <input type="number" class="form-control" id="tournamentPerKill" min="0" value="0" step="any"> </div> <div class="col-md-4 mb-3"> <label for="tournamentMaxPlayers" class="form-label">Max Players (0 for Unlimited)</label> <input type="number" class="form-control" id="tournamentMaxPlayers" min="0" value="0" required> </div> <div class="col-md-4 mb-3"> <label for="tournamentTags" class="form-label">Tags (comma-separated)</label> <input type="text" class="form-control" id="tournamentTags" placeholder="e.g., Solo, Erangel, TPP"> </div> <div class="col-md-4 mb-3"> <label for="tournamentIcon" class="form-label">Icon Class (Optional)</label> <input type="text" class="form-control" id="tournamentIcon" placeholder="e.g., bi-controller"> </div>
-                
+
                 <div class="col-12 mb-3">
                     <label for="tournamentBannerSelect" class="form-label">Tournament Banner</label>
                     <select class="form-select" id="tournamentBannerSelect">
@@ -551,7 +551,7 @@
                 </div>
 
                 <div class="col-12 mb-3"> <label for="tournamentDescription" class="form-label">Description / Rules</label> <textarea class="form-control" id="tournamentDescription" rows="4"></textarea> </div> <div class="col-12 mb-3"> <label for="tournamentPrizeDistribution" class="form-label">Prize Distribution (JSON object)</label> <textarea class="form-control" id="tournamentPrizeDistribution" rows="3" placeholder='e.g., {"1": 100, "2": 50, "3": 25}'></textarea> <small class="text-muted">Key is rank, value is prize amount.</small></div> <div class="col-md-6 mb-3"> <label for="tournamentRoomId" class="form-label">Room ID</label> <input type="text" class="form-control" id="tournamentRoomId"> </div> <div class="col-md-6 mb-3"> <label for="tournamentRoomPassword" class="form-label">Room Password</label> <input type="text" class="form-control" id="tournamentRoomPassword"> </div> <div class="form-check mb-3 ms-2"> <input class="form-check-input" type="checkbox" id="tournamentShowIdPass"> <label class="form-check-label" for="tournamentShowIdPass"> Show ID/Pass?</label> </div> </div> <div id="addTournamentStatus" class="mt-2"></div></form> </div> <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" id="saveTournamentBtn">Save Tournament</button> </div> </div> </div> </div>
-    
+
         <!-- Add/Edit Staff Modal -->
     <div class="modal fade" id="staffModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
@@ -563,7 +563,7 @@
                 <div class="modal-body">
                     <form id="staffForm">
                         <input type="hidden" id="staffEditId">
-                        
+
                         <!-- START: EDITED SECTION FOR ADDING STAFF -->
                         <div class="add-staff-fields">
                             <div class="alert alert-info small">
@@ -590,7 +590,7 @@
                                 <input type="text" class="form-control" id="staffName" required>
                             </div>
                         </div>
-                        
+
                         <div class="row password-field-group" style="display: none;">
                             <div class="col-md-12 mb-3">
                                 <label for="staffPassword" class="form-label">Password</label>
@@ -674,7 +674,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import { getDatabase, ref, get, set, update, push, query, orderByChild, equalTo, onValue, off, remove, serverTimestamp, runTransaction, limitToLast } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
     import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
-    
+
     const firebaseConfig = {
         apiKey: "AIzaSyBQu6IXF2T0F0NbrNYhFHykhGUBIhZb8Dg",
         authDomain: "earning-karo---made-in-india.firebaseapp.com",
@@ -685,7 +685,7 @@
         appId: "1:144551856887:web:ec5b2fb196fcbfa7c861f2",
         measurementId: "G-91YQHMH5L2"
     };
-    
+
     // Initialize Firebase
     let app, db, auth;
     try {
@@ -697,7 +697,7 @@
         console.error("Admin Panel: Firebase initialization failed:", error);
         document.body.innerHTML = `<div class="alert alert-danger m-5"><strong>Critical Error:</strong> Could not connect to Firebase services. Check console, config, and network. Error: ${error.message}</div>`;
     }
-    
+
     const getElement = (id) => document.getElementById(id);
     const querySel = (selector) => document.querySelector(selector);
     const querySelAll = (selector) => document.querySelectorAll(selector);
@@ -913,7 +913,7 @@
         notificationBody: getElement('notificationBody'),
         notificationSendStatus: getElement('notificationSendStatus'),
     };
-    
+
     // Bootstrap Modal/Offcanvas Instances Cache
     let componentInstances = {};
     const getComponentInstance = (element, componentType = 'Modal') => {
@@ -933,7 +933,7 @@
     }
     const getModalInstance = (element) => getComponentInstance(element, 'Modal');
     const getOffcanvasInstance = (element) => getComponentInstance(element, 'Offcanvas');
-    
+
     // --- App State ---
     let currentAdminUser = null; // Will now hold { uid, email, isSuperAdmin, permissions }
     let currentActionDetails = {};
@@ -944,7 +944,7 @@
     let isAdminSetupComplete = false;
     let designatedAdminUid = null;
     let appSettings = {};
-    
+
     // Staff Permissions Definition
     const PERMISSIONS = {
         manageGames: "Manage Games",
@@ -981,7 +981,7 @@
             }
         });
     };
-    
+
     // --- (यह नया फंक्शन पेस्ट करें) ---
 async function handleAdminAuthStateChange(user) {
     showLoader(true);
@@ -1050,7 +1050,7 @@ async function handleAdminAuthStateChange(user) {
             elements.loginSection.style.display = 'none';
             elements.setupSection.style.display = 'block';
         }
-        
+
         // कैश और स्टेट को साफ़ करें
         gameDataCache = {}; userDataCache = {}; fullUserDataCache = {}; appSettings = {};
         elements.adminHeaderLogo.src = 'https://via.placeholder.com/35/1E293B/94A3B8?text=L';
@@ -1059,7 +1059,7 @@ async function handleAdminAuthStateChange(user) {
     }
     setTimeout(() => showLoader(false), 150);
 }
-    
+
     // --- Utility Functions ---
     const showLoader = (show) => { if (elements.adminLoader) elements.adminLoader.style.display = show ? 'flex' : 'none'; };
     function showStatus(element, message, type = 'danger', autohide = 5000) { if (!element) return; const alertId = `status-alert-${element.id || Math.random().toString(36).substring(2)}`; element.style.display = 'block'; element.innerHTML = `<div id="${alertId}" class="alert alert-${type} alert-dismissible fade show" role="alert">${sanitizeHTML(message)}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`; if (autohide > 0) { setTimeout(() => { const currentAlert = getElement(alertId); if (currentAlert) { try { getComponentInstance(currentAlert, 'Alert')?.close(); } catch (e) { currentAlert.remove(); } } }, autohide); } }
@@ -1069,7 +1069,7 @@ async function handleAdminAuthStateChange(user) {
     function sanitizeHTML(str) { const temp = document.createElement('div'); temp.textContent = String(str ?? ''); return temp.innerHTML; }
     function copyToClipboard(targetSelector) { const copyIcon = event?.target.closest('.copy-btn'); const context = copyIcon?.closest('.modal-body, tr'); const element = context?.querySelector(targetSelector); const textToCopy = element?.textContent?.trim(); if (!textToCopy) return; if (navigator.clipboard) { navigator.clipboard.writeText(textToCopy).catch(err => alert('Could not copy.')); } else { alert('Copy failed (insecure context).'); } }
     const tableLoadingPlaceholderHtml = (cols) => `<tr class="loading-placeholder"><td colspan="${cols}"><div class="py-3"></div></td></tr>`.repeat(3);
-    
+
     // --- UI Functions ---
     function showAdminSection(sectionId) {
         let targetSectionId = sectionId;
@@ -1108,11 +1108,11 @@ async function handleAdminAuthStateChange(user) {
              showAdminSection('dashboard-section');
         }
     }
-    
+
     function loadDataForSection(sectionId) {
         if (!currentAdminUser) return;
         Object.values(elements).forEach(el => { if (el && el.id && el.id.endsWith('Status')) clearStatus(el); });
-        
+
         switch(sectionId) {
             case 'dashboard-section': loadDashboardStats(); break;
             case 'games-section': if(hasPermission('manageGames')) loadGames(); break;
@@ -1126,7 +1126,7 @@ async function handleAdminAuthStateChange(user) {
             case 'staff-section': if(hasPermission('manageStaff')) loadStaff(); break;
         }
     }
-    
+
     // --- Firebase Auth & Setup (Unchanged Logic) ---
     async function loginAdmin(event) { event.preventDefault(); if (!auth) return; showLoader(true); try { await signInWithEmailAndPassword(auth, elements.adminEmailInput.value, elements.adminPasswordInput.value); } catch (error) { showStatus(elements.adminLoginStatus, "Login Failed: Invalid email or password.", 'danger'); } finally { showLoader(false); } }
     async function logoutAdminUser() { if (auth) await signOut(auth); }
@@ -1183,7 +1183,7 @@ async function handleInitialLoad() {
     elements.authContainer.style.display = 'block'; 
     showLoader(false); 
 }
-    
+
     // --- Database Load Functions ---
     async function loadDashboardStats() {
     if (!currentAdminUser) return;
@@ -1219,13 +1219,13 @@ async function handleInitialLoad() {
     elements.statCompletedWithdrawals.textContent = completedWithdrawals;
     elements.statRejectedWithdrawals.textContent = rejectedWithdrawals;
     }
-    
+
     async function loadGames() { if (!hasPermission('manageGames')) return; elements.gamesTableBody.innerHTML = tableLoadingPlaceholderHtml(4); try { const snapshot = await get(ref(db, 'games')); let html = ''; gameDataCache = {}; if (snapshot.exists()) { snapshot.forEach(child => { const game = child.val(); gameDataCache[child.key] = game.name; html += `<tr><td><img src="${sanitizeHTML(game.imageUrl)}" class="preview-img"></td><td>${sanitizeHTML(game.name)}</td><td><small class="text-muted">${sanitizeHTML(child.key)}</small></td><td class="action-buttons"><button class="btn btn-sm btn-info btn-edit-game" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-pencil-square"></i></button><button class="btn btn-sm btn-danger btn-delete-game" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-trash"></i></button></td></tr>`; }); } elements.gamesTableBody.innerHTML = html || `<tr><td colspan="4" class="text-center p-3 text-muted">No games found.</td></tr>`; } catch (e) { elements.gamesTableBody.innerHTML = `<tr><td colspan="4" class="text-danger p-3">Error loading games. Check Rules.</td></tr>`; showStatus(elements.gamesStatus, e.message, 'danger', false); } }
     async function loadPromotions() { if (!hasPermission('managePromotions')) return; elements.promotionsTableBody.innerHTML = tableLoadingPlaceholderHtml(3); try { const snapshot = await get(ref(db, 'promotions')); let html = ''; if (snapshot.exists()) { snapshot.forEach(child => { const promo = child.val(); const shortLink = promo.link?.substring(0, 50) + (promo.link?.length > 50 ? '...' : ''); html += `<tr><td><img src="${sanitizeHTML(promo.imageUrl)}" class="preview-img"></td><td>${promo.link ? `<a href="${sanitizeHTML(promo.link)}" target="_blank">${shortLink}</a>` : 'N/A'}</td><td class="action-buttons"><button class="btn btn-sm btn-info btn-edit-promo" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-pencil-square"></i></button><button class="btn btn-sm btn-danger btn-delete-promo" data-id="${sanitizeHTML(child.key)}"><i class="bi bi-trash"></i></button></td></tr>`; }); } elements.promotionsTableBody.innerHTML = html || `<tr><td colspan="3" class="text-center p-3 text-muted">No promotions found.</td></tr>`; } catch (e) { elements.promotionsTableBody.innerHTML = `<tr><td colspan="3" class="text-danger p-3">Error loading promotions. Check Rules.</td></tr>`; showStatus(elements.promotionsStatus, e.message, 'danger', false); } }
     async function loadTournaments() { if (!hasPermission('manageTournaments')) return; elements.tournamentsTableBody.innerHTML = tableLoadingPlaceholderHtml(8); if (Object.keys(gameDataCache).length === 0) await loadGames(); try { const snapshot = await get(ref(db, 'tournaments')); let html = ''; if (snapshot.exists()) { snapshot.forEach(child => { const t = child.val(); const statusClass = { upcoming: 'info', ongoing: 'success', result: 'primary', completed: 'secondary', cancelled: 'danger' }[t.status] || 'secondary'; const players = `${Object.keys(t.registeredPlayers || {}).length}${t.maxPlayers > 0 ? `/${t.maxPlayers}` : ''}`; let actionButtons = `<button class="btn btn-sm btn-info btn-edit-tournament" data-id="${child.key}"><i class="bi bi-pencil-square"></i></button><button class="btn btn-sm btn-secondary btn-view-registered" data-id="${child.key}" data-name="${sanitizeHTML(t.name)}"><i class="bi bi-people"></i></button>`; if (['ongoing', 'completed'].includes(t.status)) { actionButtons += `<button class="btn btn-sm btn-warning btn-declare-result" data-id="${child.key}"><i class="bi bi-award"></i> Declare</button>`; } actionButtons += `<button class="btn btn-sm btn-danger btn-delete-tournament" data-id="${child.key}"><i class="bi bi-trash"></i></button>`; html += `<tr><td>${sanitizeHTML(t.name)}</td><td>${gameDataCache[t.gameId] || 'Unknown'}</td><td>${formatCurrency(t.entryFee)}</td><td>${formatCurrency(t.prizePool)}</td><td>${formatDate(t.startTime)}</td><td><span class="status-badge text-bg-${statusClass}">${t.status}</span></td><td>${players}</td><td class="action-buttons">${actionButtons}</td></tr>`; }); } elements.tournamentsTableBody.innerHTML = html || `<tr><td colspan="8" class="text-center p-3 text-muted">No tournaments found.</td></tr>`; } catch (e) { elements.tournamentsTableBody.innerHTML = `<tr><td colspan="8" class="text-danger p-3">Error loading tournaments. Check Rules.</td></tr>`; showStatus(elements.tournamentsStatus, e.message, 'danger', false); } }
     function renderUsersTable(usersArray) { let html = ''; if (usersArray?.length > 0) { usersArray.sort((a, b) => (a.displayName || '').localeCompare(b.displayName || '')); usersArray.forEach(user => { html += `<tr><td><small class="text-muted">${user.uid}</small></td><td>${sanitizeHTML(user.displayName)}</td><td>${sanitizeHTML(user.email)}</td><td>${formatCurrency(user.balance)}</td><td><span class="status-badge text-bg-${user.status === 'active' ? 'success' : 'danger'}">${user.status}</span></td><td class="action-buttons"><button class="btn btn-sm btn-info btn-view-user" data-id="${user.uid}"><i class="bi bi-eye"></i></button> <button class="btn btn-sm btn-danger btn-delete-user" data-id="${user.uid}"><i class="bi bi-trash"></i></button></td></tr>`; }); } elements.usersTableBody.innerHTML = html || `<tr><td colspan="6" class="text-center p-3 text-muted">No users found.</td></tr>`; }
     async function loadUsers() { if (!hasPermission('manageUsers')) return; elements.usersTableBody.innerHTML = tableLoadingPlaceholderHtml(6); elements.userSearchInput.value = ''; try { const snapshot = await get(ref(db, 'users')); fullUserDataCache = {}; if (snapshot.exists()) { snapshot.forEach(child => { const user = child.val(); user.uid = child.key; fullUserDataCache[child.key] = user; }); } renderUsersTable(Object.values(fullUserDataCache)); } catch (e) { elements.usersTableBody.innerHTML = `<tr><td colspan="6" class="text-danger p-3">Error loading users. Check Rules.</td></tr>`; showStatus(elements.usersStatus, e.message, 'danger', false); } }
-    
+
     async function loadRequestList(type, status) {
     const isDeposit = type === 'deposit';
     if(isDeposit && !hasPermission('manageDeposits')) return;
@@ -1235,20 +1235,20 @@ async function handleInitialLoad() {
     const tableBody = getElement(`${status}${isDeposit ? 'Deposits' : 'Withdrawals'}TableBody`);
     const statusEl = elements[`${isDeposit ? 'deposits' : 'withdrawals'}Status`];
     const emptyCols = status === 'pending' ? 5 : 6;
-    
+
     tableBody.innerHTML = tableLoadingPlaceholderHtml(emptyCols);
     clearStatus(statusEl);
-    
+
     try {
     const q = query(ref(db, path), orderByChild('status'), equalTo(status));
     const snapshot = await get(q);
     let html = '';
-    
+
     if (snapshot.exists()) {
     const requests = [];
     snapshot.forEach(child => requests.push({ id: child.key, ...child.val() }));
     requests.sort((a, b) => (b.requestTimestamp || 0) - (a.requestTimestamp || 0));
-    
+
     for (const req of requests) {
     if (!userDataCache[req.userId]) {
     const userSnap = await get(ref(db, `users/${req.userId}`));
@@ -1258,11 +1258,11 @@ async function handleInitialLoad() {
     const userDisplay = `${sanitizeHTML(user.displayName)} (<small class="text-muted">${sanitizeHTML(user.email)}</small>)`;
     const requestTime = formatDate(req.requestTimestamp);
     const processedTime = formatDate(req.processedAt);
-    
+
     let row = `<tr><td>${requestTime}</td>`;
     if (status !== 'pending') row += `<td>${processedTime}</td>`;
     row += `<td>${userDisplay}</td><td>${formatCurrency(req.amount)}</td>`;
-    
+
     if (isDeposit) {
     row += `<td>${sanitizeHTML(req.transactionId)}</td>`;
     if (status === 'pending') row += `<td class="action-buttons"><button class="btn btn-sm btn-success btn-approve-deposit" data-id="${req.id}"><i class="bi bi-check-circle"></i></button><button class="btn btn-sm btn-danger btn-reject-deposit" data-id="${req.id}"><i class="bi bi-x-circle"></i></button></td>`;
@@ -1287,9 +1287,9 @@ async function handleInitialLoad() {
     }
     const loadDeposits = (status) => loadRequestList('deposit', status);
     const loadWithdrawals = (status) => loadRequestList('withdrawal', status);
-    
+
     async function loadSettings() { if (!hasPermission('manageSettings')) return; try { const snapshot = await get(ref(db, 'settings')); if (snapshot.exists()) { appSettings = snapshot.val() || {}; elements.settingLogoUrlInput.value = appSettings.logoUrl || ''; elements.settingAppNameInput.value = appSettings.appName || ''; elements.settingMinWithdrawInput.value = appSettings.minWithdraw || 0; elements.settingReferralBonusInput.value = appSettings.referralBonus || 0; elements.settingSupportContactInput.value = appSettings.supportContact || ''; elements.settingUpiDetailsInput.value = appSettings.upiDetails || ''; elements.settingQrCodeUrlInput.value = appSettings.qrCodeUrl || ''; elements.settingPolicyPrivacyInput.value = appSettings.policyPrivacy || ''; elements.settingPolicyTermsInput.value = appSettings.policyTerms || ''; elements.settingPolicyRefundInput.value = appSettings.policyRefund || ''; elements.settingPolicyFairPlayInput.value = appSettings.policyFairPlay || ''; if(appSettings.logoUrl) { elements.adminHeaderLogo.src = appSettings.logoUrl; elements.adminHeaderLogo.style.display = 'inline-block'; } document.title = `${appSettings.appName || 'Gaming'} - Admin`; } else { showStatus(elements.settingsStatus, "No settings found. Please configure.", "info"); } } catch (e) { showStatus(elements.settingsStatus, `Error loading settings: ${e.message}`, "danger", false); } }
-    
+
     // --- Image Library Functions ---
     async function loadImagesFromLibrary() {
         if (!hasPermission('manageImageLibrary')) return;
@@ -1318,7 +1318,7 @@ async function handleInitialLoad() {
             showStatus(elements.imageLibraryStatus, e.message, 'danger', false);
         }
     }
-    
+
     // --- Staff Management Functions ---
     function populatePermissionsCheckboxes(container, currentPermissions = {}) {
         let html = '';
@@ -1373,7 +1373,7 @@ async function handleInitialLoad() {
             showStatus(elements.staffStatus, e.message, 'danger', false);
         }
     }
-    
+
     // --- Save, Update, Delete Functions (with permissions) ---
     async function sendNotification(userId, title, body, type = 'general', link = null) {
         if (!userId || !title || !body) {
@@ -1409,7 +1409,7 @@ async function handleInitialLoad() {
         const staffId = elements.staffEditId.value;
         const isEditing = !!staffId;
         const name = elements.staffNameInput.value.trim();
-        
+
         if (!name) {
             showStatus(elements.staffModalStatus, "Name is required.", "warning");
             return;
@@ -1418,7 +1418,7 @@ async function handleInitialLoad() {
         showLoader(true);
         try {
             let uid, email;
-            
+
             if (isEditing) {
                 uid = staffId;
                 email = elements.staffEmailInput.value.trim();
@@ -1429,14 +1429,14 @@ async function handleInitialLoad() {
                 if (!uid || !email) {
                     throw new Error("Staff UID and Email are required to add a new staff member.");
                 }
-                
+
                 // जांचें कि यह स्टाफ पहले से मौजूद है या नहीं
                 const existingStaffSnap = await get(ref(db, `staffAccounts/${uid}`));
                 if (existingStaffSnap.exists()) {
                     throw new Error("A staff member with this UID already exists. Please edit them instead.");
                 }
             }
-            
+
             const permissions = {};
             elements.staffPermissionsContainer.querySelectorAll('input[type="checkbox"]:not(:disabled)').forEach(box => {
                 permissions[box.dataset.permissionKey] = box.checked;
@@ -1463,7 +1463,7 @@ async function handleInitialLoad() {
         }
     }
     async function saveSettings(event) { event.preventDefault(); if (!hasPermission('manageSettings')) { alert('Access Denied'); return; } const settingsData = { logoUrl: elements.settingLogoUrlInput.value.trim(), appName: elements.settingAppNameInput.value.trim(), minWithdraw: parseFloat(elements.settingMinWithdrawInput.value) || 0, referralBonus: parseFloat(elements.settingReferralBonusInput.value) || 0, supportContact: elements.settingSupportContactInput.value.trim(), upiDetails: elements.settingUpiDetailsInput.value.trim(), qrCodeUrl: elements.settingQrCodeUrlInput.value.trim(), policyPrivacy: elements.settingPolicyPrivacyInput.value.trim(), policyTerms: elements.settingPolicyTermsInput.value.trim(), policyRefund: elements.settingPolicyRefundInput.value.trim(), policyFairPlay: elements.settingPolicyFairPlayInput.value.trim(), lastUpdated: serverTimestamp() }; showLoader(true); try { await set(ref(db, 'settings'), settingsData); showStatus(elements.settingsStatus, "Settings saved!", "success"); loadSettings(); } catch (e) { showStatus(elements.settingsStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
-    
+
     async function refundTournamentEntryFees(tournamentId, tournamentData) {
         const entryFee = parseFloat(tournamentData.entryFee) || 0;
         const players = tournamentData.registeredPlayers || {};
@@ -1516,14 +1516,14 @@ async function handleInitialLoad() {
             loadDashboardStats();
         } catch (e) { showStatus(elements.addTournamentStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); }
     }
-    
+
     async function updateUserBalance(event) { event.preventDefault(); if (!hasPermission('manageUsers')) { alert('Access Denied'); return; } const userId = elements.editUserUid.value; const amount = parseFloat(elements.balanceUpdateAmountInput.value); const type = elements.balanceUpdateTypeSelect.value; const reason = elements.balanceUpdateReasonInput.value.trim(); if (!userId || isNaN(amount) || amount === 0 || !type || !reason) { showStatus(elements.balanceUpdateStatus, "All fields required, amount non-zero.", "warning"); return; } showLoader(true); try { const txResult = await runTransaction(ref(db, `users/${userId}`), (user) => { if (!user) return user; user.balance = (user.balance || 0) + amount; if (type === 'winningCash') user.winningCash = (user.winningCash || 0) + amount; if (type === 'bonusCash') user.bonusCash = (user.bonusCash || 0) + amount; if (user.balance < 0 || user.winningCash < 0 || user.bonusCash < 0) { if (!confirm(`Warning: A balance will become negative. Proceed?`)) throw "Cancelled by admin."; } return user; }); if (!txResult.committed) throw new Error("Balance update failed (transaction aborted)."); const logType = `admin_${type}_${amount > 0 ? 'add' : 'deduct'}`; await push(ref(db, `transactions/${userId}`), { type: logType, amount, description: `Admin: ${reason}`, timestamp: serverTimestamp(), balanceAfter: txResult.snapshot.val().balance, adminUid: currentAdminUser.uid }); showStatus(elements.balanceUpdateStatus, "Balance updated!", "success"); openUserModal(userId); } catch (e) { showStatus(elements.balanceUpdateStatus, `Error: ${e.message}`, "danger", false); } finally { showLoader(false); } }
     async function genericDelete(path, id, type, statusEl, permissionKey) {
     if (!hasPermission(permissionKey)) { alert("Access Denied"); return; }
     const confirmMessage = type === 'Tournament'
     ? `DELETE Tournament ID: ${id}?\n\nWARNING: This will NOT refund players. To refund players, please use the 'Edit' button and set the status to 'Cancelled'.\n\nThis action cannot be undone.`
     : `DELETE ${type} ID: ${id}? Cannot be undone.`;
-    
+
     if (!confirm(confirmMessage)) return;
     showLoader(true);
     try {
@@ -1555,7 +1555,7 @@ async function handleInitialLoad() {
     const isDeposit = type === 'deposit';
     if(isDeposit && !hasPermission('manageDeposits')) { alert('Access Denied'); return; }
     if(!isDeposit && !hasPermission('manageWithdrawals')) { alert('Access Denied'); return; }
-    
+
     const path = isDeposit ? 'depositRequests' : 'withdrawals';
     const modalEl = isDeposit ? elements.depositActionModalEl : elements.withdrawalActionModalEl;
     showLoader(true);
@@ -1568,17 +1568,17 @@ async function handleInitialLoad() {
     if (!userSnap.exists()) throw new Error(`User ${req.userId} not found.`);
     const user = userSnap.val();
     currentActionDetails = { id, type, ...req };
-    
+
     const detailId = getElement(`${type}DetailId`);
     const detailUser = getElement(`${type}DetailUser`);
     const detailUserUid = getElement(`${type}DetailUserUid`);
     const detailAmount = getElement(`${type}DetailAmount`);
-    
+
     detailId.textContent = id;
     detailUser.innerHTML = `${sanitizeHTML(user.displayName)} (<small class="text-muted">${sanitizeHTML(user.email)}</small>)`;
     detailUserUid.textContent = req.userId;
     detailAmount.textContent = (req.amount || 0).toFixed(2);
-    
+
     if (isDeposit) {
     getElement('depositDetailTxnId').textContent = req.transactionId;
     getElement('depositRejectReasonDiv').style.display = 'none';
@@ -1601,13 +1601,13 @@ async function handleInitialLoad() {
         const path = isDeposit ? 'depositRequests' : 'withdrawals';
         const statusEl = getElement(`${type}ActionStatus`);
         const modalEl = isDeposit ? elements.depositActionModalEl : elements.withdrawalActionModalEl;
-        
+
         showLoader(true);
         try {
             const note = getElement(`${type}ApproveNote`).value.trim();
             const reason = getElement(`${type}RejectReason`).value.trim();
             if (!isApprove && !reason) throw new Error("Rejection reason is required.");
-            
+
             const updates = {};
             const reqRefPath = `${path}/${id}`;
             updates[`${reqRefPath}/status`] = isApprove ? (isDeposit ? 'approved' : 'completed') : 'rejected';
@@ -1615,7 +1615,7 @@ async function handleInitialLoad() {
             updates[`${reqRefPath}/processedBy`] = currentAdminUser.email;
             if (isApprove) updates[`${reqRefPath}/adminNote`] = note || 'Approved';
             else updates[`${reqRefPath}/rejectReason`] = reason;
-            
+
             if (isApprove) {
                 if (isDeposit) {
                     const txResult = await runTransaction(ref(db, `users/${userId}`), (user) => { if(user) { user.balance = (user.balance || 0) + amount; } return user; });
@@ -1635,7 +1635,7 @@ async function handleInitialLoad() {
                     await sendNotification(userId, 'Withdrawal Rejected', `Your withdrawal of ${formatCurrency(amount)} was rejected and the amount has been refunded. Reason: ${reason}`, 'withdrawal_rejected');
                 }
             }
-            
+
             await update(ref(db), updates);
             showStatus(elements[`${isDeposit ? 'deposits' : 'withdrawals'}Status`], `Request ${action}d successfully!`, "success");
             getModalInstance(modalEl)?.hide();
@@ -1644,7 +1644,7 @@ async function handleInitialLoad() {
         } catch(e) { showStatus(statusEl, `Error: ${e.message}`, "danger", false); }
         finally { showLoader(false); }
     }
-    
+
     // --- Realtime Listeners ---
     function setupRealtimeAdminListeners() {
         if (!currentAdminUser) return;
@@ -1666,30 +1666,57 @@ async function handleInitialLoad() {
         createCountListener('depositRequests', elements.pendingDepositCountBadge, elements.statPendingDeposits, 'manageDeposits');
     }
     function detachAllAdminListeners() { Object.values(dbListeners).forEach(({ ref, func }) => off(ref, 'value', func)); dbListeners = {}; }
-    
+
     // --- Modal Opening Helpers ---
     async function openEditGameModal(id) { showLoader(true); try { const s = await get(ref(db, `games/${id}`)); if (!s.exists()) throw "Not found"; elements.gameModalTitle.textContent = "Edit Game"; elements.gameEditId.value = id; const game = s.val(); elements.gameNameInput.value = game.name; elements.gameImageUrlInput.value = game.imageUrl; getModalInstance(elements.gameModalEl)?.show(); } catch (e) { alert(`Error: ${e}`); } finally { showLoader(false); } }
     async function openEditPromotionModal(id) { showLoader(true); try { const s = await get(ref(db, `promotions/${id}`)); if (!s.exists()) throw "Not found"; elements.promotionModalTitle.textContent = "Edit Promotion"; elements.promotionEditId.value = id; const promo = s.val(); elements.promoImageUrlInput.value = promo.imageUrl; elements.promoLinkInput.value = promo.link; getModalInstance(elements.promotionModalEl)?.show(); } catch (e) { alert(`Error: ${e}`); } finally { showLoader(false); } }
     async function openEditLibraryImageModal(id) { showLoader(true); try { const s = await get(ref(db, `image_library/${id}`)); if (!s.exists()) throw "Not found"; elements.imageLibraryModalTitle.textContent = "Edit Image"; elements.imageLibraryEditId.value = id; const img = s.val(); elements.libraryImageNameInput.value = img.name; elements.libraryImageUrlInput.value = img.url; getModalInstance(elements.imageLibraryModalEl)?.show(); } catch (e) { alert(`Error: ${e}`); } finally { showLoader(false); } }
     async function populateGameSelect(selectedValue = null) { elements.tournamentGameSelect.innerHTML = '<option>Loading...</option>'; if (Object.keys(gameDataCache).length === 0) await loadGames(); let options = '<option value="">-- Select Game --</option>'; Object.entries(gameDataCache).sort(([,a],[,b]) => a.localeCompare(b)).forEach(([id, name]) => options += `<option value="${id}">${sanitizeHTML(name)}</option>`); elements.tournamentGameSelect.innerHTML = options; if (selectedValue) elements.tournamentGameSelect.value = selectedValue; }
+    // <<< यहाँ से कॉपी करना शुरू करें >>>
     async function populateBannerImageSelect(selectedValue = null) {
         elements.tournamentBannerSelect.innerHTML = '<option>Loading images...</option>';
         try {
             const snapshot = await get(ref(db, 'image_library'));
             let options = '<option value="">-- No Banner --</option>';
+            const validImages = []; // हम केवल सही इमेज को इस लिस्ट में डालेंगे
+
             if (snapshot.exists()) {
-                const images = [];
-                snapshot.forEach(child => images.push({ ...child.val(), id: child.key }));
-                images.sort((a,b) => a.name.localeCompare(b.name));
-                images.forEach(img => options += `<option value="${sanitizeHTML(img.url)}">${sanitizeHTML(img.name)}</option>`);
+                // 1. डेटाबेस से मिली हर एंट्री को ध्यान से जांचें
+                snapshot.forEach(child => {
+                    const imgData = child.val();
+                    
+                    // *** सबसे महत्वपूर्ण जांच ***
+                    // केवल उन्हीं एंट्रीज को चुनें जो एक ऑब्जेक्ट हैं और जिनमें 'url' प्रॉपर्टी है।
+                    if (imgData && typeof imgData === 'object' && imgData.url) {
+                        validImages.push({
+                            id: child.key,
+                            // अगर नाम नहीं है, तो एक डिफ़ॉल्ट नाम दें
+                            name: imgData.name || `Unnamed Image (${child.key.slice(0, 5)})`, 
+                            url: imgData.url
+                        });
+                    }
+                    // अगर कोई एंट्री गलत है, तो उसे चुपचाप छोड़ दिया जाएगा।
+                });
+
+                // 2. अब हमारे पास सिर्फ सही इमेज की लिस्ट है, उसे सॉर्ट करें
+                validImages.sort((a, b) => a.name.localeCompare(b.name));
+
+                // 3. अब इस साफ़-सुथरी लिस्ट से ड्रॉपडाउन बनाएं
+                validImages.forEach(img => {
+                    options += `<option value="${sanitizeHTML(img.url)}">${sanitizeHTML(img.name)}</option>`;
+                });
             }
+
             elements.tournamentBannerSelect.innerHTML = options;
-            if (selectedValue) elements.tournamentBannerSelect.value = selectedValue;
+            if (selectedValue) {
+                elements.tournamentBannerSelect.value = selectedValue;
+            }
         } catch (e) {
             elements.tournamentBannerSelect.innerHTML = '<option value="">Error loading images</option>';
             console.error("Error populating banner select:", e);
         }
     }
+// <<< यहाँ तक कॉपी करें >>>
     async function openEditTournamentModal(id) {
         showLoader(true);
         try {
@@ -1702,7 +1729,7 @@ async function handleInitialLoad() {
             await populateBannerImageSelect(t.bannerUrl);
             elements.tournamentNameInput.value = t.name || '';
             if (t.startTime) { try { const d = new Date(t.startTime); const timezoneOffset = d.getTimezoneOffset() * 60000; elements.tournamentStartTimeInput.value = new Date(d - timezoneOffset).toISOString().slice(0, 16); } catch(e) { console.warn("Error formatting date for input", e); } }
-            
+
             // --- START: PROBLEM FIX (100% Solution for Edit) ---
             // पहले ड्रॉपडाउन में सभी ऑप्शन भरें
             elements.tournamentStatusSelect.innerHTML = `
@@ -1715,7 +1742,7 @@ async function handleInitialLoad() {
             // फिर टूर्नामेंट का सेव किया हुआ स्टेटस चुनें
             elements.tournamentStatusSelect.value = t.status || 'upcoming'; 
             // --- END: PROBLEM FIX ---
-    
+
             elements.tournamentEntryFeeInput.value = t.entryFee ?? 0;
             elements.tournamentPrizePoolInput.value = t.prizePool ?? 0;
             elements.tournamentPerKillInput.value = t.perKillPrize ?? 0;
@@ -1877,7 +1904,7 @@ async function handleInitialLoad() {
         }
         elements.winnerEntriesContainer.appendChild(template);
     }
-    
+
     async function processAndDeclareWinners() {
         if (!hasPermission('manageTournaments')) { alert('Access Denied'); return; }
         const statusEl = elements.declareResultStatus;
@@ -1931,7 +1958,7 @@ async function handleInitialLoad() {
             showStatus(statusEl, `Error: ${e.message}`, "danger", false);
         } finally { showLoader(false); }
     }
-    
+
     // --- Notification Send Handler ---
     async function handleSendNotificationForm(event) {
         event.preventDefault();
@@ -2003,16 +2030,16 @@ async function handleInitialLoad() {
         elements.saveStaffBtn.addEventListener('click', saveStaff);
         elements.appSettingsForm.addEventListener('submit', saveSettings);
         elements.updateBalanceForm.addEventListener('submit', updateUserBalance);
-        
+
         elements.addNewGameBtn.addEventListener('click', () => { elements.gameForm.reset(); elements.gameEditId.value = ''; elements.gameModalTitle.textContent = "Add New Game"; });
         elements.addNewPromotionBtn.addEventListener('click', () => { elements.promotionForm.reset(); elements.promotionEditId.value = ''; elements.promotionModalTitle.textContent = "Add New Promotion"; });
         elements.addNewImageToLibraryBtn.addEventListener('click', () => { elements.imageLibraryForm.reset(); elements.imageLibraryEditId.value = ''; elements.imageLibraryModalTitle.textContent = "Add New Image"; });
-        
+
         elements.addNewTournamentBtn.addEventListener('click', () => { 
             currentActionDetails = {}; 
             elements.tournamentForm.reset(); 
             elements.tournamentModalTitle.textContent = "Add New Tournament";
-            
+
             // --- START: PROBLEM FIX (100% Solution) ---
             // ड्रॉपडाउन को हर बार मैन्युअल रूप से भरें ताकि यह कभी खाली न हो
             elements.tournamentStatusSelect.innerHTML = `
@@ -2024,7 +2051,7 @@ async function handleInitialLoad() {
             `;
             elements.tournamentStatusSelect.value = 'upcoming'; // डिफ़ॉल्ट वैल्यू सेट करें
             // --- END: PROBLEM FIX ---
-            
+
             populateGameSelect(); 
             populateBannerImageSelect(); 
         });
@@ -2033,7 +2060,7 @@ async function handleInitialLoad() {
             elements.staffForm.reset();
             elements.staffEditId.value = '';
             elements.staffModalTitle.textContent = "Add New Staff";
-            
+
             // UI को नया स्टाफ जोड़ने के लिए सेट करें
             querySel('#staffModal .add-staff-fields').style.display = 'block';
             elements.staffEmailInput.disabled = false;
@@ -2047,15 +2074,15 @@ async function handleInitialLoad() {
         elements.rejectWithdrawalBtn.addEventListener('click', () => { getElement('withdrawalRejectReasonDiv').style.display = 'block'; if(getElement('withdrawalRejectReason').value.trim()) processRequestAction('reject'); });
         elements.approveDepositBtn.addEventListener('click', () => processRequestAction('approve'));
         elements.rejectDepositBtn.addEventListener('click', () => { getElement('depositRejectReasonDiv').style.display = 'block'; if(getElement('depositRejectReason').value.trim()) processRequestAction('reject'); });
-        
+
         elements.addWinnerEntryBtn.addEventListener('click', addWinnerEntryRow);
         elements.submitResultsBtn.addEventListener('click', processAndDeclareWinners);
         elements.winnerEntriesContainer.addEventListener('click', (e) => { if (e.target.closest('.btn-remove-winner')) { e.target.closest('.winner-entry-row').remove(); } });
         elements.userBlockBtn.addEventListener('click', (e) => { const btn = e.currentTarget; toggleUserBlockStatus(btn.dataset.uid, btn.dataset.currentStatus); });
         elements.userSearchInput.addEventListener('input', () => { const term = elements.userSearchInput.value.toLowerCase(); const filtered = Object.values(fullUserDataCache).filter(u => u.displayName?.toLowerCase().includes(term) || u.email?.toLowerCase().includes(term)); renderUsersTable(filtered); });
-        
+
         elements.sendNotificationForm.addEventListener('submit', handleSendNotificationForm);
-        
+
         elements.notificationTarget.addEventListener('change', (e) => {
             elements.specificUserContainer.style.display = e.target.value === 'specific' ? 'block' : 'none';
         });
@@ -2083,7 +2110,7 @@ async function handleInitialLoad() {
             else if (button.classList.contains('btn-edit-staff')) openEditStaffModal(id);
             else if (button.classList.contains('btn-delete-staff')) deleteStaff(id);
         });
-        
+
         [elements.gameModalEl, elements.promotionModalEl, elements.imageLibraryModalEl, elements.addTournamentModalEl, elements.userModalEl, elements.depositActionModalEl, elements.withdrawalActionModalEl, elements.declareResultModalEl, elements.staffModalEl].forEach(modal => {
             modal?.addEventListener('hidden.bs.modal', () => {
                 modal.querySelectorAll('form').forEach(form => form.reset());
@@ -2092,7 +2119,7 @@ async function handleInitialLoad() {
             });
         });
     }
-    
+
     // --- Initialization ---
     document.addEventListener('DOMContentLoaded', () => {
         if (!app) return;
